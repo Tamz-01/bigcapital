@@ -24658,7 +24658,14 @@
         },
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InviteUserResponseDto"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -24682,7 +24689,14 @@
         ],
         "responses": {
           "201": {
-            "description": ""
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InviteUserResponseDto"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -47290,6 +47304,77 @@
         "required": [
           "email",
           "roleId"
+        ]
+      },
+      "InviteEmailDeliveryDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "sent",
+              "offline",
+              "not_configured",
+              "failed"
+            ]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "InvitationAccessDetailsDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "acceptUrl": {
+            "type": "string",
+            "description": "One-use invitation link. Share privately; do not log or cache."
+          },
+          "loginUrl": {
+            "type": "string"
+          },
+          "expiresInHours": {
+            "type": "number",
+            "example": 24
+          },
+          "emailDelivery": {
+            "$ref": "#/components/schemas/InviteEmailDeliveryDto"
+          }
+        },
+        "required": [
+          "email",
+          "acceptUrl",
+          "loginUrl",
+          "expiresInHours",
+          "emailDelivery"
+        ]
+      },
+      "InviteUserResponseDto": {
+        "type": "object",
+        "properties": {
+          "invitedUser": {
+            "$ref": "#/components/schemas/UserDto"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserDto"
+          },
+          "invitation": {
+            "$ref": "#/components/schemas/InvitationAccessDetailsDto"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "invitation",
+          "message"
         ]
       },
       "BulkInviteItemDto": {

@@ -28,6 +28,7 @@ import type {
   InviteUserBody,
   GetDashboardBootMetaResponse,
   AuthedAccount,
+  InviteUserResult,
 } from '@bigcapital/sdk-ts';
 
 const commonInvalidateQueries = (
@@ -37,10 +38,10 @@ const commonInvalidateQueries = (
 };
 
 export function useCreateInviteUser(
-  props?: UseMutationOptions<void, Error, InviteUserBody>,
+  props?: UseMutationOptions<InviteUserResult, Error, InviteUserBody>,
 ) {
   const queryClient = useQueryClient();
-  const fetcher = useApiFetcher();
+  const fetcher = useApiFetcher({ enableCamelCaseTransform: true });
 
   return useMutation({
     ...props,

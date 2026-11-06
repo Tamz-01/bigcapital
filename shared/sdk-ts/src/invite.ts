@@ -1,53 +1,83 @@
-import type { ApiFetcher } from './fetch-utils';
-import { paths } from './schema';
-import { OpForPath, OpRequestBody } from './utils';
+import type { ApiFetcher } from "./fetch-utils";
+import { paths } from "./schema";
+import { OpForPath, OpRequestBody } from "./utils";
 
 export const INVITE_ROUTES = {
-  INVITE: '/api/invite',
-  RESEND: '/api/invite/users/{id}/resend',
-  ACCEPT: '/api/invite/accept/{token}',
-  CHECK: '/api/invite/check/{token}',
-  BULK_INVITE: '/api/invite/bulk',
+  INVITE: "/api/invite",
+  RESEND: "/api/invite/users/{id}/resend",
+  ACCEPT: "/api/invite/accept/{token}",
+  CHECK: "/api/invite/check/{token}",
+  BULK_INVITE: "/api/invite/bulk",
 } as const satisfies Record<string, keyof paths>;
 
-export type InviteUserBody = OpRequestBody<OpForPath<typeof INVITE_ROUTES.INVITE, 'patch'>>;
-export type AcceptInviteBody = OpRequestBody<OpForPath<typeof INVITE_ROUTES.ACCEPT, 'post'>>;
-export type BulkInviteBody = OpRequestBody<OpForPath<typeof INVITE_ROUTES.BULK_INVITE, 'post'>>;
+export type InviteUserBody = OpRequestBody<
+  OpForPath<typeof INVITE_ROUTES.INVITE, "patch">
+>;
+export type AcceptInviteBody = OpRequestBody<
+  OpForPath<typeof INVITE_ROUTES.ACCEPT, "post">
+>;
+export type BulkInviteBody = OpRequestBody<
+  OpForPath<typeof INVITE_ROUTES.BULK_INVITE, "post">
+>;
+
+export interface InvitationAccessDetails {
+  email: string;
+  acceptUrl: string;
+  loginUrl: string;
+  expiresInHours: number;
+  emailDelivery: {
+    status: "sent" | "offline" | "not_configured" | "failed";
+    message: string;
+  };
+}
+
+export interface InviteUserResult {
+  invitation: InvitationAccessDetails;
+  message: string;
+}
 
 export async function acceptInvite(
   fetcher: ApiFetcher,
   token: string,
-  values: AcceptInviteBody
+  values: AcceptInviteBody,
 ): Promise<unknown> {
-  const post = fetcher.path(INVITE_ROUTES.ACCEPT).method('post').create();
+  const post = fetcher.path(INVITE_ROUTES.ACCEPT).method("post").create();
   const { data } = await post({ token, ...values } as never);
   return data;
 }
 
-export async function fetchInviteCheck(fetcher: ApiFetcher, token: string): Promise<unknown> {
-  const get = fetcher.path(INVITE_ROUTES.CHECK).method('get').create();
+export async function fetchInviteCheck(
+  fetcher: ApiFetcher,
+  token: string,
+): Promise<unknown> {
+  const get = fetcher.path(INVITE_ROUTES.CHECK).method("get").create();
   const { data } = await get({ token });
   return data;
 }
 
 export async function inviteUser(
   fetcher: ApiFetcher,
-  values: InviteUserBody
-): Promise<void> {
-  const patch = fetcher.path(INVITE_ROUTES.INVITE).method('patch').create();
-  await patch(values);
+  values: InviteUserBody,
+): Promise<InviteUserResult> {
+  const patch = fetcher.path(INVITE_ROUTES.INVITE).method("patch").create();
+  const { data } = await patch(values);
+  return data as unknown as InviteUserResult;
 }
 
-export async function resendInvite(fetcher: ApiFetcher, id: number): Promise<void> {
-  const post = fetcher.path(INVITE_ROUTES.RESEND).method('post').create();
-  await post({ id });
+export async function resendInvite(
+  fetcher: ApiFetcher,
+  id: number,
+): Promise<InviteUserResult> {
+  const post = fetcher.path(INVITE_ROUTES.RESEND).method("post").create();
+  const { data } = await post({ id });
+  return data as unknown as InviteUserResult;
 }
 
 export async function bulkSendInviteUsers(
   fetcher: ApiFetcher,
-  body: BulkInviteBody
+  body: BulkInviteBody,
 ): Promise<unknown> {
-  const post = fetcher.path(INVITE_ROUTES.BULK_INVITE).method('post').create();
+  const post = fetcher.path(INVITE_ROUTES.BULK_INVITE).method("post").create();
   const { data } = await post(body as never);
   return data;
 }

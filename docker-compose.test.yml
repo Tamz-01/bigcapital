@@ -103,6 +103,9 @@ services:
     - THROTTLE_AUTH_TTL=${THROTTLE_AUTH_TTL:-}
     - THROTTLE_AUTH_LIMIT=${THROTTLE_AUTH_LIMIT:-}
     working_dir: /app/packages/server
+    volumes:
+    - ./packages/server/dist:/app/packages/server/dist:ro
+    - ./packages/server/src/database:/app/packages/server/src/database:ro
     command:
     - node
     - dist/main.js

@@ -17786,6 +17786,26 @@ export interface components {
              */
             roleId: number;
         };
+        InviteEmailDeliveryDto: {
+            /** @enum {string} */
+            status: "sent" | "offline" | "not_configured" | "failed";
+            message: string;
+        };
+        InvitationAccessDetailsDto: {
+            email: string;
+            /** @description One-use invitation link. Share privately; do not log or cache. */
+            acceptUrl: string;
+            loginUrl: string;
+            /** @example 24 */
+            expiresInHours: number;
+            emailDelivery: components["schemas"]["InviteEmailDeliveryDto"];
+        };
+        InviteUserResponseDto: {
+            invitedUser?: components["schemas"]["UserDto"];
+            user?: components["schemas"]["UserDto"];
+            invitation: components["schemas"]["InvitationAccessDetailsDto"];
+            message: string;
+        };
         BulkInviteItemDto: {
             /**
              * @description Email address of the user to invite
@@ -33621,7 +33641,9 @@ export interface operations {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["InviteUserResponseDto"];
+                };
             };
         };
     };
@@ -33640,7 +33662,9 @@ export interface operations {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["InviteUserResponseDto"];
+                };
             };
         };
     };
