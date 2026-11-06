@@ -1,0 +1,169 @@
+services:
+  proxy:
+    image: envoyproxy/envoy@sha256:b5cc70f5fe5503858817e897ae1da5d873dc32cbc493790b4e330b8a42c4af9d
+    depends_on:
+    - server
+    - webapp
+    ports:
+    - 127.0.0.1:8080:80
+    tty: true
+    volumes:
+    - ./docker/envoy/envoy.yaml:/etc/envoy/envoy.yaml
+    restart: on-failure
+    networks:
+    - bigcapital_network
+  webapp:
+    image: bigcapital-test-webapp:local
+    restart: on-failure
+    networks:
+    - bigcapital_network
+    build:
+      context: .
+      dockerfile: docker/test-webapp.Dockerfile
+  server:
+    image: bigcapitalhq/server@sha256:dbedc06ad149726910bf86ca337acf4e435b7cc2e5ac3dcb8e1c60a876a3ddc0
+    expose:
+    - '3000'
+    links:
+    - mysql
+    - redis
+    depends_on:
+    - mysql
+    - redis
+    - garage
+    restart: on-failure
+    networks:
+    - bigcapital_network
+    environment:
+    - MAIL_HOST=${MAIL_HOST:-}
+    - MAIL_USERNAME=${MAIL_USERNAME:-}
+    - MAIL_PASSWORD=${MAIL_PASSWORD:-}
+    - MAIL_PORT=${MAIL_PORT:-}
+    - MAIL_SECURE=${MAIL_SECURE:-}
+    - MAIL_FROM_NAME=${MAIL_FROM_NAME:-}
+    - MAIL_FROM_ADDRESS=${MAIL_FROM_ADDRESS:-}
+    - DB_HOST=mysql
+    - DB_USER=${DB_USER:-}
+    - DB_PASSWORD=${DB_PASSWORD:-}
+    - DB_CHARSET=${DB_CHARSET:-}
+    - SYSTEM_DB_NAME=${SYSTEM_DB_NAME:-}
+    - REDIS_HOST=redis
+    - REDIS_PORT=6379
+    - QUEUE_HOST=redis
+    - QUEUE_PORT=6379
+    - TENANT_DB_NAME_PERFIX=${TENANT_DB_NAME_PERFIX:-}
+    - CLICKHOUSE_ENABLED=${CLICKHOUSE_ENABLED:-false}
+    - CLICKHOUSE_HOST=clickhouse
+    - CLICKHOUSE_PORT=8123
+    - CLICKHOUSE_USER=${CLICKHOUSE_USER:-default}
+    - CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD:?CLICKHOUSE_PASSWORD is required in
+      .env - generate one with openssl rand -base64 32}
+    - CLICKHOUSE_DATABASE=${CLICKHOUSE_DATABASE:-bigcapital_analytics}
+    - APP_JWT_SECRET=${APP_JWT_SECRET:?APP_JWT_SECRET is required in .env - generate
+      one with openssl rand -base64 48}
+    - BASE_URL=${BASE_URL:-}
+    - SIGNUP_DISABLED=${SIGNUP_DISABLED:-}
+    - SIGNUP_ALLOWED_DOMAINS=${SIGNUP_ALLOWED_DOMAINS:-}
+    - SIGNUP_ALLOWED_EMAILS=${SIGNUP_ALLOWED_EMAILS:-}
+    - SIGNUP_EMAIL_CONFIRMATION=${SIGNUP_EMAIL_CONFIRMATION:-}
+    - GOTENBERG_URL=${GOTENBERG_URL:-}
+    - GOTENBERG_DOCS_URL=${GOTENBERG_DOCS_URL:-}
+    - EXCHANGE_RATE_SERVICE=${EXCHANGE_RATE_SERVICE:-}
+    - OPEN_EXCHANGE_RATE_APP_ID=${OPEN_EXCHANGE_RATE_APP_ID:-}
+    - BANK_FEED_ENABLED=${BANK_FEED_ENABLED:-}
+    - PLAID_ENV=${PLAID_ENV:-}
+    - PLAID_CLIENT_ID=${PLAID_CLIENT_ID:-}
+    - PLAID_SECRET=${PLAID_SECRET:-}
+    - PLAID_LINK_WEBHOOK=${PLAID_LINK_WEBHOOK:-}
+    - PLAID_CLIENT_NAME=${PLAID_CLIENT_NAME:-}
+    - LEMONSQUEEZY_API_KEY=${LEMONSQUEEZY_API_KEY:-}
+    - LEMONSQUEEZY_STORE_ID=${LEMONSQUEEZY_STORE_ID:-}
+    - LEMONSQUEEZY_WEBHOOK_SECRET=${LEMONSQUEEZY_WEBHOOK_SECRET:-}
+    - HOSTED_ON_BIGCAPITAL_CLOUD=${HOSTED_ON_BIGCAPITAL_CLOUD:-}
+    - NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=${NEW_RELIC_DISTRIBUTED_TRACING_ENABLED:-}
+    - NEW_RELIC_LOG=${NEW_RELIC_LOG:-}
+    - NEW_RELIC_AI_MONITORING_ENABLED=${NEW_RELIC_AI_MONITORING_ENABLED:-}
+    - NEW_RELIC_CUSTOM_INSIGHTS_EVENTS_MAX_SAMPLES_STORED=${NEW_RELIC_CUSTOM_INSIGHTS_EVENTS_MAX_SAMPLES_STORED:-}
+    - NEW_RELIC_SPAN_EVENTS_MAX_SAMPLES_STORED=${NEW_RELIC_SPAN_EVENTS_MAX_SAMPLES_STORED:-}
+    - NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY:-}
+    - NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME:-}
+    - S3_REGION=${S3_REGION}
+    - S3_ACCESS_KEY_ID=${S3_ACCESS_KEY_ID}
+    - S3_SECRET_ACCESS_KEY=${S3_SECRET_ACCESS_KEY}
+    - S3_ENDPOINT=${S3_ENDPOINT}
+    - S3_BUCKET=${S3_BUCKET}
+    - S3_FORCE_PATH_STYLE=${S3_FORCE_PATH_STYLE}
+    - STRIPE_PAYMENT_SECRET_KEY=${STRIPE_PAYMENT_SECRET_KEY:-}
+    - STRIPE_PAYMENT_PUBLISHABLE_KEY=${STRIPE_PAYMENT_PUBLISHABLE_KEY:-}
+    - STRIPE_PAYMENT_CLIENT_ID=${STRIPE_PAYMENT_CLIENT_ID:-}
+    - STRIPE_PAYMENT_WEBHOOKS_SECRET=${STRIPE_PAYMENT_WEBHOOKS_SECRET:-}
+    - STRIPE_PAYMENT_REDIRECT_URL=${STRIPE_PAYMENT_REDIRECT_URL:-}
+    - THROTTLE_GLOBAL_TTL=${THROTTLE_GLOBAL_TTL:-}
+    - THROTTLE_GLOBAL_LIMIT=${THROTTLE_GLOBAL_LIMIT:-}
+    - THROTTLE_AUTH_TTL=${THROTTLE_AUTH_TTL:-}
+    - THROTTLE_AUTH_LIMIT=${THROTTLE_AUTH_LIMIT:-}
+    working_dir: /app/packages/server
+    command:
+    - node
+    - dist/main.js
+  mysql:
+    restart: on-failure
+    build:
+      context: ./docker/mariadb
+    environment:
+    - MYSQL_DATABASE=${SYSTEM_DB_NAME}
+    - MYSQL_USER=${DB_USER}
+    - MYSQL_PASSWORD=${DB_PASSWORD}
+    - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    volumes:
+    - mysql:/var/lib/mysql
+    expose:
+    - '3306'
+    networks:
+    - bigcapital_network
+  redis:
+    restart: on-failure
+    build:
+      context: ./docker/redis
+    expose:
+    - '6379'
+    volumes:
+    - redis:/data
+    networks:
+    - bigcapital_network
+  gotenberg:
+    image: gotenberg/gotenberg@sha256:d03b8a04c6e6c5e568b38f57352266dee4674849b71818774025f8f48d869a9a
+    expose:
+    - '9000'
+    networks:
+    - bigcapital_network
+  garage:
+    image: dxflrs/garage@sha256:58e68794286868230708803e50495bfe7d1d1c7b696e0c2dee99b03c524fc960
+    restart: on-failure
+    environment:
+    - GARAGE_CONFIG_FILE=/etc/garage.toml
+    - GARAGE_RPC_SECRET=${GARAGE_RPC_SECRET}
+    - GARAGE_ADMIN_TOKEN=${GARAGE_ADMIN_TOKEN}
+    volumes:
+    - ./docker/garage/garage.toml:/etc/garage.toml
+    - ./docker/garage/setup.sh:/garage-setup/setup.sh
+    - garage:/var/lib/garage
+    expose:
+    - '3900'
+    - '3903'
+    networks:
+    - bigcapital_network
+volumes:
+  mysql:
+    name: bigcapital_test_mysql
+    driver: local
+  redis:
+    name: bigcapital_test_redis
+    driver: local
+  garage:
+    name: bigcapital_test_garage
+    driver: local
+networks:
+  bigcapital_network:
+    driver: bridge
+name: bigcapital-test

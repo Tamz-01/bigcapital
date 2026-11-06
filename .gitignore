@@ -14,3 +14,7 @@ e2e/.auth/
 
 
 .pnpm-store
+# Local test credentials (never commit)
+.env.test
+
+__pycache__/
