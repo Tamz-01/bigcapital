@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import DashboardPage from './DashboardPage';
+import { useAppIntlContext } from '../AppIntlProvider';
 import { useFeatureCan } from '@/hooks/state';
 import { getDashboardRoutes } from '@/routes/dashboard';
 
@@ -38,6 +39,7 @@ function DashboardContentRouteContent({ route }: { route: DashboardRoute }) {
  * Dashboard content route.
  */
 export default function DashboardContentRoute() {
+  useAppIntlContext();
   const { featureCan } = useFeatureCan();
   const routes = (getDashboardRoutes() as DashboardRoute[]).filter(
     (route) => !route.feature || featureCan(route.feature),

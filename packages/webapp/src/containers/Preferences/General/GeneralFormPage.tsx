@@ -67,10 +67,7 @@ function GeneralFormPageInner({
       });
       setSubmitting(false);
 
-      // Reboot the application if the application's language is mutated.
-      if (organization?.metadata?.language !== values.language) {
-        window.location.reload();
-      }
+      // The company language is a default. Personal choices are applied in place.
     };
     // Handle request error.
     const onError = () => {

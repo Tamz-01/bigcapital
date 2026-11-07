@@ -110,3 +110,12 @@ Check signup/login and organization setup, then enter a small synthetic accounti
 cycle and reconcile its reports. Report the exact screen, action, expected result
 and actual result for each issue. An app that opens is not yet a validated
 accounting service.
+
+
+## Personal display language
+
+The top-right language selector saves the signed-in system account language (English or Arabic) through JWT-protected PUT /api/auth/account/language. It reuses the existing users.language column, so no new migration is required. A personal choice overrides the company language; otherwise the company language remains the default.
+
+The switch loads translations in place, without changing browser history or reloading the app. Stable lazy route components preserve open pages and form state while translated route titles refresh.
+
+Validation: run the server UpdateAccountLanguage.spec.ts suite for account isolation and supported-language validation. The personal-language Playwright spec checks both directions on /vendors/new with a query string, hash and an unsaved first-name field, and checks persistence after refreshing /preferences/general.

@@ -233,6 +233,38 @@
         ]
       }
     },
+    "/api/auth/account/language": {
+      "put": {
+        "operationId": "AuthedController_setAccountLanguage",
+        "summary": "Update the signed-in user display language",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAccountLanguageDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthedAccountResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
     "/api/api-keys/generate": {
       "post": {
         "operationId": "AuthApiKeysController_generate",
@@ -25851,6 +25883,22 @@
           "active",
           "tenantId",
           "verified"
+        ]
+      },
+      "UpdateAccountLanguageDto": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "description": "Personal display language",
+            "enum": [
+              "en",
+              "ar"
+            ]
+          }
+        },
+        "required": [
+          "language"
         ]
       },
       "ApiKeyResponseDto": {

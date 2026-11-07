@@ -4,6 +4,7 @@ import * as FF from 'fp-ts/function';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import DashboardTopbarUser from '@/components/Dashboard/TopbarUser';
+import { LanguageSelector } from '@/components/Dashboard/LanguageSelector';
 import { CLASSES } from '@/constants/classes';
 import { Features } from '@/constants/features';
 import { withDashboard } from '@/containers/Dashboard/withDashboard';
@@ -68,6 +69,7 @@ function PreferencesTopbar({ preferencesPageTitle }) {
       </div>
 
       <div class="preferences-topbar__user">
+        <LanguageSelector />
         <DashboardTopbarUser />
       </div>
     </div>

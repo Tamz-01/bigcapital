@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { createContext } from 'react';
 
 interface AppIntlContextValue {
@@ -6,6 +5,8 @@ interface AppIntlContextValue {
   direction: 'rtl' | 'ltr';
   isRTL: boolean;
   isLTR: boolean;
+  isChangingLocale: boolean;
+  setCurrentLocale: (locale: string) => Promise<void>;
 }
 
 const AppIntlContext = createContext<AppIntlContextValue>(
@@ -16,6 +17,8 @@ interface AppIntlProviderProps {
   currentLocale: string;
   isRTL: boolean;
   children: React.ReactNode;
+  isChangingLocale: boolean;
+  setCurrentLocale: (locale: string) => Promise<void>;
 }
 
 /**
@@ -25,12 +28,16 @@ function AppIntlProvider({
   currentLocale,
   isRTL,
   children,
+  isChangingLocale,
+  setCurrentLocale,
 }: AppIntlProviderProps) {
-  const provider = {
+  const provider: AppIntlContextValue = {
     currentLocale,
     isRTL,
     isLTR: !isRTL,
     direction: isRTL ? 'rtl' : 'ltr',
+    isChangingLocale,
+    setCurrentLocale,
   };
 
   return (

@@ -4,6 +4,7 @@ import {
   Icon as BlueprintIcon,
 } from '@blueprintjs/core';
 import intl from 'react-intl-universal';
+import { useAppIntlContext } from '@/components/AppIntlProvider';
 import { VendorFormSectionTitle } from './VendorFormSectionTitle';
 import {
   SalutationList,
@@ -19,6 +20,7 @@ import {
 import { useAutofocus } from '@/hooks';
 
 export function VendorFormBasicSection() {
+  useAppIntlContext();
   const firstNameFieldRef = useAutofocus<HTMLInputElement>();
   const { syncDisplayName, createFieldOnChange } = useDisplayNameSynchronizer();
 

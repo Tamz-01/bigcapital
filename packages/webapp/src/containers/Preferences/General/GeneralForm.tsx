@@ -197,7 +197,14 @@ export function PreferencesGeneralForm({
 
       {/* ---------- Language ---------- */}
       <FormGroup
-        label={intl.get('language')}
+        label={intl
+          .get('language_selector.company_default')
+          .d('Default language')}
+        helperText={intl
+          .get('language_selector.default_help')
+          .d(
+            'Used until a user chooses their own display language from the top-right menu.',
+          )}
         labelInfo={<FieldRequiredHint />}
         inline={true}
       >
