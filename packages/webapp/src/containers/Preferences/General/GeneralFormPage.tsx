@@ -2,6 +2,7 @@ import { Intent } from '@blueprintjs/core';
 import { Formik, FormikHelpers } from 'formik';
 import * as FF from 'fp-ts/function';
 import React, { useEffect } from 'react';
+import { useAppIntlContext } from '@/components/AppIntlProvider';
 import intl from 'react-intl-universal';
 import '@/style/pages/Preferences/GeneralForm.scss';
 import { PreferencesGeneralSchema } from './General.schema';
@@ -40,10 +41,11 @@ function GeneralFormPageInner({
 }: GeneralFormPageInnerProps) {
   const ctx = useGeneralFormContext()!;
   const { updateOrganization, organization } = ctx;
+  const { currentLocale } = useAppIntlContext();
 
   useEffect(() => {
     changePreferencesPageTitle(intl.get('general'));
-  }, [changePreferencesPageTitle]);
+  }, [changePreferencesPageTitle, currentLocale]);
 
   // Initial values.
   const initialValues: GeneralFormValues = {

@@ -56,6 +56,8 @@ export function LanguageSelector() {
           border: '1px solid #d3d8de',
           borderRadius: 4,
           background: 'white',
+          color: '#182026',
+          minWidth: 90,
           paddingInline: 6,
         }}
       >

@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
+import arabic from "../packages/webapp/src/lang/ar/index.json";
+import english from "../packages/webapp/src/lang/en/index.json";
 
-test("switching language keeps the current URL and draft fields", async ({
+test("switching language keeps the current URL, translated placeholders and draft fields", async ({
   page,
 }) => {
   await page.goto("/vendors/new?translation_review=1#basic");
@@ -15,18 +17,18 @@ test("switching language keeps the current URL and draft fields", async ({
   page.on("framenavigated", (frame) => {
     if (frame === page.mainFrame()) navigations++;
   });
-
   try {
     await language.selectOption("ar");
     await expect(page.locator("html")).toHaveAttribute("lang", "ar");
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await expect(firstName).toHaveAttribute("placeholder", arabic.first_name);
     await expect(firstName).toHaveValue("UNSAVED translation review");
     expect(page.url()).toBe(currentUrl);
     expect(navigations).toBe(0);
-
     await language.selectOption("en");
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
+    await expect(firstName).toHaveAttribute("placeholder", english.first_name);
     await expect(firstName).toHaveValue("UNSAVED translation review");
     expect(page.url()).toBe(currentUrl);
     expect(navigations).toBe(0);
