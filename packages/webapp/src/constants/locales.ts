@@ -1,6 +1,7 @@
 // Offer only languages currently supported by the application loader.
 export const SUPPORTED_LOCALES = [
   { name: 'English', value: 'en' },
+  { name: 'ລາວ', value: 'lo' },
   { name: 'العربية', value: 'ar' },
 ] as const;
 

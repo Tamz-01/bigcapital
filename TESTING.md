@@ -94,7 +94,7 @@ afterward. SMTP tests use mocks and send no real messages.
 ## Planned work
 
 - Fix and test reported accounting bugs before client use.
-- Improve UI and workflows, then add Lao per-user language support.
+- Expand and review the initial Lao interface translations.
 - Preserve entered English data when changing the display language.
 - Validate sales, purchases, payments, journals, reports, inventory and COGS.
 - Validate backups, restore and upgrades.
@@ -114,8 +114,28 @@ accounting service.
 
 ## Personal display language
 
-The top-right language selector saves the signed-in system account language (English or Arabic) through JWT-protected PUT /api/auth/account/language. It reuses the existing users.language column, so no new migration is required. A personal choice overrides the company language; otherwise the company language remains the default.
+The top-right language selector saves the signed-in system account language (English, Lao, or Arabic) through JWT-protected PUT /api/auth/account/language. It reuses the existing users.language column, so no new migration is required. A personal choice overrides the company language; otherwise the company language remains the default.
 
 The switch loads translations in place, without changing browser history or reloading the app. Stable lazy route components preserve open pages and form state while translated route titles refresh.
 
-Validation: run the server UpdateAccountLanguage.spec.ts suite for account isolation and supported-language validation. The personal-language Playwright spec checks both directions on /vendors/new with a query string, hash and an unsaved first-name field, and checks persistence after refreshing /preferences/general.
+Lao has an initial set of navigation, common action and accounting labels for review. Every language starts with English messages and overlays its translated messages recursively. Missing, null, empty and whitespace-only translations display English, including nested messages and form validation. Untranslated Lao validation uses English, even after switching from Arabic. Translation dictionaries are applied only to the interface; entered names, descriptions, references and other transaction data are never translated. Date/number formatting behavior is unchanged. Lao uses the locally available Phetsarath OT or Lao Saysettha font, with Noto Sans Lao and the existing app font stack as fallbacks; no font is downloaded.
+
+Company language configuration is unchanged; Lao is available as a personal display language. Other users retain their own choices.
+
+Validation commands (Node 18.16.1, pnpm 9):
+
+```sh
+pnpm exec playwright test --config test/i18n.config.ts
+pnpm --filter @bigcapital/server exec jest --runInBand --runTestsByPath src/modules/Auth/commands/UpdateAccountLanguage.spec.ts
+pnpm --filter @bigcapital/webapp typecheck
+```
+
+The dictionary suite needs no server, database, or browser. It checks the actual locale bundles, English coverage, nested/blank fallback, interpolation, validation reset and account/company precedence. The authenticated personal-language browser spec (`pnpm exec playwright test e2e/personal-language.spec.ts`) requires a running API and test app. It switches English → Arabic → Lao → English on /vendors/new with a query string, hash and a mixed-language unsaved first-name field, verifies an untranslated field stays English, and checks Lao persistence after refreshing /preferences/general. Committed test scenarios do not imply they have been executed; report the checks actually run with each change.
+
+Lao change verification: 7 dictionary tests and 10 account-language tests passed;
+frontend type checking, all shared-package builds, server build and frontend
+production build passed under Node 18.16.1. The updated language DTO schema and
+SDK types were generated. Existing frontend build warnings remain. The full
+authenticated browser scenarios were not executed in this workspace, which has
+no running API/database. A frontend-only browser preview could not connect to
+the local preview port. These checks do not establish a hosted deployment.

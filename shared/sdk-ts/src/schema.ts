@@ -5390,7 +5390,7 @@ export interface components {
              * @description Personal display language
              * @enum {string}
              */
-            language: "en" | "ar";
+            language: "en" | "lo" | "ar";
         };
         ApiKeyResponseDto: {
             /**

@@ -6,16 +6,7 @@ import { setLocale } from 'yup';
 import { AppIntlProvider } from './AppIntlProvider';
 import { isSupportedLocale } from '@/constants/locales';
 import { getCookie, setCookie } from '@/utils';
-
-// Prepare translations before activation, without unmounting the current page.
-async function loadLocale(locale: string) {
-  const [messages, english, validation] = await Promise.all([
-    import(`../lang/${locale}/index.json`).then((module) => module.default),
-    import('../lang/en/index.json').then((module) => module.default),
-    import(`../lang/${locale}/locale.tsx`).then((module) => module.locale),
-  ]);
-  return { messages, english, validation };
-}
+import { loadLocale } from '@/lang/loadLocale';
 
 export default function AppIntlLoader({
   children,

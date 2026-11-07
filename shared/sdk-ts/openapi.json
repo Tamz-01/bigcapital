@@ -25893,6 +25893,7 @@
             "description": "Personal display language",
             "enum": [
               "en",
+              "lo",
               "ar"
             ]
           }

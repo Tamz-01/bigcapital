@@ -9,8 +9,8 @@ describe('personal language preference', () => {
     const context = { getSystemUser: jest.fn().mockResolvedValue(accounts[0]) };
     const service = new UpdateAccountLanguageService(context as any);
 
-    await service.execute({ language: 'ar', userId: 999 } as any);
-    expect(patches[0]).toHaveBeenCalledWith({ language: 'ar' });
+    await service.execute({ language: 'lo', userId: 999 } as any);
+    expect(patches[0]).toHaveBeenCalledWith({ language: 'lo' });
     expect(patches[1]).not.toHaveBeenCalled();
 
     context.getSystemUser.mockResolvedValue(accounts[1]);
@@ -26,7 +26,7 @@ describe('personal language preference', () => {
     await expect(service.execute({ language: 'en' })).rejects.toThrow();
   });
 
-  it.each(['', 'lo', '../../en', null, undefined])(
+  it.each(['', 'xx', '../../en', null, undefined])(
     'rejects unsupported language %s',
     async (language) => {
       const dto = Object.assign(new UpdateAccountLanguageDto(), { language });
@@ -34,8 +34,11 @@ describe('personal language preference', () => {
     },
   );
 
-  it.each(['en', 'ar'])('accepts available language %s', async (language) => {
-    const dto = Object.assign(new UpdateAccountLanguageDto(), { language });
-    expect(await validate(dto)).toHaveLength(0);
-  });
+  it.each(['en', 'lo', 'ar'])(
+    'accepts available language %s',
+    async (language) => {
+      const dto = Object.assign(new UpdateAccountLanguageDto(), { language });
+      expect(await validate(dto)).toHaveLength(0);
+    },
+  );
 });

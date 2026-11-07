@@ -1,4 +1,5 @@
 // @ts-nocheck
+import type { FormatErrorParams } from 'yup';
 import printValue from '../printValue';
 
 export const locale = {
@@ -7,7 +8,7 @@ export const locale = {
     required: '${path} is a required field ',
     oneOf: '${path} must be one of the following values: ${values}',
     notOneOf: '${path} must not be one of the following values: ${values}',
-    notType: ({ path, type, value, originalValue }) => {
+    notType: ({ path, type, value, originalValue }: FormatErrorParams) => {
       let isCast = originalValue != null && originalValue !== value;
       let msg =
         `${path} must be a \`${type}\` type, ` +
