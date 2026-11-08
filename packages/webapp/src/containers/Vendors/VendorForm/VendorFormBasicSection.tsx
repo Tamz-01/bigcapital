@@ -26,7 +26,9 @@ export function VendorFormBasicSection() {
 
   return (
     <Box data-section-id="primary">
-      <VendorFormSectionTitle>Vendor details</VendorFormSectionTitle>
+      <VendorFormSectionTitle>
+        {intl.get('contact_form.vendor_details')}
+      </VendorFormSectionTitle>
 
       {/**----------- Contact name -----------*/}
       <FFormGroup
@@ -68,8 +70,8 @@ export function VendorFormBasicSection() {
 
       <FFormGroup
         name={'code'}
-        label={'Vendor Code'}
-        helperText="Add a unique account number to identify, reference and search for the contact."
+        label={intl.get('contact_form.vendor_code')}
+        helperText={intl.get('contact_form.code_help')}
         inline
         fastField
       >
@@ -101,7 +103,7 @@ export function VendorFormBasicSection() {
       <FFormGroup
         name={'displayName'}
         label={intl.get('display_name')}
-        helperText="This is the name that appears on invoices and emails."
+        helperText={intl.get('contact_form.display_name_help')}
         inline
         fastField
       >

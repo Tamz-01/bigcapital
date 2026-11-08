@@ -32,7 +32,7 @@ test("switching language keeps the current URL, translated placeholders and draf
     await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
     await expect(firstName).toHaveAttribute("placeholder", lao.first_name);
     await expect(
-      page.getByText(english.website, { exact: true }),
+      page.getByText(lao.website, { exact: true }),
     ).toBeVisible();
     await expect(firstName).toHaveValue(draft);
     expect(page.url()).toBe(currentUrl);

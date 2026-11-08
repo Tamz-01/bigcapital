@@ -1,3 +1,4 @@
+import { useAppIntlContext } from '@/components/AppIntlProvider';
 import {
   ControlGroup,
   Divider,
@@ -20,12 +21,15 @@ import {
 import { useAutofocus } from '@/hooks';
 
 export function CustomerFormBasicSection() {
+  useAppIntlContext();
   const firstNameFieldRef = useAutofocus<HTMLInputElement>();
   const { syncDisplayName, createFieldOnChange } = useDisplayNameSynchronizer();
 
   return (
     <Box data-section-id="primary">
-      <CustomerFormSectionTitle>Customer details</CustomerFormSectionTitle>
+      <CustomerFormSectionTitle>
+        {intl.get('contact_form.customer_details')}
+      </CustomerFormSectionTitle>
 
       {/**-----------Customer type. -----------*/}
       <CustomerTypeRadioField />
@@ -62,8 +66,8 @@ export function CustomerFormBasicSection() {
 
       <FFormGroup
         name={'code'}
-        label={'Customer Code'}
-        helperText="Add a unique account number to identify, reference and search for the contact."
+        label={intl.get('contact_form.customer_code')}
+        helperText={intl.get('contact_form.code_help')}
         inline
       >
         <FInputGroup name={'code'} data-testId={'customer-code-input'} fill />
@@ -83,7 +87,7 @@ export function CustomerFormBasicSection() {
       <FFormGroup
         name={'displayName'}
         label={intl.get('display_name')}
-        helperText="This is the name that appears on invoices and emails."
+        helperText={intl.get('contact_form.display_name_help')}
         inline
       >
         <DisplayNameList
@@ -99,7 +103,7 @@ export function CustomerFormBasicSection() {
       <Divider style={{ margin: '20px 0' }} />
 
       {/*------------ Vendor email -----------*/}
-      <FFormGroup name={'email'} label={intl.get('vendor_email')} inline>
+      <FFormGroup name={'email'} label={intl.get('customer_email')} inline>
         <FInputGroup name={'email'} leftIcon={<Icon icon="envelope" />} />
       </FFormGroup>
 

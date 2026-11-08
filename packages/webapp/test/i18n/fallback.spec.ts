@@ -82,10 +82,10 @@ for (const { value } of SUPPORTED_LOCALES) {
       },
     });
     expect(String(intl.get('first_name'))).toBe(messages.first_name);
-    // This is deliberately untranslated in Lao, including an ICU parameter.
+    // A translated message must preserve user-entered mixed-language data.
     if (value === 'lo') {
       expect(String(intl.get('edit_contact', { name: 'ABC ລາວ 123' }))).toBe(
-        'Edit ABC ລາວ 123',
+        lao.edit_contact.replace('{name}', 'ABC ລາວ 123'),
       );
     }
     expect(validation.mixed.defined).toBeTruthy();
@@ -123,10 +123,10 @@ test('Arabic validation cannot leak into an untranslated Lao or English rule', a
   const lo = await loadLocale('lo');
   yup.setLocale(lo.validation);
   expect(() => yup.string().required().validateSync('')).toThrow(
-    'this is a required field',
+    'ຕ້ອງປ້ອນ this',
   );
   expect(() => yup.string().email().validateSync('invalid')).toThrow(
-    'this must be a valid email',
+    'this ຕ້ອງເປັນອີເມວທີ່ຖືກຕ້ອງ',
   );
   yup.setLocale((await loadLocale('en')).validation);
 });

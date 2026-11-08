@@ -2351,5 +2351,11 @@
     "save_failed": "Could not change your language. Please try again.",
     "company_default": "Default language",
     "default_help": "Used until a user chooses their own display language from the top-right menu."
-  }
+  },
+  "contact_form.customer_details": "Customer details",
+  "contact_form.vendor_details": "Vendor details",
+  "contact_form.customer_code": "Customer Code",
+  "contact_form.vendor_code": "Vendor Code",
+  "contact_form.code_help": "Add a unique account number to identify, reference and search for the contact.",
+  "contact_form.display_name_help": "This is the name that appears on invoices and emails."
 }
