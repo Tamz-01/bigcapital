@@ -156,6 +156,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/auth/account/language": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Update the signed-in user display language */
+        put: operations["AuthedController_setAccountLanguage"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/api-keys/generate": {
         parameters: {
             query?: never;
@@ -5367,6 +5384,13 @@ export interface components {
             tenantId: number;
             /** @description Whether the user email is verified */
             verified: boolean;
+        };
+        UpdateAccountLanguageDto: {
+            /**
+             * @description Personal display language
+             * @enum {string}
+             */
+            language: "en" | "lo" | "ar";
         };
         ApiKeyResponseDto: {
             /**
@@ -17786,6 +17810,26 @@ export interface components {
              */
             roleId: number;
         };
+        InviteEmailDeliveryDto: {
+            /** @enum {string} */
+            status: "sent" | "offline" | "not_configured" | "failed";
+            message: string;
+        };
+        InvitationAccessDetailsDto: {
+            email: string;
+            /** @description One-use invitation link. Share privately; do not log or cache. */
+            acceptUrl: string;
+            loginUrl: string;
+            /** @example 24 */
+            expiresInHours: number;
+            emailDelivery: components["schemas"]["InviteEmailDeliveryDto"];
+        };
+        InviteUserResponseDto: {
+            invitedUser?: components["schemas"]["UserDto"];
+            user?: components["schemas"]["UserDto"];
+            invitation: components["schemas"]["InvitationAccessDetailsDto"];
+            message: string;
+        };
         BulkInviteItemDto: {
             /**
              * @description Email address of the user to invite
@@ -18340,6 +18384,29 @@ export interface operations {
         requestBody?: never;
         responses: {
             /** @description The authenticated account. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuthedAccountResponseDto"];
+                };
+            };
+        };
+    };
+    AuthedController_setAccountLanguage: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateAccountLanguageDto"];
+            };
+        };
+        responses: {
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -33621,7 +33688,9 @@ export interface operations {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["InviteUserResponseDto"];
+                };
             };
         };
     };
@@ -33640,7 +33709,9 @@ export interface operations {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["InviteUserResponseDto"];
+                };
             };
         };
     };

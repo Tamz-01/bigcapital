@@ -2130,5 +2130,11 @@
   "tracking_categories.error.delete_failed": "Unable to delete the tracking category.",
   "tracking_categories.error.save_failed": "Unable to save the tracking category.",
   "tracking_categories.alert.delete_message": "Are you sure you want to delete the tracking category \"{name}\"? This can't be undone.",
-  "tracking_categories.no_options": "No options available"
+  "tracking_categories.no_options": "No options available",
+  "language_selector": {
+    "personal": "لغة العرض الخاصة بك",
+    "save_failed": "تعذر تغيير اللغة. يرجى المحاولة مرة أخرى.",
+    "company_default": "اللغة الافتراضية",
+    "default_help": "تستخدم حتى يختار المستخدم لغة العرض الخاصة به من القائمة العلوية."
+  }
 }

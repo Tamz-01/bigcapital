@@ -15,12 +15,17 @@ import { Role } from '@/modules/Roles/models/Role.model';
 import { ModelObject } from 'objection';
 import { SendInviteUserDto } from '../dtos/InviteUser.dto';
 import { TenancyContext } from '@/modules/Tenancy/TenancyContext.service';
+import { ConfigService } from '@nestjs/config';
+import { SendInviteUsersMailMessage } from './SendInviteUsersMailMessage.service';
+import { InvitationAccessDetails } from './InviteDelivery.types';
 
 @Injectable()
 export class InviteTenantUserService {
   constructor(
     private readonly eventEmitter: EventEmitter2,
     private readonly tenancyContext: TenancyContext,
+    private readonly configService: ConfigService,
+    private readonly inviteMail: SendInviteUsersMailMessage,
 
     @Inject(TenantUser.name)
     private readonly tenantUserModel: TenantModelProxy<typeof TenantUser>,
@@ -37,6 +42,7 @@ export class InviteTenantUserService {
    */
   public async sendInvite(sendInviteDTO: SendInviteUserDto): Promise<{
     invitedUser: TenantUser;
+    invitation: InvitationAccessDetails;
   }> {
     // Get the given role or throw not found service error.
     const _role = await this.roleModel().query().findById(sendInviteDTO.roleId);
@@ -68,7 +74,12 @@ export class InviteTenantUserService {
       invitingUser,
     } as IUserInvitedEventPayload);
 
-    return { invitedUser: user };
+    const invitation = await this.getInvitationAccess(
+      user,
+      inviteToken,
+      invitingUser,
+    );
+    return { invitedUser: user, invitation };
   }
 
   /**
@@ -77,9 +88,10 @@ export class InviteTenantUserService {
    * @param {string} email -
    * @return {Promise<{ invite: IUserInvite }>}
    */
-  public async resendInvite(
-    userId: number,
-  ): Promise<{ user: ModelObject<TenantUser> }> {
+  public async resendInvite(userId: number): Promise<{
+    user: ModelObject<TenantUser>;
+    invitation: InvitationAccessDetails;
+  }> {
     // Retrieve the user by id or throw not found service error.
     const user = await this.getUserByIdOrThrowError(userId);
 
@@ -98,7 +110,44 @@ export class InviteTenantUserService {
       inviteToken,
     } as IUserInviteResendEventPayload);
 
-    return { user };
+    const authorizedUser = await this.tenancyContext.getSystemUser();
+    const invitingUser = await this.tenantUserModel()
+      .query()
+      .findOne({ systemUserId: authorizedUser.id });
+    const invitation = await this.getInvitationAccess(
+      user,
+      inviteToken,
+      invitingUser,
+    );
+    await this.tenantUserModel()
+      .query()
+      .findById(user.id)
+      .patch({ invitedAt: new Date() });
+    return { user, invitation };
+  }
+
+  private async getInvitationAccess(
+    user: ModelObject<TenantUser>,
+    inviteToken: string,
+    invitingUser: ModelObject<TenantUser>,
+  ): Promise<InvitationAccessDetails> {
+    const baseUrl = this.configService
+      .get<string>('app.baseUrl')
+      .replace(/\/$/, '');
+    const emailDelivery = await this.inviteMail.deliverInviteMail(
+      invitingUser,
+      {
+        email: user.email,
+        token: inviteToken,
+      },
+    );
+    return {
+      email: user.email,
+      acceptUrl: `${baseUrl}/auth/invite/${inviteToken}/accept`,
+      loginUrl: `${baseUrl}/auth/login`,
+      expiresInHours: 24,
+      emailDelivery,
+    };
   }
 
   /**

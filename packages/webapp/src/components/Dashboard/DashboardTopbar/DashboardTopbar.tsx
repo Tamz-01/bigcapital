@@ -25,6 +25,7 @@ import { FormattedMessage as T, Icon, Hint, If } from '@/components';
 import DashboardBackLink from '@/components/Dashboard/DashboardBackLink';
 import DashboardBreadcrumbs from '@/components/Dashboard/DashboardBreadcrumbs';
 import DashboardTopbarUser from '@/components/Dashboard/TopbarUser';
+import { LanguageSelector } from '@/components/Dashboard/LanguageSelector';
 import { DialogsName } from '@/constants/dialogs';
 import { DRAWERS } from '@/constants/drawers';
 import {
@@ -127,6 +128,7 @@ function DashboardTopbar({
       </div>
 
       <div className="dashboard__topbar-right">
+        <LanguageSelector />
         <Navbar className="dashboard__topbar-navbar">
           <NavbarGroup>
             <DashboardQuickSearchButton onClick={() => openGlobalSearch()} />

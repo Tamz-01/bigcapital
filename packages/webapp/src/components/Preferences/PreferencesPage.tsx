@@ -2,6 +2,7 @@
 import classNames from 'classnames';
 import * as FF from 'fp-ts/function';
 import React from 'react';
+import { useAppIntlContext } from '../AppIntlProvider';
 import { ErrorBoundary } from 'react-error-boundary';
 import DashboardErrorBoundary from '@/components/Dashboard/DashboardErrorBoundary';
 import PreferencesContentRoute from '@/components/Preferences/PreferencesContentRoute';
@@ -16,6 +17,7 @@ import '@/style/pages/Preferences/Page.scss';
  * Preferences page.
  */
 function PreferencesPage({ toggleSidebarExpand }) {
+  useAppIntlContext();
   // Shrink the dashboard sidebar once open application preferences page.
   React.useEffect(() => {
     toggleSidebarExpand(false);

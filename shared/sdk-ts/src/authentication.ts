@@ -5,6 +5,7 @@ import { OpForPath, OpRequestBody, OpResponseBody } from './utils';
 // All auth routes (schema paths). After running generate:sdk-types, these match the OpenAPI spec.
 export const AUTH_ROUTES = {
   ACCOUNT: '/api/auth/account',
+  ACCOUNT_LANGUAGE: '/api/auth/account/language',
   RESEND_SIGNUP: '/api/auth/signup/verify/resend',
   SIGNIN: '/api/auth/signin',
   SIGNUP: '/api/auth/signup',
@@ -18,6 +19,19 @@ export const AUTH_ROUTES = {
 export type AuthedAccount = OpResponseBody<
   OpForPath<typeof AUTH_ROUTES.ACCOUNT, 'get'>
 >;
+
+export type UpdateAccountLanguageBody = OpRequestBody<
+  OpForPath<typeof AUTH_ROUTES.ACCOUNT_LANGUAGE, 'put'>
+>;
+
+export async function updateAccountLanguage(
+  fetcher: ApiFetcher,
+  body: UpdateAccountLanguageBody
+): Promise<AuthedAccount> {
+  const put = fetcher.path(AUTH_ROUTES.ACCOUNT_LANGUAGE).method('put').create();
+  const { data } = await put(body);
+  return data as AuthedAccount;
+}
 
 export type ResendSignupConfirmBody = OpRequestBody<
   OpForPath<typeof AUTH_ROUTES.RESEND_SIGNUP, 'post'>

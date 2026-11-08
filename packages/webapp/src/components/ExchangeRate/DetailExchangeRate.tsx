@@ -20,7 +20,7 @@ function DetailExchangeRate({ exchangeRate, toCurrency }) {
 
   return (
     <DetailItem label={intl.get('exchange_rate')}>
-      1 {baseCurrency} = {exchangeRate} {toCurrency}
+      1 {toCurrency} = {exchangeRate} {baseCurrency}
     </DetailItem>
   );
 }

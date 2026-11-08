@@ -28,7 +28,10 @@ const BillFormSchema = Yup.object().shape({
   open: Yup.boolean(),
   branchId: Yup.string(),
   warehouseId: Yup.string(),
-  exchangeRate: Yup.number(),
+  exchangeRate: Yup.number()
+    .typeError('Enter a valid exchange rate.')
+    .positive('Exchange rate must be greater than zero.')
+    .required('Exchange rate is required.'),
   entries: Yup.array().of(
     Yup.object().shape({
       quantity: Yup.number()

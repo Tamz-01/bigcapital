@@ -1,6 +1,8 @@
-import { Intent } from '@blueprintjs/core';
+import type { InviteUserResult } from '@bigcapital/sdk-ts';
+import { InvitationAccessDetails } from '@/containers/Dialogs/InviteUserDialog/InvitationAccessDetails';
+import { Dialog, Intent } from '@blueprintjs/core';
 import * as FF from 'fp-ts/function';
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ActionsMenu, useUsersListColumns } from './components';
 import { useUsersListContext } from './UsersProvider';
 import type { WithAlertActionsProps } from '@/containers/Alert/withAlertActions';
@@ -36,6 +38,9 @@ function UsersDataTableInner({
   openAlert,
 }: UsersDataTableInnerProps) {
   const { mutateAsync: resendInviation } = useResendInvitation();
+  const [inviteResult, setInviteResult] = useState<InviteUserResult | null>(
+    null,
+  );
 
   // Users list columns.
   const columns = useUsersListColumns();
@@ -74,12 +79,7 @@ function UsersDataTableInner({
   const handleResendInvitation = useCallback(
     (user: UserRow) => {
       resendInviation(user.id)
-        .then(() => {
-          AppToaster.show({
-            message: 'User invitation has been re-sent to the user.',
-            intent: Intent.SUCCESS,
-          });
-        })
+        .then(setInviteResult)
         .catch((err: ResendInvitationError) => {
           const errors = err?.data?.errors ?? [];
           if (errors.find((e) => e.type === 'USER_RECENTLY_INVITED')) {
@@ -95,23 +95,37 @@ function UsersDataTableInner({
   );
 
   return (
-    <DataTable
-      columns={columns}
-      data={users ?? []}
-      loading={isUsersLoading}
-      headerLoading={isUsersLoading}
-      progressBarLoading={isUsersFetching}
-      TableLoadingRenderer={TableSkeletonRows}
-      noInitialFetch={true}
-      ContextMenu={ActionsMenu}
-      payload={{
-        onEdit: handleEditUserAction,
-        onActivate: handleActivateuser,
-        onInactivate: handleInactivateUser,
-        onDelete: handleDeleteUser,
-        onResendInvitation: handleResendInvitation,
-      }}
-    />
+    <>
+      <Dialog
+        isOpen={!!inviteResult}
+        title="Invitation details"
+        onClose={() => setInviteResult(null)}
+      >
+        {inviteResult && (
+          <InvitationAccessDetails
+            invitation={inviteResult.invitation}
+            onClose={() => setInviteResult(null)}
+          />
+        )}
+      </Dialog>
+      <DataTable
+        columns={columns}
+        data={users ?? []}
+        loading={isUsersLoading}
+        headerLoading={isUsersLoading}
+        progressBarLoading={isUsersFetching}
+        TableLoadingRenderer={TableSkeletonRows}
+        noInitialFetch={true}
+        ContextMenu={ActionsMenu}
+        payload={{
+          onEdit: handleEditUserAction,
+          onActivate: handleActivateuser,
+          onInactivate: handleInactivateUser,
+          onDelete: handleDeleteUser,
+          onResendInvitation: handleResendInvitation,
+        }}
+      />
+    </>
   );
 }
 

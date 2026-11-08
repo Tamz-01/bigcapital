@@ -4,6 +4,7 @@ import { TimezonePicker, getTimezoneMetadata } from '@blueprintjs/timezone';
 import classNames from 'classnames';
 import { ErrorMessage, Form, useFormikContext } from 'formik';
 import React from 'react';
+import { useAppIntlContext } from '@/components/AppIntlProvider';
 import intl from 'react-intl-universal';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
@@ -37,6 +38,7 @@ export interface PreferencesGeneralFormProps {
 export function PreferencesGeneralForm({
   isSubmitting,
 }: PreferencesGeneralFormProps) {
+  useAppIntlContext();
   const history = useHistory();
 
   const FiscalYear = getFiscalYear();
@@ -197,7 +199,14 @@ export function PreferencesGeneralForm({
 
       {/* ---------- Language ---------- */}
       <FormGroup
-        label={intl.get('language')}
+        label={intl
+          .get('language_selector.company_default')
+          .d('Default language')}
+        helperText={intl
+          .get('language_selector.default_help')
+          .d(
+            'Used until a user chooses their own display language from the top-right menu.',
+          )}
         labelInfo={<FieldRequiredHint />}
         inline={true}
       >

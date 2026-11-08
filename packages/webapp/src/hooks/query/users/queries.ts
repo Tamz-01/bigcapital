@@ -8,6 +8,7 @@ import {
   deleteUser,
   fetchAuthedAccount,
   fetchDashboardBootMeta,
+  updateAccountLanguage,
 } from '@bigcapital/sdk-ts';
 import {
   useMutation,
@@ -28,6 +29,8 @@ import type {
   InviteUserBody,
   GetDashboardBootMetaResponse,
   AuthedAccount,
+  InviteUserResult,
+  UpdateAccountLanguageBody,
 } from '@bigcapital/sdk-ts';
 
 const commonInvalidateQueries = (
@@ -37,10 +40,10 @@ const commonInvalidateQueries = (
 };
 
 export function useCreateInviteUser(
-  props?: UseMutationOptions<void, Error, InviteUserBody>,
+  props?: UseMutationOptions<InviteUserResult, Error, InviteUserBody>,
 ) {
   const queryClient = useQueryClient();
-  const fetcher = useApiFetcher();
+  const fetcher = useApiFetcher({ enableCamelCaseTransform: true });
 
   return useMutation({
     ...props,
@@ -155,6 +158,18 @@ export function useAuthenticatedAccount(
     }
   }, [state.isSuccess, state.data, setEmailConfirmed]);
   return { ...state, data: state.data ?? ({} as AuthedAccount) };
+}
+
+export function useUpdateAccountLanguage() {
+  const queryClient = useQueryClient();
+  const fetcher = useApiFetcher({ enableCamelCaseTransform: true });
+  return useMutation({
+    mutationFn: (body: UpdateAccountLanguageBody) =>
+      updateAccountLanguage(fetcher, body),
+    onSuccess: (account) => {
+      queryClient.setQueryData(usersKeys.authenticatedAccount(), account);
+    },
+  });
 }
 
 export const useDashboardMeta = (

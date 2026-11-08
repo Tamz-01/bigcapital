@@ -1,3 +1,4 @@
+import type { InviteUserResult } from '@bigcapital/sdk-ts';
 import {
   acceptInvite,
   bulkSendInviteUsers,
@@ -39,9 +40,9 @@ export function useInviteMetaByToken(
 }
 
 export function useResendInvitation(
-  props?: UseMutationOptions<void, Error, number>,
+  props?: UseMutationOptions<InviteUserResult, Error, number>,
 ) {
-  const fetcher = useApiFetcher();
+  const fetcher = useApiFetcher({ enableCamelCaseTransform: true });
   return useMutation({
     ...props,
     mutationFn: (userId: number) => resendInvite(fetcher, userId),

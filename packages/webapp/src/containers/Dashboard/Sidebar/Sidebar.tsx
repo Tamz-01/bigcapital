@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAppIntlContext } from '@/components/AppIntlProvider';
 import { SidebarOverlayBinded } from '../SidebarOverlay';
 import { useMainSidebarMenu } from './hooks';
 import { SidebarContainer } from './SidebarContainer';
@@ -12,6 +13,7 @@ import '@/style/containers/Dashboard/Sidebar.scss';
  * @returns {JSX.Element}
  */
 export function Sidebar() {
+  useAppIntlContext();
   const menu = useMainSidebarMenu();
 
   return (
