@@ -11,6 +11,9 @@ The isolated test configuration does not deploy or update a production service.
 4. Create your own test account through the app. No shared password is committed.
 
 The yellow banner identifies this as **TEST SYSTEM - Demo data only**.
+Click its close button to hide it until the next successful login. Dismissal
+survives refreshes and is shared across tabs in the same browser. If browser
+storage is blocked, dismissal lasts only for the current page.
 Codespaces sleeps when idle and consumes GitHub compute/storage allowances. It is
 an initial development test environment, not permanent hosting for clients or reviewers.
 

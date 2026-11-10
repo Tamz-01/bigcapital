@@ -3,3 +3,5 @@
 !packages/webapp/
 !packages/webapp/dist/
 !packages/webapp/dist/**
+!docker/
+!docker/test-system-banner.js
