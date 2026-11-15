@@ -1,0 +1,375 @@
+source,declaration,assigned_stage,classification
+packages/webapp/src/components/AppShell/AppContentShell/AppContentShell.module.scss:4,--aside-min-width: 400px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/AppShell/AppContentShell/AppContentShell.module.scss:10,overflow: auto;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/AppShell/AppContentShell/AppContentShell.module.scss:15,min-width: var(--aside-min-width);,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/AppShell/AppContentShell/AppContentShell.module.scss:19,overflow: auto;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Aside/Aside.module.scss:24,overflow-y: auto;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/BankAccounts/index.tsx:113,&:hover {,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/BankAccounts/index.tsx:132,overflow: hidden;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/BankAccounts/index.tsx:190,min-width: 30px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Button/ButtonLink.tsx:11,"&:hover,",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Card/index.tsx:36,min-width: 70px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/ContentTabs/ContentTabs.tsx:42,"&:hover,",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Dashboard/DashboardRowsHeightButton/style.module.scss:11,min-width: 34px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Datatable/DatatableEditable.tsx:90,"&:hover .td,",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Datatable/Pagination.tsx:31,min-width: 24px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Datatable/Pagination.tsx:38,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Drawer/Drawer.tsx:45,size={'700px'},2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Drawer/DrawerMainTabs.tsx:55,&:not([aria-disabled='true']):hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/ExchangeRate/ExchangeRateInput.tsx:192,width: 300px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/FinancialSheet/StyledFinancialSheet.tsx:11,min-width: 640px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Forms/Select.tsx:76,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Menu/MenuItem.tsx:289,"onMouseEnter: undefined,",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/Menu/MenuItem.tsx:290,"onMouseLeave: undefined,",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/PageForm/FormTopbar.tsx:51,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/SegmentedControl/SegmentedControl.tsx:78,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/TagsControl/TagsControl.module.scss:19,&:global(.bp4-interactive:hover) {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/UniversalSearch/UniversalSearch.tsx:74,position: fixed;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/UniversalSearch/UniversalSearch.tsx:85,width: 500px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/components/UniversalSearch/UniversalSearch.tsx:122,overflow: auto;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Accounting/MakeJournal/MakeJournalEntriesHeaderFields.tsx:30,max-width: 480px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Accounting/MakeJournal/MakeJournalEntriesHeaderFields.tsx:33,min-width: 165px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Attachments/UploadAttachmentButton.module.scss:3,min-width: 600px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Attachments/UploadAttachmentButton.module.scss:15,&:hover{,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Authentication/AuthContainer.tsx:25,width: 384px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Authentication/Authentication.tsx:74,width: 384px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Banking/Rules/RulesList/BankRulesLandingEmptyState.module.scss:2,max-width: 600px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/CashFlow/AccountTransactions/AccountTransactionsActionsBar.tsx:244,const isMin1350Query = useMediaQuery('(min-width: 1350px)');,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/CashFlow/AccountTransactions/AccountTransactionsDetailsBar.tsx:220,overflow-y: auto;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/CashFlow/CashFlowAccounts/CashflowAccountsGrid.tsx:341,"&:hover,",7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/CashFlow/CategorizeTransactionAside/CategorizeTransactionAside.module.scss:4,overflow: auto;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/CashFlow/CategorizeTransactionAside/MatchTransactionCheckbox.module.scss:31,&:hover:not(.active) {,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Customers/CustomerForm/CustomerFloatingActions.tsx:78,position: sticky;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Customers/CustomerForm/CustomerFormContent.tsx:40,position: sticky;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Customers/CustomerForm/CustomerFormFormik.tsx:141,min-width: 300px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Customers/CustomerForm/CustomerFormFormik.tsx:147,min-width: 140px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Dashboard/Sidebar/SidebarContainer.tsx:57,onMouseLeave={handleSidebarMouseLeave},8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Dashboard/Sidebar/SidebarHead.tsx:40,min-width: 280px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Dashboard/Sidebar/SidebarHead.tsx:44,overflow: hidden;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Dashboard/Sidebar/SidebarHead.tsx:53,&:hover:not(.is-active):not(.bp4-disabled) {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Dashboard/Sidebar/SidebarHead.tsx:73,&:hover:not(.bp4-disabled) {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Dialogs/ReconcileCreditNoteDialog/ReconcileCreditNoteEntriesTable.tsx:74,overflow: auto;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Dialogs/ReconcileVendorCreditDialog/ReconcileVendorCreditEntriesTable.tsx:78,overflow: auto;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Dialogs/TrackingCategoryFormDialog/TrackingCategoryFormFields.tsx:230,min-width: 150px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Drawers/BillDrawer/utils.tsx:183,min-width: 65px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Drawers/CustomerDetailsDrawer/index.tsx:29,<Drawer isOpen={isOpen} name={name} size={'750px'}>,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Drawers/InvoiceDetailDrawer/utils.tsx:223,min-width: 65px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Drawers/NotificationsDrawer/NotificationsDrawer.module.scss:5,overflow: hidden;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Drawers/NotificationsDrawer/NotificationsDrawer.module.scss:29,overflow-y: auto;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Drawers/NotificationsDrawer/NotificationsDrawer.module.scss:41,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Drawers/NotificationsDrawer/NotificationsDrawer.module.scss:52,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Drawers/NotificationsDrawer/NotificationsDrawer.module.scss:127,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Drawers/NotificationsDrawer/NotificationsDrawer.tsx:24,size={'400px'},2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Drawers/VendorDetailsDrawer/index.tsx:29,<Drawer isOpen={isOpen} name={name} size={'750px'}>,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/ElementCustomize/ElementCustomize.module.scss:6,width: 400px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/ElementCustomize/ElementCustomizeTabs.module.scss:4,min-width: 165px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/ElementCustomize/components/CompanyLogoUpload.module.scss:20,&:hover .removeButton{,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Expenses/ExpenseForm/ExpenseFormHeaderFields.tsx:36,max-width: 450px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Expenses/ExpenseForm/ExpenseFormHeaderFields.tsx:39,min-width: 150px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/FinancialStatements/BalanceSheet/BalanceSheetHeaderComparisonPanal.tsx:148,width: 400px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/FinancialStatements/FinancialHeaderLoadingSkeleton.module.scss:11,width: 600px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/FinancialStatements/FinancialReportPage.tsx:45,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/FinancialStatements/InventoryValuation/InventoryValuationTable.tsx:57,min-width: 850px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/FinancialStatements/ProfitLossSheet/ProfitLossSheetHeaderComparisonPanel.tsx:165,max-width: 400px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/FinancialStatements/PurchasesByItems/PurchasesByItemsTable.tsx:55,min-width: 850px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/FinancialStatements/SalesByItems/SalesByItemsTable.tsx:53,min-width: 850px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Import/ImportFilePreview.module.scss:35,tr:hover td{,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Import/ImportFileUploadStep.module.scss:9,min-width: 660px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Import/ImportFileUploadStep.module.scss:10,max-width: 760px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Import/ImportStepper.module.scss:18,min-width: 660px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Import/ImportStepper.module.scss:19,max-width: 760px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Import/ImportView.module.scss:5,max-width: 1800px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Items/ItemFormContent.tsx:36,position: sticky;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Items/ItemFormFloatingActions.tsx:78,position: sticky;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Items/ItemFormFormik.tsx:141,min-width: 300px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Items/ItemFormFormik.tsx:147,min-width: 140px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/PaymentMethods/PaymentMethodSelect.tsx:75,min-width: 200px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/PaymentPortal/PaymentPage.tsx:225,"&:hover,",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/PaymentPortal/PaymentPortal.module.scss:14,width: 600px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/PaymentPortal/PaymentPortal.tsx:181,"&:hover,",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Accountant/AccountantForm.tsx:189,width: 450px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Branding/PreferencesBranding.module.scss:4,width: 350px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/CreditNotes/PreferencesCreditNotesForm.tsx:68,min-width: 70px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/CreditNotes/PreferencesCreditNotesFormBoot.tsx:63,max-width: 600px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Estimates/PreferencesEstimatesForm.tsx:68,min-width: 70px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Estimates/PreferencesEstimatesFormBoot.tsx:64,max-width: 600px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/General/GeneralForm.tsx:268,min-width: 70px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Invoices/PreferencesInvoiceFormBoot.tsx:65,max-width: 600px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Invoices/PreferencesInvoicesForm.tsx:68,min-width: 70px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Item/ItemPreferencesForm.tsx:199,max-width: 400px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/PaymentMethods/PreferencesPaymentMethodsPage.tsx:46,max-width: 700px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/PaymentMethods/drawers/StripeIntegrationEditDrawer.tsx:25,<Drawer isOpen={isOpen} name={name} payload={payload} size={'600px'}>,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Receipts/PreferencesReceiptsForm.tsx:68,min-width: 70px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Receipts/PreferencesReceiptsFormBoot.tsx:62,max-width: 600px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Users/Roles/RolesForm/RoleFormFloatingActions.tsx:49,position: fixed;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Users/Roles/RolesForm/components.tsx:509,min-width: 70px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Users/Roles/RolesForm/components.tsx:541,min-width: 250px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Users/Roles/RolesForm/components.tsx:589,min-width: 250px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Warehouses/components.tsx:151,&:hover {,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Preferences/Warehouses/components.tsx:218,overflow: hidden;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Purchases/Bills/BillForm/BillFormHeaderFields.tsx:33,max-width: 450px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Purchases/Bills/BillForm/BillFormHeaderFields.tsx:36,min-width: 150px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Purchases/CreditNotes/CreditNoteForm/VendorCreditNoteFormHeaderFields.tsx:37,max-width: 500px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Purchases/CreditNotes/CreditNoteForm/VendorCreditNoteFormHeaderFields.tsx:40,min-width: 150px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Purchases/PaymentsMade/PaymentForm/PaymentMadeFormHeaderFields.tsx:52,max-width: 450px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Purchases/PaymentsMade/PaymentForm/PaymentMadeFormHeaderFields.tsx:55,min-width: 150px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/CreditNotes/CreditNoteForm/CreditNoteFormHeaderFields.tsx:34,max-width: 450px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/CreditNotes/CreditNoteForm/CreditNoteFormHeaderFields.tsx:37,min-width: 150px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/CreditNotes/CreditNoteSendMailDrawer/CreditNoteSendMailForm.tsx:74,overflow: hidden;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Estimates/EstimateForm/EstimateFormHeaderFields.tsx:32,max-width: 470px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Estimates/EstimateForm/EstimateFormHeaderFields.tsx:35,min-width: 160px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Estimates/EstimateSendMailDrawer/EstimateSendMailForm.tsx:72,overflow: hidden;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Estimates/SendMailViewDrawer/SendMailViewPreviewPdfIframe.tsx:17,width: 794px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Estimates/SendMailViewDrawer/SendMailViewPreviewTabs.tsx:25,overflow: hidden;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Estimates/SendMailViewDrawer/SendMailViewPreviewTabs.tsx:46,overflow: auto;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Estimates/SendMailViewDrawer/SendMailViewReceiptPreview.tsx:64,"&:hover,",5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Invoices/InvoiceCustomize/CompanyLogoUpload.module.scss:9,&:hover .removeButton{,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Invoices/InvoiceCustomize/InvoiceCustomizeFields.module.scss:6,width: 400px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Invoices/InvoiceCustomize/InvoiceCustomizeTabs.tsx:10,overflow: hidden;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Invoices/InvoiceCustomize/InvoiceCustomizeTabs.tsx:31,overflow: auto;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Invoices/InvoiceCustomize/InvoiceMailReceipt.tsx:159,"&:hover,",5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Invoices/InvoiceForm/InvoiceFormHeaderFields.tsx:32,max-width: 450px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Invoices/InvoiceForm/InvoiceFormHeaderFields.tsx:35,min-width: 150px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Invoices/InvoiceSendMailDrawer/InvoiceSendMailForm.tsx:71,overflow: hidden;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/PaymentsReceived/PaymentReceiveForm/PaymentReceiveHeaderFields.tsx:48,max-width: 470px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/PaymentsReceived/PaymentReceiveForm/PaymentReceiveHeaderFields.tsx:51,min-width: 160px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/PaymentsReceived/PaymentReceivedMailDrawer/PaymentReceivedMailForm.tsx:82,overflow: hidden;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Receipts/ReceiptForm/ReceiptFormHeaderFields.tsx:34,max-width: 450px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Receipts/ReceiptForm/ReceiptFormHeaderFields.tsx:37,min-width: 150px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Sales/Receipts/ReceiptSendMailDrawer/ReceiptSendMailForm.tsx:72,overflow: hidden;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/SendMailNotification/MailNotificationForm.tsx:110,min-width: 65px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Setup/SetupInitializingForm.tsx:116,overflow: hidden;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Setup/SetupLeftSection.module.scss:14,&:hover {,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Subscriptions/BillingSubscription.module.scss:3,width: 450px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/TaxRates/dialogs/TaxRateFormDialog/TaxRateFormDialog.tsx:44,max-width: 450px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/TransactionsLocking/TransactionsLockingList.tsx:32,min-width: 800px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/TransactionsLocking/TransactionsLockingList.tsx:33,max-width: 900px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Vendors/VendorForm/VendorFloatingActions.tsx:78,position: sticky;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Vendors/VendorForm/VendorFormContent.tsx:43,position: sticky;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Vendors/VendorForm/VendorFormFormik.tsx:142,min-width: 300px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/containers/Vendors/VendorForm/VendorFormFormik.tsx:148,min-width: 140px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/containers/CreateWorkspaceDrawer/BuildingWorkspaceStep.tsx:41,overflow: hidden;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/containers/CreateWorkspaceDrawer/CreateWorkspaceDrawer.tsx:29,size={'700px'},3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/containers/CreateWorkspaceDrawer/CreateWorkspaceStepper.tsx:27,max-width: 700px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/containers/CreateWorkspaceDrawer/CreateWorkspaceStepper.tsx:44,overflow: auto;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/containers/OrganizationsListDrawer/OrganizationsListDrawerContent.tsx:27,min-width: 160px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/containers/OrganizationsListDrawer/OrganizationsListDrawerContent.tsx:58,&:hover {,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/style/components/WorkspaceSwitchingOverlay.scss:2,position: fixed;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/style/containers/Dashboard/WorkspacesSidebar.scss:15,overflow-y: auto;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/style/containers/Dashboard/WorkspacesSidebar.scss:16,overflow-x: hidden;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/style/containers/Dashboard/WorkspacesSidebar.scss:33,&::-webkit-scrollbar-thumb:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/style/containers/Dashboard/WorkspacesSidebar.scss:69,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/style/containers/Dashboard/WorkspacesSidebar.scss:96,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/style/containers/Dashboard/WorkspacesSidebar.scss:130,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/style/containers/Dashboard/WorkspacesSidebar.scss:140,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/ee/workspaces/style/containers/Workspaces/OrganizationsListDrawer.scss:98,min-width: 200px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/App.scss:48,overflow: hidden;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/App.scss:64,min-width: 1100px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/App.scss:70,overflow: hidden;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/App.scss:94,overflow: auto;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/App.scss:111,max-width: 300px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/App.scss:161,overflow: hidden;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/App.scss:167,min-width: 0px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/App.scss:237,width: 1000px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/App.scss:240,overflow: hidden;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/App.scss:304,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/_normalize.scss:262,overflow: auto;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/Alert.scss:4,min-width: 70px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/BigcapitalLoading.scss:6,position: fixed;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/CustomScrollbar.scss:22,overflow: hidden;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:19,overflow: hidden;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:30,overflow: hidden;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:77,&:hover .td.clickable {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:171,overflow: auto;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:188,overflow: hidden;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:209,.tr:hover .td {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:225,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:261,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:303,position: sticky;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:311,position: sticky;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:329,position: sticky;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:341,overflow-y: scroll;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:342,overflow-x: hidden;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:393,"&.table-constrant .table .tbody .tr:not(:hover) .td[data-sticky-td],",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTable.scss:394,&.table--constrant .table .tbody .tr:not(:hover) .td[data-sticky-td] {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTableEditable.scss:117,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTableEditable.scss:212,&:hover{,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/DataTableEmptyStatus.module.scss:2,max-width: 500px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/Pagination.scss:13,min-width: 24px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/DataTable/Pagination.scss:20,&:hover{,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/Drawers/DrawerTemplate.scss:4,width: 680px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/Drawers/DrawerTemplate.scss:123,overflow: auto;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/Drawers/DrawerTemplate.scss:127,overflow: hidden;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/Drawers/ExpenseDrawer.scss:36,min-width: 120px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/Drawers/ItemDrawer.scss:44,min-width: 180px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/Drawers/ViewDetail/ViewDetail.scss:28,&:not([aria-disabled='true']):hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/Hint.scss:10,.bp4-popover-target:hover .bp4-icon {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/MaterialProgressBar.scss:35,overflow: hidden;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/Menu.scss:2,&:hover{,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/PageForm.scss:25,position: fixed;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/SidebarOverlay.scss:33,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/SidebarOverlay.scss:56,"&:hover,",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/dragzone.scss:68,&:hover button {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/resizer.scss:3,overflow: auto;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/resizer.scss:16,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/resizer.scss:29,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/resizer.scss:42,&:hover{,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/components/resizer.scss:48,&:hover{,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:30,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:68,"&:hover,",2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:78,overflow: hidden;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:150,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:190,&:hover .bp4-button.menu-item__add-btn {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:208,"&:hover,",2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:246,position: fixed;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:276,min-width: 50px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:279,overflow: hidden !important;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:281,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:282,min-width: 190px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:296,overflow: scroll !important;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:318,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/Dashboard/Sidebar.scss:325,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/FinancialStatements/DrawerHeader.scss:41,overflow: hidden;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/containers/FinancialStatements/DrawerHeader.scss:87,overflow: auto;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/objects/buttons.scss:7,min-width: 32px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/objects/buttons.scss:42,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/objects/form.scss:3,position: fixed;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/objects/form.scss:108,"&:hover,",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/objects/form.scss:110,.bp4-dark &:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/objects/form.scss:169,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/objects/form.scss:209,&:hover {,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/objects/form.scss:235,"&:not([class*=""bp4-intent-""]):not(.bp4-minimal):hover:not(:disabled) {",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Accounts/AccountFormDialog.scss:13,min-width: 140px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/AllocateLandedCost/AllocateLandedCostForm.scss:3,width: 700px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/AllocateLandedCost/AllocateLandedCostForm.scss:11,min-width: 165px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/AllocateLandedCost/AllocateLandedCostForm.scss:14,width: 300px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/BadDebt/BadDebtDialog.scss:2,max-width: 400px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Billing/BillingPage.scss:6,max-width: 820px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Bills/PageForm.scss:27,min-width: 140px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Bills/PageForm.scss:35,max-width: 440px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Bills/PageForm.scss:41,max-width: 340px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Bills/PageForm.scss:44,min-width: 120px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Bills/PageForm.scss:52,max-width: 435px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Bills/PageForm.scss:59,max-width: 450px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Branches/BranchFormDialog.scss:2,width: 650px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Branches/BranchFormDialog.scss:12,min-width: 150px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Branches/BranchFormDialog.scss:32,width: 388px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/ContactDuplicate/ContactDuplicateDialog.scss:21,min-width: 65px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Currency/CurrencyFormDialog.scss:7,min-width: 140px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Currency/CurrencyFormDialog.scss:20,min-width: 75px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/CustomerOpeningBalance/CustomerOpeningBalance.scss:2,max-width: 400px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:12,overflow: hidden;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:54,"&:hover,",2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:87,"&:hover,",2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:130,"&:hover,",2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:160,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:167,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:226,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:257,"&:not(.bp4-disabled) &:hover,",2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:268,"&:hover,",2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:281,"&:hover,",2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:291,"&:hover,",2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:367,"&:hover,",2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:407,min-width: 850px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:526,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:599,min-width: 35px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:604,"&:hover,",2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:633,&:hover {,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Dashboard/Dashboard.scss:653,width: 600px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/ExchangeRate/ExchangeRateDialog.scss:7,min-width: 140px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Expense/PageForm.scss:26,min-width: 140px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Expense/PageForm.scss:37,max-width: 440px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Expense/PageForm.scss:70,max-width: 500px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/FinancialStatements/NumberFormatDropdown.scss:4,width: 300px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/FinancialStatements/NumberFormatDropdown.scss:17,min-width: 28px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/FinancialStatements/NumberFormatDropdown.scss:33,min-width: 65px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/FinancialStatements/SalesAndPurchasesSheet.scss:5,min-width: 800px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/HomePage/HomePage.scss:16,max-width: 800px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/HomePage/HomePage.scss:70,max-width: 400px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/ItemCategory/ItemCategoryDialog.scss:9,min-width: 140px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/ItemCategory/ItemCategoryDialog.scss:34,min-width: 75px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Items/Form.scss:6,max-width: 500px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Items/Form.scss:11,min-width: 140px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/ManualJournal/JournalNumberDialog.scss:13,min-width: 75px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/ManualJournal/MakeJournal.scss:16,min-width: 165px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/ManualJournal/MakeJournal.scss:26,max-width: 480px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/ManualJournal/MakeJournal.scss:32,max-width: 500px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/NotifyConactViaSMS/NotifyConactViaSMSDialog.scss:2,width: 800px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/PaymentMade/PageForm.scss:19,min-width: 160px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/PaymentMade/PageForm.scss:29,max-width: 470px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/PaymentMade/PageForm.scss:40,&:hover{,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/PaymentMade/PageForm.scss:97,max-width: 500px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/PaymentReceive/PageForm.scss:20,min-width: 160px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/PaymentReceive/PageForm.scss:31,max-width: 470px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/PaymentReceive/PageForm.scss:43,&:hover {,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/PaymentReceive/PageForm.scss:102,max-width: 500px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/Accounting.scss:13,min-width: 65px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/Accounting.scss:24,min-width: 250px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/GeneralForm.scss:7,max-width: 650px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/GeneralForm.scss:11,min-width: 190px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/Page.scss:41,overflow: auto;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/Roles/Form.scss:19,min-width: 65px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/Roles/Form.scss:29,max-width: 600px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/Roles/Form.scss:34,min-width: 150px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/Sidebar.scss:8,min-width: 220px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/Sidebar.scss:11,position: fixed;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/Sidebar.scss:33,&:hover {,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/Sidebar.scss:76,"&:hover,",3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/Topbar.scss:43,"&:hover,",3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/trackingCategories.scss:2,width: 640px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Preferences/trackingCategories.scss:12,min-width: 150px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/ReconcileCreditNote/ReconcileCreditNoteForm.scss:2,width: 850px;,5,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/ReconcileVendorCredit/ReconcileVendorCreditForm.scss:2,width: 850px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/ReferenceNumber/ReferenceNumber.scss:16,min-width: 80px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/RefundVendorCredit/RefundVendorCredit.scss:2,max-width: 450px;,6,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/SMSMessage/SMSMessage.scss:2,width: 800px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Setup/PaymentViaVoucherDialog.scss:16,min-width: 80px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Setup/PaymentViaVoucherDialog.scss:19,min-width: 90px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Setup/SetupPage.scss:6,max-width: 1600px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Setup/SetupPage.scss:9,@media only screen and (max-width: 1500px) {,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Setup/SetupPage.scss:12,@media only screen and (max-width: 1200px) {,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Setup/SetupPage.scss:39,position: sticky;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Setup/SetupPage.scss:51,@media only screen and (max-width: 1200px) {,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Setup/SetupPage.scss:78,position: sticky;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Setup/SetupPage.scss:96,&:hover {,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/TransactionsLocking/TransactionsLockingDialog.scss:2,max-width: 450px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Users/InviteFormDialog.scss:2,width: 450px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Users/InviteFormDialog.scss:7,min-width: 70px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Users/InviteFormDialog.scss:26,min-width: 140px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Users/UserFormDialog.scss:2,width: 450px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Users/UserFormDialog.scss:12,min-width: 140px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Users/UserFormDialog.scss:30,min-width: 75px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/VendorOpeningBalance/VendorOpeningBalance.scss:2,max-width: 400px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Vendors/Form.scss:23,overflow: hidden;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Vendors/Form.scss:25,max-width: 1000px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Vendors/Form.scss:29,max-width: 500px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Vendors/Form.scss:38,min-width: 150px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Vendors/Form.scss:47,max-width: 600px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Vendors/Form.scss:90,max-width: 1000px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Vendors/Form.scss:102,max-width: 440px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Vendors/Form.scss:106,min-width: 145px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Vendors/Form.scss:124,max-width: 600px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Vendors/Form.scss:135,max-width: 600px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Vendors/Form.scss:161,&:not([aria-disabled='true']):hover {,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/VendorsCreditNote/PageForm.scss:23,min-width: 150px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/VendorsCreditNote/PageForm.scss:31,max-width: 450px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/VendorsCreditNote/PageForm.scss:35,max-width: 435px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/VendorsCreditNote/PageForm.scss:40,max-width: 450px;,4,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/WarehouseTransfers/PageForm.scss:23,min-width: 150px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/WarehouseTransfers/PageForm.scss:31,max-width: 450px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/WarehouseTransfers/PageForm.scss:35,max-width: 435px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/WarehouseTransfers/PageForm.scss:41,max-width: 450px;,7,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Warehouses/warehouseFormDialog.scss:2,width: 650px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Warehouses/warehouseFormDialog.scss:8,min-width: 140px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/Warehouses/warehouseFormDialog.scss:11,width: 388px;,3,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/keyboardShortcuts/KeyboardShortcutDialog.scss:36,min-width: 65px;,2,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/register-organizaton.scss:8,width: 690px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/register-organizaton.scss:36,width: 619px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/register-organizaton.scss:45,min-width: 300px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/register-organizaton.scss:53,min-width: 619px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/register-organizaton.scss:70,width: 618px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/pages/view-form.scss:61,overflow: auto;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/section.scss:15,overflow: hidden;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/section.scss:70,"&:hover,",8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/views/filter-dropdown.scss:3,width: 600px;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
+packages/webapp/src/style/views/filter-dropdown.scss:63,overflow: hidden;,8,Source risk; inspect containing selector and cascade before changing; runtime unverified
