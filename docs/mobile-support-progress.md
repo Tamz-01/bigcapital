@@ -62,3 +62,11 @@ Stage 2 is implemented and deployed to the private test frontend for review. The
 - The private browser rendered the 390px dashboard with a 40px action row and no document overflow. Manual checks covered sales, settings and quick search, Escape focus return, and a supplier draft retaining its contents and URL through menu and viewport changes. Desktop navigation remained available at 1280px.
 - Standard authenticated Playwright setup was blocked while initializing a new test organization because the migration expected SALES__INVOICES. Signed-in cross-language draft preservation and account-language persistence therefore remain unverified in this run. Physical phone testing and user review are pending.
 - The next stage is organization and settings. Address the test-tenant provisioning blocker before relying on the full authenticated suite. Keep the private test and production environments separate.
+
+## 19 November 2026 — Stage 3
+
+Organization onboarding, preferences, role permissions, and workspace controls now fit phone widths in the private test app. Setup, company defaults, and workspace creation share the English, Lao, and Arabic choices. The API accepts Lao for organization setup and settings. The exchange-rate migration now uses canonical identifiers during fresh tenant provisioning and keeps the existing decimal precision.
+
+Seven focused Playwright checks passed. They included 390px onboarding with Lao, organization settings save and reload, the role-permission draft across phone and desktop widths, and four Stage 2 regressions. A separate 390px check switched between two synthetic workspaces in both directions and verified the active organization’s settings. The tax-rate dialog displayed required-field errors, and representative settings views fit the viewport.
+
+The served test frontend matched the modern-browser build from `051e774b9b9bc7988a6f0bc0838a17c302f3e9f4`. The private API ran the compiled migration and locale fixes through `4935b669353659ae974d6f9257d1e4dacfc21e3e`. The full Vite build was terminated during legacy chunk rendering. The draft PR remains open. Physical phones, live invitation delivery, provider integrations, and additional restricted-role cases remain for review. Stage 4 covers master records.
