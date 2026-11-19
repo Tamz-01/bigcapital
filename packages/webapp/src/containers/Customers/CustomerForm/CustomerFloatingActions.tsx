@@ -36,7 +36,7 @@ export function CustomerFloatingActions() {
   };
 
   return (
-    <FloatingActionsGroup spacing={10}>
+    <FloatingActionsGroup spacing={10} className="master-record-form__actions">
       <ButtonGroup>
         {/* ----------- Save and New ----------- */}
         <Button

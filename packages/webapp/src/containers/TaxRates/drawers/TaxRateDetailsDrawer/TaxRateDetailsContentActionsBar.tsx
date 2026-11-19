@@ -15,6 +15,7 @@ import { useTaxRateDetailsContext } from './TaxRateDetailsContentBoot';
 import { AppToaster, Can, DrawerActionsBar, Icon } from '@/components';
 import { AbilitySubject, TaxRateAction } from '@/constants/abilityOption';
 import { DialogsName } from '@/constants/dialogs';
+import { DRAWERS } from '@/constants/drawers';
 import {
   withAlertActions,
   WithAlertActionsProps,
@@ -23,7 +24,10 @@ import {
   withDialogActions,
   WithDialogActionsProps,
 } from '@/containers/Dialog/withDialogActions';
-import { withDrawerActions } from '@/containers/Drawer/withDrawerActions';
+import {
+  withDrawerActions,
+  type WithDrawerActionsProps,
+} from '@/containers/Drawer/withDrawerActions';
 import {
   useActivateTaxRate,
   useInactivateTaxRate,
@@ -31,7 +35,8 @@ import {
 
 interface TaxRateDetailsContentActionsBarInnerProps
   extends Pick<WithDialogActionsProps, 'openDialog'>,
-    Pick<WithAlertActionsProps, 'openAlert'> {}
+    Pick<WithAlertActionsProps, 'openAlert'>,
+    Pick<WithDrawerActionsProps, 'closeDrawer'> {}
 
 /**
  * Tax rate details content actions bar.
@@ -40,6 +45,7 @@ interface TaxRateDetailsContentActionsBarInnerProps
 function TaxRateDetailsContentActionsBarInner({
   openDialog,
   openAlert,
+  closeDrawer,
 }: TaxRateDetailsContentActionsBarInnerProps) {
   const { taxRateId, taxRate } = useTaxRateDetailsContext();
 
@@ -48,6 +54,7 @@ function TaxRateDetailsContentActionsBarInner({
 
   // Handle edit tax rate.
   const handleEditTaxRate = () => {
+    closeDrawer(DRAWERS.TAX_RATE_DETAILS);
     openDialog(DialogsName.TaxRateForm, { id: taxRateId });
   };
   // Handle delete tax rate.

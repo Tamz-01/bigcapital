@@ -90,6 +90,7 @@ function CustomerDetailsActionsBarInner({
   };
   // Handle edit opening balance click.
   const handleEditOpeningBalance = () => {
+    closeDrawer(DRAWERS.CUSTOMER_DETAILS);
     openDialog('customer-opening-balance', { customerId });
   };
 

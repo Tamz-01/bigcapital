@@ -36,7 +36,7 @@ export function CustomerFormBasicSection() {
 
       {/**----------- Contact name -----------*/}
       <FFormGroup name={'salutation'} label={intl.get('contact_name')} inline>
-        <ControlGroup fill>
+        <ControlGroup fill className="master-record-contact-name">
           <SalutationList
             name={'salutation'}
             popoverProps={{ minimal: true }}

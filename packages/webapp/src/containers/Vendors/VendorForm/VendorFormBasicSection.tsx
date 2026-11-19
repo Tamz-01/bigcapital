@@ -37,7 +37,7 @@ export function VendorFormBasicSection() {
         inline
         fastField
       >
-        <ControlGroup fill>
+        <ControlGroup fill className="master-record-contact-name">
           <SalutationList
             name={'salutation'}
             popoverProps={{ minimal: true }}

@@ -84,6 +84,7 @@ function ItemsCategoryTable({
 
   return (
     <DataTable
+      recordList
       noInitialFetch={true}
       columns={columns}
       data={itemsCategories || []}

@@ -84,14 +84,14 @@ function VendorActionsBarInner({
 
   // Handle the active tab change.
   const handleTabChange = (viewSlug: string) => {
-    setVendorsTableState({ viewSlug });
+    setVendorsTableState({ viewSlug, pageIndex: 0 });
   };
   // Handle inactive switch changing.
   const handleInactiveSwitchChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const checked = event.target.checked;
-    setVendorsTableState({ inactiveMode: checked });
+    setVendorsTableState({ inactiveMode: checked, pageIndex: 0 });
   };
   // Handle click a refresh sale estimates
   const handleRefreshBtnClick = () => {
@@ -160,7 +160,10 @@ function VendorActionsBarInner({
             defaultFieldKey: 'display_name',
             fields: fields,
             onFilterChange: (filterConditions: IFilterRole[]) => {
-              setVendorsTableState({ filterRoles: filterConditions });
+              setVendorsTableState({
+                filterRoles: filterConditions,
+                pageIndex: 0,
+              });
             },
           }}
         >

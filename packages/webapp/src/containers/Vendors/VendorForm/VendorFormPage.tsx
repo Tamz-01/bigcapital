@@ -43,7 +43,7 @@ export function VendorFormPage() {
   return (
     <VendorFormProvider vendorId={vendorId}>
       <VendorFormPageLoading>
-        <Box mx={'auto'} maxWidth={800}>
+        <Box mx={'auto'} maxWidth={800} className="master-record-form-page">
           <VendorFormFormik
             onSubmitSuccess={handleSubmitSuccess}
             onCancel={handleFormCancel}

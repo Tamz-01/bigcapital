@@ -310,6 +310,7 @@ export async function createItemViaApi(
     body: JSON.stringify({
       name: input.name,
       type: input.type,
+      unit: 'piece',
       sellable: true,
       purchasable: true,
       sellPrice: input.sellPrice ?? 100,

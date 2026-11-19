@@ -70,3 +70,14 @@ Organization onboarding, preferences, role permissions, and workspace controls n
 Seven focused Playwright checks passed. They included 390px onboarding with Lao, organization settings save and reload, the role-permission draft across phone and desktop widths, and four Stage 2 regressions. A separate 390px check switched between two synthetic workspaces in both directions and verified the active organization’s settings. The tax-rate dialog displayed required-field errors, and representative settings views fit the viewport.
 
 The served test frontend matched the modern-browser build from `051e774b9b9bc7988a6f0bc0838a17c302f3e9f4`. The private API ran the compiled migration and locale fixes through `4935b669353659ae974d6f9257d1e4dacfc21e3e`. The full Vite build was terminated during legacy chunk rendering. The draft PR remains open. Physical phones, live invitation delivery, provider integrations, and additional restricted-role cases remain for review. Stage 4 covers master records.
+
+## 20 November 2026 — Stage 4 master records
+
+The private test app now has phone layouts for customer, vendor, item, item category, chart-of-accounts, and tax-rate workflows. Customer, vendor, and item forms stack fields and preserve drafts across viewport changes. Lists keep wide columns inside their own scroll area, wrap long contact names, and return to page one when a filter, saved view, or inactive toggle changes. Detail drawers and pickers fit phone widths. Item pickers support quick creation with the entered name and selection of existing items.
+
+All 45 layout checks passed across nine routes at 360, 390, 430, 768, and 1280 CSS pixels. All eight master-record browser tests passed at 390px with touch enabled. They cover long-name search and pagination, form drafts and validation, picker and drawer actions, vendor editing, item quick creation and selection, and item and tax-rate create/edit. Customer and vendor quick-create drawers also opened and closed in separate phone checks.
+
+The isolated test frontend serves the minified modern-browser asset `index-CrZy5vja.js`. Node 18 type checking and the scoped formatting checks passed. The test API and retained synthetic database served the checks. Physical-device and legacy-browser checks remain pending. Stage 5 covers sales workflows.
+
+- [Stage 4 Drive evidence and report](https://drive.google.com/drive/folders/1uYn7e-cr3CicMnubCLSFYGF57LSaOj8g)
+- [Draft PR #1](https://github.com/Tamz-01/bigcapital/pull/1) · [Private test app](https://studious-space-disco-gxp75xwv9rrvhw94x-8080.app.github.dev/)

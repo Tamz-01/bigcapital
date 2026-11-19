@@ -26,7 +26,12 @@ function CustomerDetailsDrawer({
   payload: { customerId },
 }: CustomerDetailsDrawerProps) {
   return (
-    <Drawer isOpen={isOpen} name={name} size={'750px'}>
+    <Drawer
+      isOpen={isOpen}
+      name={name}
+      size={'750px'}
+      className="master-record-drawer"
+    >
       <DrawerSuspense>
         <CustomerDetailsDrawerContent customerId={customerId} />
       </DrawerSuspense>

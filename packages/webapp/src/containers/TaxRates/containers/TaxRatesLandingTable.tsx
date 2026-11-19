@@ -114,6 +114,7 @@ function TaxRatesDataTable({
   return (
     <DashboardContentTable>
       <DataTable
+        recordList
         columns={columns}
         data={taxRates ?? []}
         loading={isTaxRatesLoading}

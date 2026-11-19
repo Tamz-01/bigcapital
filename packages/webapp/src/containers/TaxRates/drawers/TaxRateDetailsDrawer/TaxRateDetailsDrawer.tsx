@@ -23,7 +23,7 @@ function TaxRateDetailsDrawerInner({
     <Drawer
       isOpen={isOpen}
       name={name}
-      style={{ minWidth: '650px', maxWidth: '650px' }}
+      className="master-record-drawer master-record-drawer--tax-rate"
       size={'65%'}
     >
       <DrawerSuspense>

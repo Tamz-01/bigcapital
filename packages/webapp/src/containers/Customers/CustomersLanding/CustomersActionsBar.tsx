@@ -93,6 +93,7 @@ function CustomerActionsBar({
   const handleTabChange = (view?: { slug?: string }) => {
     setCustomersTableState({
       viewSlug: view ? view.slug : null,
+      pageIndex: 0,
     });
   };
   // Handle inactive switch changing.
@@ -100,7 +101,7 @@ function CustomerActionsBar({
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const checked = event.target.checked;
-    setCustomersTableState({ inactiveMode: checked });
+    setCustomersTableState({ inactiveMode: checked, pageIndex: 0 });
   };
 
   // Handle click a refresh customers
@@ -172,7 +173,10 @@ function CustomerActionsBar({
             defaultFieldKey: 'display_name',
             fields: fields,
             onFilterChange: (filterConditions: IFilterRole[]) => {
-              setCustomersTableState({ filterRoles: filterConditions });
+              setCustomersTableState({
+                filterRoles: filterConditions,
+                pageIndex: 0,
+              });
             },
           }}
         >

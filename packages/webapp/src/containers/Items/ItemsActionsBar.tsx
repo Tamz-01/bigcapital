@@ -93,7 +93,7 @@ function ItemsActionsBarInner({
 
   // Handle tab changing.
   const handleTabChange = (view?: { slug?: string }) => {
-    setItemsTableState({ viewSlug: view ? view.slug : null });
+    setItemsTableState({ viewSlug: view ? view.slug : null, pageIndex: 0 });
   };
 
   // Handle cancel/confirm items bulk.
@@ -106,7 +106,7 @@ function ItemsActionsBarInner({
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const checked = event.target.checked;
-    setItemsTableState({ inactiveMode: checked });
+    setItemsTableState({ inactiveMode: checked, pageIndex: 0 });
   };
   // Handle refresh button click.
   const handleRefreshBtnClick = () => {
@@ -176,7 +176,10 @@ function ItemsActionsBarInner({
             defaultFieldKey: 'name',
             fields: fields,
             onFilterChange: (filterConditions: IFilterRole[]) => {
-              setItemsTableState({ filterRoles: filterConditions });
+              setItemsTableState({
+                filterRoles: filterConditions,
+                pageIndex: 0,
+              });
             },
           }}
         >

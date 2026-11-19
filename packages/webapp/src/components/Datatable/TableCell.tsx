@@ -29,6 +29,7 @@ export default function TableCell({ cell, row, index }: TableCellProps) {
       cellsLoadingCoords,
       cellTestId,
       onCellClick,
+      recordList,
     },
   } = useContext(TableContext);
 
@@ -81,6 +82,18 @@ export default function TableCell({ cell, row, index }: TableCellProps) {
       })}
       tabIndex={0}
       onClick={handleCellClick}
+      onKeyDown={
+        recordList && onCellClick && cell.column.clickable
+          ? (event) => {
+              if (
+                event.key === 'Enter' &&
+                event.target === event.currentTarget
+              ) {
+                event.currentTarget.click();
+              }
+            }
+          : undefined
+      }
     >
       <div
         className={classNames(

@@ -29,7 +29,7 @@ function QuickWriteVendorDrawer({
     <Drawer
       isOpen={isOpen}
       name={name}
-      style={{ minWidth: '700px', maxWidth: '900px' }}
+      className="master-record-drawer master-record-drawer--standard master-record-drawer--quick-create"
       size={'80%'}
     >
       <DrawerSuspense>

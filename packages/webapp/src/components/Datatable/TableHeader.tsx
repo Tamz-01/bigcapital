@@ -13,8 +13,10 @@ interface TableHeaderCellProps {
 function TableHeaderCell({ column, index }: TableHeaderCellProps) {
   const {
     table: { getToggleAllRowsExpandedProps, isAllRowsExpanded },
-    props: { expandable, expandToggleColumn },
+    props: { expandable, expandToggleColumn, recordList },
   } = useContext(TableContext);
+  const sortButton = recordList && column.canSort;
+  const HeaderControl = sortButton ? 'button' : 'div';
 
   return (
     <div
@@ -22,6 +24,15 @@ function TableHeaderCell({ column, index }: TableHeaderCellProps) {
         className: classNames(column.className || '', 'th', {
           [`align-${column.align}`]: column.align,
         }),
+        ...(sortButton
+          ? {
+              'aria-sort': column.isSorted
+                ? column.isSortedDesc
+                  ? 'descending'
+                  : 'ascending'
+                : 'none',
+            }
+          : {}),
       })}
     >
       <If condition={!!expandable && index + 1 === expandToggleColumn}>
@@ -35,10 +46,12 @@ function TableHeaderCell({ column, index }: TableHeaderCellProps) {
         </span>
       </If>
 
-      <div
+      <HeaderControl
         {...column.getSortByToggleProps()}
+        {...(sortButton ? { type: 'button' } : {})}
         className={classNames('cell-inner', {
           'text-overview': column.textOverview,
+          'record-table-sort': sortButton,
         })}
       >
         {column.render('Header')}
@@ -54,7 +67,7 @@ function TableHeaderCell({ column, index }: TableHeaderCellProps) {
             )}
           ></span>
         </If>
-      </div>
+      </HeaderControl>
 
       {column.canResize && (
         <div
