@@ -2,6 +2,26 @@
 
 $organizations-drawer-border: rgba(255, 255, 255, 0.08);
 
+@media (max-width: 767.98px) {
+  .organizations-list-drawer__content {
+    padding-inline: 14px;
+  }
+
+  .organizations-list-drawer__controls {
+    flex-direction: column;
+    align-items: stretch;
+
+    .bp4-form-group {
+      max-inline-size: 100%;
+    }
+  }
+
+  .organizations-list-drawer__close-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
 .organizations-list-table.bigcapital-datatable {
   --color-datatable-head-background: transparent;
   --color-datatable-head-text: rgba(255, 255, 255, 0.45);

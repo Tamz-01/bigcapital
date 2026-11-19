@@ -7,6 +7,7 @@ import {
   Position,
 } from '@blueprintjs/core';
 import * as FF from 'fp-ts/function';
+import intl from 'react-intl-universal';
 import { useHistory } from 'react-router-dom';
 import type { WithDialogActionsProps } from '@/containers/Dialog/withDialogActions';
 import { FormattedMessage as T } from '@/components';
@@ -69,7 +70,7 @@ function DashboardTopbarUser({
       }
       position={Position.BOTTOM}
     >
-      <Button>
+      <Button aria-label={intl.get('profile').d('Account menu')}>
         <div className="user-text">
           {firstLettersArgs(user.firstName, user.lastName)}
         </div>

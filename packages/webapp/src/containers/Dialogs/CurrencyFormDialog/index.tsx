@@ -35,7 +35,7 @@ function CurrencyFormDialog({
           <T id={'new_currency'} />
         )
       }
-      className={'dialog--currency-form'}
+      className={'dialog--currency-form settings-form-dialog'}
       isOpen={isOpen}
       autoFocus={true}
       canEscapeKeyClose={true}

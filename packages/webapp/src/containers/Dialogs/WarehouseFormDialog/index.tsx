@@ -34,7 +34,7 @@ function WarehouseFormDialog({
       isOpen={isOpen}
       canEscapeKeyClose={true}
       autoFocus={true}
-      className={'dialog--warehouse-form'}
+      className={'dialog--warehouse-form settings-form-dialog'}
     >
       <DialogSuspense testId="warehouse-form-dialog">
         <WarehouseFormDialogContent

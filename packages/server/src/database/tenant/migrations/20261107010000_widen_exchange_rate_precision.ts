@@ -30,7 +30,8 @@ rateColumns.push({
 async function existingRateColumns(knex: Knex): Promise<typeof rateColumns> {
   // Tenant connections normalize identifiers to uppercase. MySQL's hasTable /
   // hasColumn metadata comparisons do not apply that normalization consistently.
-  // Resolve the stored names explicitly, also supporting lowercase installations.
+  // Use physical names only for discovery. Passing an uppercase name back
+  // through the identifier mapper would turn SALES_INVOICES into SALES__INVOICES.
   const [rows] = await knex.raw(
     'SELECT TABLE_NAME, COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE()',
   );
@@ -38,14 +39,13 @@ async function existingRateColumns(knex: Knex): Promise<typeof rateColumns> {
     table: row.TABLE_NAME ?? row.table_name ?? row.tableName,
     column: row.COLUMN_NAME ?? row.column_name ?? row.columnName,
   }));
-  return rateColumns.flatMap((rate) => {
-    const stored = columns.find(
+  return rateColumns.filter((rate) =>
+    columns.some(
       (entry) =>
         entry.table.toLowerCase() === rate.table &&
         entry.column.toLowerCase() === rate.column,
-    );
-    return stored ? [{ ...rate, ...stored }] : [];
-  });
+    ),
+  );
 }
 
 export async function up(knex: Knex): Promise<void> {

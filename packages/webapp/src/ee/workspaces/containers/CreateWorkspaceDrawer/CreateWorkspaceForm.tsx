@@ -6,8 +6,6 @@ import { ApiError } from 'openapi-typescript-fetch';
 import React from 'react';
 import intl from 'react-intl-universal';
 import {
-  Col,
-  Row,
   FFormGroup,
   FInputGroup,
   FSelect,
@@ -136,47 +134,42 @@ export default function CreateWorkspaceForm({
                   />
                 </FFormGroupField>
 
-                <Row bsPrefix="row" className="" noGutters={false}>
-                  <Col xs={6} bsPrefix="col" className="" noGutters={false}>
-                    {/* ----------  Base currency ----------  */}
-                    <FFormGroupField
+                <div className="organization-field-pair">
+                  {/* ----------  Base currency ----------  */}
+                  <FFormGroupField
+                    name={'baseCurrency'}
+                    label={intl.get('base_currency')}
+                    fastField={true}
+                  >
+                    <FSelect
                       name={'baseCurrency'}
-                      label={intl.get('base_currency')}
-                      fastField={true}
-                    >
-                      <FSelect
-                        name={'baseCurrency'}
-                        items={currencies}
-                        popoverProps={{ minimal: true }}
-                        valueAccessor={'key'}
-                        textAccessor={'name'}
-                        placeholder={<T id={'select_base_currency'} />}
-                        buttonProps={{ large: true }}
-                        fastField
-                      />
-                    </FFormGroupField>
-                  </Col>
-
-                  {/* ---------- Language ---------- */}
-                  <Col xs={6} bsPrefix="col" className="" noGutters={false}>
-                    <FFormGroupField
-                      name={'language'}
-                      label={intl.get('language')}
+                      items={currencies}
+                      popoverProps={{ minimal: true }}
+                      valueAccessor={'key'}
+                      textAccessor={'name'}
+                      placeholder={<T id={'select_base_currency'} />}
+                      buttonProps={{ large: true }}
                       fastField
-                    >
-                      <FSelect
-                        name={'language'}
-                        items={Languages}
-                        valueAccessor={'value'}
-                        textAccessor={'name'}
-                        placeholder={<T id={'select_language'} />}
-                        popoverProps={{ minimal: true }}
-                        buttonProps={{ large: true }}
-                        fastField
-                      />
-                    </FFormGroupField>
-                  </Col>
-                </Row>
+                    />
+                  </FFormGroupField>
+                  {/* ---------- Language ---------- */}
+                  <FFormGroupField
+                    name={'language'}
+                    label={intl.get('language')}
+                    fastField
+                  >
+                    <FSelect
+                      name={'language'}
+                      items={Languages}
+                      valueAccessor={'value'}
+                      textAccessor={'name'}
+                      placeholder={<T id={'select_language'} />}
+                      popoverProps={{ minimal: true }}
+                      buttonProps={{ large: true }}
+                      fastField
+                    />
+                  </FFormGroupField>
+                </div>
 
                 {/* --------- Fiscal Year ----------- */}
                 <FFormGroupField

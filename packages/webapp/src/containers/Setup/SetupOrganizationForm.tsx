@@ -1,5 +1,5 @@
 import { getAllCountries } from '@bigcapital/utils';
-import { Button, Intent, Classes } from '@blueprintjs/core';
+import { Button, Callout, Intent, Classes } from '@blueprintjs/core';
 import { x } from '@xstyled/emotion';
 import { Form, FormikProps } from 'formik';
 import intl from 'react-intl-universal';
@@ -11,7 +11,6 @@ import {
   FTimezoneSelect,
   FormattedMessage as T,
 } from '@/components';
-import { Col, Row } from '@/components';
 import { getAllCurrenciesOptions } from '@/constants/currencies';
 import { getFiscalYear } from '@/constants/fiscalYearOptions';
 import { getLanguages } from '@/constants/languagesOptions';
@@ -24,6 +23,7 @@ const countries = getAllCountries();
  */
 export function SetupOrganizationForm({
   isSubmitting,
+  status,
 }: FormikProps<SetupOrganizationFormValues>) {
   const FiscalYear = getFiscalYear();
   const Languages = getLanguages();
@@ -32,6 +32,11 @@ export function SetupOrganizationForm({
 
   return (
     <Form>
+      {status && (
+        <Callout intent={Intent.DANGER} role="alert">
+          <T id={status} />
+        </Callout>
+      )}
       <x.h3
         color={isDarkMode ? 'rgba(255, 255, 255, 0.5)' : '#868f9f'}
         mb="2rem"
@@ -66,43 +71,39 @@ export function SetupOrganizationForm({
         />
       </FFormGroup>
 
-      <Row>
-        <Col xs={6}>
-          {/* ----------  Base currency ----------  */}
-          <FFormGroup
+      <div className="organization-field-pair">
+        {/* ----------  Base currency ----------  */}
+        <FFormGroup
+          name={'baseCurrency'}
+          label={intl.get('base_currency')}
+          fastField={true}
+        >
+          <FSelect
             name={'baseCurrency'}
-            label={intl.get('base_currency')}
-            fastField={true}
-          >
-            <FSelect
-              name={'baseCurrency'}
-              items={currencies}
-              popoverProps={{ minimal: true }}
-              valueAccessor={'key'}
-              textAccessor={'name'}
-              placeholder={<T id={'select_base_currency'} />}
-              buttonProps={{ large: true }}
-              fastField
-            />
-          </FFormGroup>
-        </Col>
+            items={currencies}
+            popoverProps={{ minimal: true }}
+            valueAccessor={'key'}
+            textAccessor={'name'}
+            placeholder={<T id={'select_base_currency'} />}
+            buttonProps={{ large: true }}
+            fastField
+          />
+        </FFormGroup>
 
         {/* ---------- Language ---------- */}
-        <Col xs={6}>
-          <FFormGroup name={'language'} label={intl.get('language')} fastField>
-            <FSelect
-              name={'language'}
-              items={Languages}
-              valueAccessor={'value'}
-              textAccessor={'name'}
-              placeholder={<T id={'select_language'} />}
-              popoverProps={{ minimal: true }}
-              buttonProps={{ large: true }}
-              fastField
-            />
-          </FFormGroup>
-        </Col>
-      </Row>
+        <FFormGroup name={'language'} label={intl.get('language')} fastField>
+          <FSelect
+            name={'language'}
+            items={Languages}
+            valueAccessor={'value'}
+            textAccessor={'name'}
+            placeholder={<T id={'select_language'} />}
+            popoverProps={{ minimal: true }}
+            buttonProps={{ large: true }}
+            fastField
+          />
+        </FFormGroup>
+      </div>
 
       {/* --------- Fiscal Year ----------- */}
       <FFormGroup name={'fiscalYear'} label={intl.get('fiscal_year')} fastField>
@@ -136,7 +137,7 @@ export function SetupOrganizationForm({
 
       <x.p
         fontSize={14}
-        lineHeight="2.7rem"
+        lineHeight="1.6"
         mb={6}
         borderBottom={`1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : '#f5f5f5'}`}
         className={Classes.TEXT_MUTED}

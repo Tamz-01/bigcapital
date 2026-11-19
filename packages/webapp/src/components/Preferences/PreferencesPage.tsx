@@ -16,6 +16,7 @@ import { CLASSES } from '@/constants/classes';
 import { withDashboardActions } from '@/containers/Dashboard/withDashboardActions';
 
 import '@/style/pages/Preferences/Page.scss';
+import '@/style/pages/Preferences/MobileSettings.scss';
 
 /**
  * Preferences page.

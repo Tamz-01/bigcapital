@@ -128,8 +128,16 @@ function OrganizationsListDrawerContentRoot({
       />
 
       <x.div flex={1} overflow="auto" minHeight={0}>
-        <x.div w={'100%'} maxWidth={'1000px'} mx="auto" pt={10} pb={20}>
+        <x.div
+          w={'100%'}
+          maxWidth={'1000px'}
+          mx="auto"
+          pt={10}
+          pb={20}
+          className="organizations-list-drawer__content"
+        >
           <x.div
+            className="organizations-list-drawer__controls"
             display="flex"
             flexWrap="wrap"
             alignItems="center"
@@ -162,6 +170,9 @@ function OrganizationsListDrawerContentRoot({
                 className={organizationsDrawerSearchFormGroupCss}
               >
                 <InputGroup
+                  aria-label={intl
+                    .get('workspaces.search_workspaces_short')
+                    .d('Search workspaces')}
                   leftIcon="search"
                   placeholder={intl.get('workspaces.search_workspaces_short', {
                     fallback: 'Search...',

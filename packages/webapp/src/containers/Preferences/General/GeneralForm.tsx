@@ -18,7 +18,6 @@ import {
   FInputGroup,
   FSelect,
   Stack,
-  Group,
 } from '@/components';
 import { SelectButton } from '@/components/Forms/Select';
 import { getAllCurrenciesOptions } from '@/constants/currencies';
@@ -126,15 +125,15 @@ export function PreferencesGeneralForm({
             placeholder={'Address 2'}
             fastField
           />
-          <Group spacing={15}>
+          <div className="organization-field-pair">
             <FInputGroup name={'address.city'} placeholder={'City'} fastField />
             <FInputGroup
               name={'address.postalCode'}
               placeholder={'ZIP Code'}
               fastField
             />
-          </Group>
-          <Group spacing={15}>
+          </div>
+          <div className="organization-field-pair">
             <FInputGroup
               name={'address.stateProvince'}
               placeholder={'State or Province'}
@@ -145,7 +144,7 @@ export function PreferencesGeneralForm({
               placeholder={'Phone number'}
               fastField
             />
-          </Group>
+          </div>
         </Stack>
       </FFormGroup>
 

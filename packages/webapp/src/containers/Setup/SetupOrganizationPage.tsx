@@ -1,4 +1,3 @@
-import { x } from '@xstyled/emotion';
 import { Formik, FormikHelpers } from 'formik';
 import { getSetupOrganizationValidation } from './SetupOrganization.schema';
 import { SetupOrganizationForm } from './SetupOrganizationForm';
@@ -37,8 +36,9 @@ export function SetupOrganizationPage({ wizard }: SetupOrganizationPageProps) {
   // Handle the form submit.
   const handleSubmit = (
     values: SetupOrganizationFormValues,
-    { setSubmitting }: FormikHelpers<SetupOrganizationFormValues>,
+    { setSubmitting, setStatus }: FormikHelpers<SetupOrganizationFormValues>,
   ) => {
+    setStatus(undefined);
     organizationSetupMutate({ ...transfromToSnakeCase(values) })
       .then(() => {
         setSubmitting(false);
@@ -48,25 +48,19 @@ export function SetupOrganizationPage({ wizard }: SetupOrganizationPageProps) {
         wizard?.next?.();
       })
       .catch(() => {
+        setStatus('setup.initializing.something_went_wrong');
         setSubmitting(false);
       });
   };
 
   return (
-    <x.div
-      maxWidth={'600px'}
-      w="100%"
-      mx="auto"
-      pt={'45px'}
-      pb={'20px'}
-      px={'25px'}
-    >
+    <div className="setup-page__form">
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
         component={SetupOrganizationForm}
         onSubmit={handleSubmit}
       />
-    </x.div>
+    </div>
   );
 }

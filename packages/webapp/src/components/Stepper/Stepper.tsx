@@ -26,6 +26,7 @@ export interface StepperProps {
 export function Stepper({
   active,
   onStepClick,
+  allowNextStepsSelect = true,
   children,
   classNames,
 }: StepperProps) {
@@ -97,6 +98,11 @@ const StepsItems = styled(Box)`
   flex-direction: row;
   align-items: center;
   gap: 16px;
+
+  @media (max-width: 599.98px) {
+    align-items: stretch;
+    gap: 4px;
+  }
 `;
 const StepsContent = styled(Box)`
   margin-top: 16px;
@@ -108,4 +114,10 @@ const StepSeparator = styled.div`
   border-color: var(--color-stepper-separator);
   border-top-style: solid;
   border-top-width: 1px;
+  min-width: 0;
+
+  @media (max-width: 599.98px) {
+    flex: 0 1 12px;
+    align-self: center;
+  }
 `;
