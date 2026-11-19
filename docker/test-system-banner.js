@@ -11,6 +11,9 @@
   source.target = '_blank';
   source.rel = 'noopener noreferrer';
   source.textContent = 'Source code';
+  source.style.color = 'inherit';
+  source.style.textDecoration = 'underline';
+  source.style.whiteSpace = 'nowrap';
   banner.append(source);
 
   const close = document.createElement('button');
