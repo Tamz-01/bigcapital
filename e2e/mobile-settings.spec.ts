@@ -130,6 +130,9 @@ test("a new organization can complete onboarding from the phone browser", async 
       name: /Go to dashboard|ໄປທີ່ໜ້າຫຼັກ/i,
     });
     await expect(dashboard).toBeVisible({ timeout: 55_000 });
+    await expect
+      .poll(() => setup.evaluate((el) => el.scrollWidth))
+      .toBeLessThanOrEqual(phone.width);
     await dashboard.click();
     await expect(
       page.getByRole("combobox", { name: "Display language" }),

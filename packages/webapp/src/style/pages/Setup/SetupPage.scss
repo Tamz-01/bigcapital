@@ -26,6 +26,17 @@
     }
   }
 
+  &__congrats {
+    max-width: 500px;
+    margin-inline: auto;
+    padding: 80px 16px 24px;
+
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
   @media only screen and (max-width: 1500px) {
     grid-template-columns: 35% 65%;
   }
@@ -171,6 +182,18 @@
 
       .bp4-input {
         font-size: 16px;
+      }
+    }
+
+    &__congrats {
+      padding-block-start: 16px;
+
+      svg {
+        max-height: 200px;
+      }
+
+      .bp4-button {
+        min-height: 44px;
       }
     }
   }
