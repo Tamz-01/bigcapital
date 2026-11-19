@@ -9,12 +9,12 @@ async function choose(page: Page, trigger: string, option: RegExp) {
   await page
     .locator("form")
     .getByRole("button", { name: trigger, exact: true })
-    .click();
+    .click({ timeout: 8_000 });
   await page
     .locator(".bp4-popover .bp4-menu-item, .bp4-popover2 .bp4-menu-item")
     .filter({ hasText: option })
     .first()
-    .click();
+    .click({ timeout: 8_000 });
 }
 
 test("organization settings fit the phone and save in the test tenant", async ({
@@ -123,8 +123,15 @@ test("a new organization can complete onboarding from the phone browser", async 
     await choose(page, "Select Base Currency...", /\bLAK\b|Lao kip/i);
     await choose(page, "English", /ລາວ/);
     await choose(page, "Select Fiscal Year...", /January.*December/i);
-    await choose(page, "Select Time Zone...", /Bangkok/i);
+    await choose(page, "Select Time Zone...", /Jakarta/i);
+    const submitted = page.waitForResponse(
+      (response) =>
+        response.request().method() === "POST" &&
+        new URL(response.url()).pathname === "/api/organization/build",
+      { timeout: 12_000 },
+    );
     await submit.click();
+    expect((await submitted).ok()).toBe(true);
 
     const dashboard = page.getByRole("button", {
       name: /Go to dashboard|ໄປທີ່ໜ້າຫຼັກ/i,
@@ -138,6 +145,8 @@ test("a new organization can complete onboarding from the phone browser", async 
       page.getByRole("combobox", { name: "Display language" }),
     ).toBeVisible();
   } finally {
-    await page.context().close();
+    if (!page.isClosed()) {
+      await page.context().close();
+    }
   }
 });
