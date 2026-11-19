@@ -16,10 +16,16 @@ export function LoginForm({ isSubmitting }: { isSubmitting: boolean }) {
   const handleLockClick = () => {
     setShowPassword(!showPassword);
   };
+  const visibilityLabel = showPassword
+    ? intl.get('auth.hide_password').d('Hide password')
+    : intl.get('auth.show_password').d('Show password');
 
   const lockButton = (
-    <Tooltip2 content={`${showPassword ? 'Hide' : 'Show'} Password`}>
+    <Tooltip2 content={visibilityLabel}>
       <Button
+        type="button"
+        aria-label={visibilityLabel}
+        className="auth-password-toggle"
         icon={showPassword ? 'unlock' : 'lock'}
         intent={Intent.WARNING}
         minimal={true}
@@ -32,13 +38,19 @@ export function LoginForm({ isSubmitting }: { isSubmitting: boolean }) {
   return (
     <Form>
       <FFormGroup name={'crediential'} label={intl.get('email_address')}>
-        <FInputGroup name={'crediential'} large={true} />
+        <FInputGroup
+          name={'crediential'}
+          large={true}
+          autoComplete="username"
+          inputMode="email"
+        />
       </FFormGroup>
 
       <FFormGroup name={'password'} label={intl.get('password')}>
         <FInputGroup
           name={'password'}
           large={true}
+          autoComplete="current-password"
           type={showPassword ? 'text' : 'password'}
           rightElement={lockButton}
         />

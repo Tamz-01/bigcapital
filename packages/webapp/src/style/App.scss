@@ -62,7 +62,7 @@ html[lang='lo'] {
 // App
 .App {
   min-width: 1100px;
-  min-height: 100vh;
+  min-height: var(--workspace-height);
 }
 // =======
 
@@ -320,3 +320,5 @@ span.table-tooltip-overview-target {
 :root {
   --top-offset: 60px;
 }
+
+@import './ResponsiveShell';

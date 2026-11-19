@@ -3,7 +3,7 @@
   const storageKey = 'bigcapital:test-system-banner-dismissed';
   const banner = document.createElement('aside');
   banner.setAttribute('aria-label', 'Test system notice');
-  banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:2147483647;background:#ffc400;color:#111;text-align:center;font:600 13px sans-serif;padding:6px 42px;';
+  banner.style.cssText = 'position:relative;z-index:40;background:#ffc400;color:#111;text-align:center;font:600 13px/1.4 sans-serif;padding:10px 46px;overflow-wrap:anywhere;';
   banner.append('TEST SYSTEM - Demo data only | ');
 
   const source = document.createElement('a');
@@ -18,8 +18,15 @@
   close.textContent = '\u00d7';
   close.setAttribute('aria-label', 'Dismiss test system notice');
   close.title = 'Hide until your next login';
-  close.style.cssText = 'position:absolute;right:6px;top:0;bottom:0;border:0;background:transparent;color:inherit;font-size:24px;cursor:pointer;padding:0 8px;';
+  close.style.cssText = 'position:absolute;inset-inline-end:0;inset-block:0;border:0;background:transparent;color:inherit;font-size:24px;cursor:pointer;width:44px;padding:0;';
   banner.append(close);
+
+  const updateNoticeHeight = () => {
+    document.documentElement.style.setProperty(
+      '--test-notice-height',
+      `${banner.offsetHeight}px`,
+    );
+  };
 
   const syncVisibility = () => {
     try {
@@ -27,9 +34,11 @@
     } catch {
       // Storage restrictions must not prevent the notice from displaying.
     }
+    updateNoticeHeight();
   };
   close.addEventListener('click', () => {
     banner.hidden = true;
+    updateNoticeHeight();
     try {
       localStorage.setItem(storageKey, 'true');
     } catch {
@@ -38,6 +47,7 @@
   });
   window.addEventListener('bigcapital:login', () => {
     banner.hidden = false;
+    updateNoticeHeight();
     try {
       localStorage.removeItem(storageKey);
     } catch {
@@ -47,6 +57,11 @@
   window.addEventListener('storage', (event) => {
     if (event.key === storageKey || event.key === null) syncVisibility();
   });
+  document.body.prepend(banner);
   syncVisibility();
-  document.body.append(banner);
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(updateNoticeHeight).observe(banner);
+  } else {
+    window.addEventListener('resize', updateNoticeHeight);
+  }
 })();

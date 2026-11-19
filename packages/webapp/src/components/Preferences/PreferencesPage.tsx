@@ -5,6 +5,10 @@ import React from 'react';
 import { useAppIntlContext } from '../AppIntlProvider';
 import { ErrorBoundary } from 'react-error-boundary';
 import DashboardErrorBoundary from '@/components/Dashboard/DashboardErrorBoundary';
+import {
+  ResponsiveNavigationDrawer,
+  useResponsiveNavigation,
+} from '@/components/Dashboard/ResponsiveNavigation';
 import PreferencesContentRoute from '@/components/Preferences/PreferencesContentRoute';
 import PreferencesSidebar from '@/components/Preferences/PreferencesSidebar';
 import PreferencesTopbar from '@/components/Preferences/PreferencesTopbar';
@@ -18,6 +22,7 @@ import '@/style/pages/Preferences/Page.scss';
  */
 function PreferencesPage({ toggleSidebarExpand }) {
   useAppIntlContext();
+  const { compact } = useResponsiveNavigation();
   // Shrink the dashboard sidebar once open application preferences page.
   React.useEffect(() => {
     toggleSidebarExpand(false);
@@ -33,7 +38,13 @@ function PreferencesPage({ toggleSidebarExpand }) {
         )}
       >
         <div className={classNames(CLASSES.PREFERENCES_PAGE)}>
-          <PreferencesSidebar />
+          {compact ? (
+            <ResponsiveNavigationDrawer name="preferences">
+              <PreferencesSidebar compact />
+            </ResponsiveNavigationDrawer>
+          ) : (
+            <PreferencesSidebar />
+          )}
 
           <div className={CLASSES.PREFERENCES_PAGE_CONTENT}>
             <PreferencesTopbar pageTitle={'asdad'} />

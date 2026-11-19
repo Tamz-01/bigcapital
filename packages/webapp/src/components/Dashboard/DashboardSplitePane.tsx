@@ -2,6 +2,7 @@ import * as FF from 'fp-ts/function';
 import { debounce } from 'lodash';
 import React, { useState, useRef } from 'react';
 import SplitPane from 'react-split-pane';
+import { useResponsiveNavigation } from './ResponsiveNavigation';
 import { withDashboard } from '@/containers/Dashboard/withDashboard';
 
 interface DashboardSplitPaneProps {
@@ -28,6 +29,7 @@ function DashboardSplitPane({
   sidebarExpended,
   children,
 }: DashboardSplitPaneProps) {
+  const { compact } = useResponsiveNavigation();
   const initialSize = 220;
 
   const [defaultSize, setDefaultSize] = useState(
@@ -44,7 +46,7 @@ function DashboardSplitPane({
   };
   return (
     <SplitPaneComponent
-      allowResize={sidebarExpended}
+      allowResize={!compact && sidebarExpended}
       split="vertical"
       minSize={180}
       maxSize={300}

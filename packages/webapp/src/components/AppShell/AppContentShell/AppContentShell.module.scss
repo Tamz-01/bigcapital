@@ -25,3 +25,18 @@
   display: flex;
   height: calc(100dvh - var(--aside-topbar-offset));
 }
+
+@media (max-width: 1099.98px) {
+  .root {
+    height: auto;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .main,
+  .aside {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+  }
+}

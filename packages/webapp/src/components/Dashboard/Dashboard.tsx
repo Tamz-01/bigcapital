@@ -4,6 +4,11 @@ import '@/style/pages/Dashboard/Dashboard.scss';
 import DashboardProvider from './DashboardProvider';
 import { DashboardSockets } from './DashboardSockets';
 import GlobalHotkeys from './GlobalHotkeys';
+import {
+  ResponsiveNavigationDrawer,
+  ResponsiveNavigationProvider,
+  useResponsiveNavigation,
+} from './ResponsiveNavigation';
 import DashboardContent from '@/components/Dashboard/DashboardContent';
 import DashboardDocumentTitle from '@/components/Dashboard/DashboardDocumentTitle';
 import DashboardSplitPane from '@/components/Dashboard/DashboardSplitePane';
@@ -18,11 +23,13 @@ import { DashboardUniversalSearch } from '@/containers/UniversalSearch/Dashboard
  * Dashboard preferences.
  */
 function DashboardPreferences() {
+  const { compact } = useResponsiveNavigation();
+
   return (
     <div className="dashboard-layout">
       <div className="dashboard-layout__main">
         <DashboardSplitPane>
-          <Sidebar />
+          {compact ? null : <Sidebar />}
           <PreferencesPage />
         </DashboardSplitPane>
       </div>
@@ -34,11 +41,13 @@ function DashboardPreferences() {
  * Dashboard other routes.
  */
 function DashboardAnyPage() {
+  const { compact } = useResponsiveNavigation();
+
   return (
     <div className="dashboard-layout">
       <div className="dashboard-layout__main">
         <DashboardSplitPane>
-          <Sidebar />
+          {compact ? null : <Sidebar />}
           <DashboardContent />
         </DashboardSplitPane>
       </div>
@@ -54,10 +63,15 @@ export default function Dashboard() {
     <DashboardProvider>
       <DashboardDocumentTitle />
 
-      <Switch>
-        <Route path="/preferences" component={DashboardPreferences} />
-        <Route path="/" component={DashboardAnyPage} />
-      </Switch>
+      <ResponsiveNavigationProvider>
+        <Switch>
+          <Route path="/preferences" component={DashboardPreferences} />
+          <Route path="/" component={DashboardAnyPage} />
+        </Switch>
+        <ResponsiveNavigationDrawer name="main">
+          <Sidebar compact />
+        </ResponsiveNavigationDrawer>
+      </ResponsiveNavigationProvider>
 
       <DashboardSockets />
       <DashboardUniversalSearch />

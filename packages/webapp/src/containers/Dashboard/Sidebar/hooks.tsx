@@ -287,6 +287,8 @@ function useBindSidebarItemClick(menu: ISidebarMenuItem[]): ISidebarMenuItem[] {
 const findSubmenuBySubmenuId =
   (submenuId: unknown) =>
   (menu: SidebarMenuItem[]): ISidebarMenuItem[] => {
+    if (!submenuId) return [];
+
     const groupItem = deepdash.findDeep(
       menu,
       (item: SidebarMenuItem) => {
@@ -342,8 +344,6 @@ function useAssocSidebarItemHasChildren(
  * @returns {ISidebarMenuItem[]}
  */
 export function useSubSidebarMenu(submenuId: unknown): ISidebarMenuItem[] {
-  if (!submenuId) return [];
-
   return FF.pipe(
     SidebarMenu,
     findSubmenuBySubmenuId(submenuId),
