@@ -58,7 +58,7 @@ test("tap navigation keeps a draft across opening, closing and resizing", async 
   const draft = page.locator('input[name="firstName"]');
   const value = "UNSAVED ລາວ عربي 123";
   const menu = page.getByRole("button", { name: english.menu, exact: true });
-  const drawer = page.locator(".compact-navigation--main");
+  const drawer = page.getByRole("dialog", { name: english.menu, exact: true });
 
   await draft.fill(value);
   await menu.tap();

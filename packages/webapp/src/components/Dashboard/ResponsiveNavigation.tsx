@@ -84,23 +84,29 @@ export function ResponsiveNavigationDrawer({
 
   return (
     <Drawer
-      aria-labelledby={titleId}
       className={`compact-navigation compact-navigation--${name}`}
       isOpen={compact && panel === name}
       onClose={closePanel}
       position={currentLocale === 'ar' ? Position.RIGHT : Position.LEFT}
       size="min(320px, 90vw)"
     >
-      <div className="compact-navigation__heading">
-        <h2 id={titleId}>{title}</h2>
-        <Button
-          minimal
-          icon="cross"
-          aria-label={intl.get('close')}
-          onClick={closePanel}
-        />
+      <div
+        className="compact-navigation__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+      >
+        <div className="compact-navigation__heading">
+          <h2 id={titleId}>{title}</h2>
+          <Button
+            minimal
+            icon="cross"
+            aria-label={intl.get('close')}
+            onClick={closePanel}
+          />
+        </div>
+        {children}
       </div>
-      {children}
     </Drawer>
   );
 }
