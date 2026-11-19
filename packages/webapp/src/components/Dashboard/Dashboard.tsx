@@ -29,7 +29,7 @@ function DashboardPreferences() {
     <div className="dashboard-layout">
       <div className="dashboard-layout__main">
         <DashboardSplitPane>
-          {compact ? null : <Sidebar />}
+          {compact ? <div aria-hidden /> : <Sidebar />}
           <PreferencesPage />
         </DashboardSplitPane>
       </div>
@@ -47,7 +47,7 @@ function DashboardAnyPage() {
     <div className="dashboard-layout">
       <div className="dashboard-layout__main">
         <DashboardSplitPane>
-          {compact ? null : <Sidebar />}
+          {compact ? <div aria-hidden /> : <Sidebar />}
           <DashboardContent />
         </DashboardSplitPane>
       </div>
