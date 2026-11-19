@@ -104,6 +104,9 @@
   }
 
   .dashboard-content .dashboard__topbar-navbar {
+    width: auto;
+    max-width: 100%;
+
     .bp4-navbar-divider,
     .bp4-button-text {
       display: none;

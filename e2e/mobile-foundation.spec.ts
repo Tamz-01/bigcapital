@@ -61,6 +61,14 @@ test("tap navigation keeps a draft across opening, closing and resizing", async 
   const drawer = page.getByRole("dialog", { name: english.menu, exact: true });
 
   await draft.fill(value);
+  await expect
+    .poll(async () => {
+      const actions = await page
+        .locator(".dashboard__topbar-right")
+        .boundingBox();
+      return actions?.height ?? Infinity;
+    })
+    .toBeLessThanOrEqual(48);
   await menu.tap();
   await expect(drawer).toBeVisible();
   await drawer
