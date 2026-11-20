@@ -21,12 +21,24 @@ import {
   withFormikSelect,
 } from '@blueprintjs-formik/select';
 import React from 'react';
+import { useAppIntlContext } from '../AppIntlProvider';
 import { FDateInput } from './FDateInput';
 import { FSelect, BPSelect } from './Select';
 
+// FastField caches control props. Values remain in the mounted Formik form.
+function FInputGroup(props: React.ComponentProps<typeof InputGroup>) {
+  const { currentLocale } = useAppIntlContext();
+  return <InputGroup key={currentLocale} {...props} />;
+}
+
+function FTextArea(props: React.ComponentProps<typeof TextArea>) {
+  const { currentLocale } = useAppIntlContext();
+  return <TextArea key={currentLocale} {...props} />;
+}
+
 export {
   FormGroup as FFormGroup,
-  InputGroup as FInputGroup,
+  FInputGroup,
   NumericInput as FNumericInput,
   Checkbox as FCheckbox,
   RadioGroup as FRadioGroup,
@@ -36,7 +48,7 @@ export {
   FormikMultiSelect as FMultiSelect,
   EditableText as FEditableText,
   FormikSuggest as FSuggest,
-  TextArea as FTextArea,
+  FTextArea,
   FDateInput,
   HTMLSelect as FHTMLSelect,
   TimezoneSelect as FTimezoneSelect,

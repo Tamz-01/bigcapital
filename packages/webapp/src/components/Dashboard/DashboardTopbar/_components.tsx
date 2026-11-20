@@ -1,5 +1,6 @@
 import { Button, Classes } from '@blueprintjs/core';
 import React from 'react';
+import intl from 'react-intl-universal';
 import { Icon, FormattedMessage as T } from '@/components';
 import { useGetUniversalSearchTypeOptions } from '@/containers/UniversalSearch/utils';
 
@@ -23,17 +24,14 @@ export function DashboardHamburgerButton(
         width="20"
         height="20"
         viewBox="0 0 20 20"
-        role="img"
+        aria-hidden="true"
         focusable="false"
       >
-        <title>
-          <T id={'menu'} />
-        </title>
         <path
           stroke="currentColor"
-          stroke-linecap="round"
-          stroke-miterlimit="5"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeMiterlimit="5"
+          strokeWidth="2"
           d="M4 7h15M4 12h15M4 17h15"
         ></path>
       </svg>
@@ -58,6 +56,7 @@ export function DashboardQuickSearchButton(
       className={Classes.MINIMAL}
       icon={<Icon icon={'search-24'} iconSize={20} />}
       text={<T id={'quick_find'} />}
+      aria-label={intl.get('quick_find')}
       {...rest}
     />
   );

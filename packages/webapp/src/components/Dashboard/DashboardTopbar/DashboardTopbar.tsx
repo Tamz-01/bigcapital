@@ -12,6 +12,7 @@ import {
 } from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/popover2';
 import * as FF from 'fp-ts/function';
+import intl from 'react-intl-universal';
 import { useHistory } from 'react-router-dom';
 import {
   DashboardHamburgerButton,
@@ -25,6 +26,8 @@ import { FormattedMessage as T, Icon, Hint, If } from '@/components';
 import DashboardBackLink from '@/components/Dashboard/DashboardBackLink';
 import DashboardBreadcrumbs from '@/components/Dashboard/DashboardBreadcrumbs';
 import DashboardTopbarUser from '@/components/Dashboard/TopbarUser';
+import { LanguageSelector } from '@/components/Dashboard/LanguageSelector';
+import { useResponsiveNavigation } from '@/components/Dashboard/ResponsiveNavigation';
 import { DialogsName } from '@/constants/dialogs';
 import { DRAWERS } from '@/constants/drawers';
 import {
@@ -69,6 +72,8 @@ function DashboardTopbar({
   openDialog,
 }: DashboardTopbarProps) {
   const history = useHistory();
+  const { compact, panel, openPanel } = useResponsiveNavigation();
+  const sidebarOpen = compact ? panel === 'main' : sidebarExpended;
   const { openDrawer } = useDrawerActions();
   const { data: unreadCount = 0 } = useNotificationsUnreadCount();
 
@@ -77,7 +82,8 @@ function DashboardTopbar({
   };
 
   const handleSidebarToggleBtn = () => {
-    toggleSidebarExpand();
+    if (compact) openPanel('main');
+    else toggleSidebarExpand();
   };
 
   const handleNotificationsClick = () => {
@@ -90,7 +96,7 @@ function DashboardTopbar({
         <div className="dashboard__topbar-sidebar-toggle">
           <Tooltip
             content={
-              !sidebarExpended ? (
+              !sidebarOpen ? (
                 <T id={'open_sidebar'} />
               ) : (
                 <T id={'close_sidebar'} />
@@ -98,7 +104,12 @@ function DashboardTopbar({
             }
             position={Position.RIGHT}
           >
-            <DashboardHamburgerButton onClick={handleSidebarToggleBtn} />
+            <DashboardHamburgerButton
+              aria-label={intl.get('menu')}
+              aria-expanded={sidebarOpen}
+              aria-haspopup={compact ? 'dialog' : undefined}
+              onClick={handleSidebarToggleBtn}
+            />
           </Tooltip>
         </div>
 
@@ -127,6 +138,7 @@ function DashboardTopbar({
       </div>
 
       <div className="dashboard__topbar-right">
+        <LanguageSelector />
         <Navbar className="dashboard__topbar-navbar">
           <NavbarGroup>
             <DashboardQuickSearchButton onClick={() => openGlobalSearch()} />
@@ -139,6 +151,7 @@ function DashboardTopbar({
                 <Button
                   className={Classes.MINIMAL}
                   icon={<Icon icon={'notification-24'} iconSize={20} />}
+                  aria-label={intl.get('notifications')}
                   onClick={handleNotificationsClick}
                 />
                 {unreadCount > 0 && (
@@ -192,6 +205,7 @@ function DashboardTopbar({
                 className={Classes.MINIMAL}
                 icon={<Icon icon={'help-24'} iconSize={20} />}
                 text={<T id={'help'} />}
+                aria-label={intl.get('help')}
               />
             </Popover2>
             <NavbarDivider />

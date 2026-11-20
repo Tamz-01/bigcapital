@@ -2,7 +2,7 @@ import React from 'react';
 import intl from 'react-intl-universal';
 import styles from './InvoiceFormHeader.module.scss';
 import { InvoiceFormHeaderFields } from './InvoiceFormHeaderFields';
-import { useInvoiceTotalFormatted } from './utils';
+import { useInvoiceDueAmountFormatted } from './utils';
 import { Group, PageFormBigNumber } from '@/components';
 
 /**
@@ -14,7 +14,7 @@ export function InvoiceFormHeader() {
       position="apart"
       align={'flex-start'}
       p="25px 32px"
-      className={styles.root}
+      className={`sales-form-header ${styles.root}`}
     >
       <InvoiceFormHeaderFields />
       <InvoiceFormBigTotal />
@@ -28,7 +28,7 @@ export function InvoiceFormHeader() {
  */
 function InvoiceFormBigTotal() {
   // Calculate the total due amount of invoice entries.
-  const totalFormatted = useInvoiceTotalFormatted();
+  const totalFormatted = useInvoiceDueAmountFormatted();
 
   return (
     <PageFormBigNumber label={intl.get('due_amount')} amount={totalFormatted} />

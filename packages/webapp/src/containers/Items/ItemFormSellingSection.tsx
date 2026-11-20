@@ -83,6 +83,7 @@ export function ItemFormSellingSection() {
       >
         <AccountsSelect
           name={'sellAccountId'}
+          buttonProps={{ 'data-testId': 'item-selling-account' }}
           items={accounts}
           placeholder={intl.get('select_account')}
           disabled={!values.sellable}

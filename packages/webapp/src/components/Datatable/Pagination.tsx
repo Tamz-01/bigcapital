@@ -221,6 +221,9 @@ export function Pagination({
   onPageSizeChange,
 }: PaginationProps) {
   const isDark = useIsDarkMode();
+  const pageSizes = pageSizesOption.includes(size)
+    ? pageSizesOption
+    : [size, ...pageSizesOption];
   const [state, dispatch] = useReducer(
     reducer,
     { currentPage, total, size },
@@ -237,7 +240,12 @@ export function Pagination({
   }, [total, size, currentPage]);
 
   return (
-    <x.div display="flex" p="20px 14px" fontSize="13px">
+    <x.div
+      className="record-pagination"
+      display="flex"
+      p="20px 14px"
+      fontSize="13px"
+    >
       <x.div>
         <StyledButtonGroup>
           <StyledPreviousButton
@@ -314,7 +322,8 @@ export function Pagination({
           <T id={'page_size'} />
           <StyledHTMLSelect
             minimal={true}
-            options={pageSizesOption}
+            aria-label={intl.get('page_size')}
+            options={pageSizes}
             value={size}
             onChange={(event) => {
               const pageSize = parseInt(event.currentTarget.value, 10);

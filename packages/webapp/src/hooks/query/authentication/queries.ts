@@ -46,6 +46,9 @@ export function setAuthLoginCookies(
   setCookie('organization_id', data.organization_id ?? '', expiry);
   // @ts-ignore
   setCookie('tenant_id', String(data.tenant_id ?? ''), expiry);
+  // Test-only UI can reset its notice for each successful login. No auth data
+  // is included, and production has no listener for this event.
+  window.dispatchEvent(new Event('bigcapital:login'));
 }
 
 export function useAuthLogin(

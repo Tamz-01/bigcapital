@@ -11,6 +11,7 @@ import {
 interface SidebarContainerProps {
   children: React.ReactNode;
   sidebarExpended: boolean;
+  compact?: boolean;
 }
 
 /**
@@ -20,26 +21,28 @@ interface SidebarContainerProps {
 function SidebarContainerJSX({
   // #ownProps
   children,
+  compact,
 
   // #withDashboard
   sidebarExpended,
 }: SidebarContainerProps) {
+  const expanded = compact || sidebarExpended;
   const sidebarScrollerRef = React.useRef<HTMLDivElement | null>(null);
 
   // Toggles classname to body once sidebar expend/shrink.
-  useObserveSidebarExpendedBodyclass(sidebarExpended);
+  useObserveSidebarExpendedBodyclass(expanded);
 
   useEffect(() => {
-    if (!sidebarExpended && sidebarScrollerRef.current) {
+    if (!expanded && sidebarScrollerRef.current) {
       sidebarScrollerRef.current.scrollTo({
         top: 0,
         left: 0,
       });
     }
-  }, [sidebarExpended]);
+  }, [expanded]);
 
   const handleSidebarMouseLeave = () => {
-    if (!sidebarExpended && sidebarScrollerRef.current) {
+    if (!expanded && sidebarScrollerRef.current) {
       sidebarScrollerRef.current.scrollTo({ top: 0, left: 0 });
     }
   };

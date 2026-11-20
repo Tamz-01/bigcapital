@@ -158,7 +158,7 @@ function CreditNoteFormInner({}: CreditNoteFormInnerProps) {
         })}
       >
         <PageForm flex="1">
-          <PageForm.Body>
+          <PageForm.Body className="sales-form-body">
             <CreditNoteFormTopBar />
             <CreditNoteFormHeader />
             <CreditNoteItemsEntriesEditorField />

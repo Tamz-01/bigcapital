@@ -26,7 +26,7 @@ function WarehouseActivateDialog({
       isOpen={isOpen}
       canEscapeKeyClose={true}
       autoFocus={true}
-      className={'dialog--warehouse-activate'}
+      className={'dialog--warehouse-activate settings-form-dialog'}
     >
       <DialogSuspense>
         <WarehouseActivateDialogContent dialogName={dialogName} />

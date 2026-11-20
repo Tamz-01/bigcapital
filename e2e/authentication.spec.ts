@@ -47,8 +47,9 @@ test.describe('authentication', () => {
       await authPage.getByLabel('Email Address').click();
       await authPage.getByLabel('Email Address').fill(faker.internet.email());
 
-      await authPage.getByLabel('Password').click();
-      await authPage.getByLabel('Password').fill(faker.internet.password());
+      const password = authPage.getByLabel('Password', { exact: true });
+      await password.click();
+      await password.fill(faker.internet.password());
 
       await authPage.getByRole('button', { name: 'Log in' }).click();
 

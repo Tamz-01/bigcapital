@@ -37,3 +37,35 @@ describe('ItemEntry.calcAmount', () => {
     ).toBe(1900);
   });
 });
+
+describe('ItemEntry tax basis', () => {
+  const entry = {
+    quantity: 2,
+    rate: 100,
+    discount: 10,
+    discountType: DiscountType.Percentage,
+    taxRate: 10,
+  };
+
+  it('calculates exclusive tax on the discounted amount for new invoice lines', () => {
+    const line = ItemEntry.fromJson({ ...entry, taxOnDiscountedAmount: true });
+    expect(line.taxAmount).toBe(18);
+    expect(line.total).toBe(198);
+  });
+
+  it('calculates inclusive tax on the discounted amount', () => {
+    const line = ItemEntry.fromJson({
+      ...entry,
+      rate: 110,
+      isInclusiveTax: true,
+      taxOnDiscountedAmount: true,
+    });
+    expect(line.taxAmount).toBe(18);
+    expect(line.totalExcludingTax).toBe(180);
+  });
+
+  it('keeps the original tax basis for existing lines', () => {
+    const line = ItemEntry.fromJson({ ...entry, taxOnDiscountedAmount: false });
+    expect(line.taxAmount).toBe(20);
+  });
+});

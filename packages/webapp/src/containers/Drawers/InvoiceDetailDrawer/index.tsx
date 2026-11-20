@@ -26,6 +26,7 @@ function InvoiceDetailDrawer({
 
   return (
     <Drawer
+      className="sales-record-drawer"
       isOpen={isOpen}
       name={name}
       style={{ minWidth: '700px', maxWidth: '1000px' }}

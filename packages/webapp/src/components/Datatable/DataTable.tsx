@@ -56,6 +56,7 @@ export function DataTable(props) {
 
     // Pagination props.
     initialPageIndex = 0,
+    requestedPageIndex,
     initialPageSize = 20,
 
     // Sorting props.
@@ -63,6 +64,7 @@ export function DataTable(props) {
 
     // Hidden columns.
     initialHiddenColumns = [],
+    recordList = false,
 
     updateDebounceTime = 200,
     selectionColumnWidth = 42,
@@ -185,6 +187,12 @@ export function DataTable(props) {
   const tableRef = useRef(table);
   tableRef.current = table;
 
+  useUpdateEffect(() => {
+    if (requestedPageIndex !== undefined) {
+      tableRef.current.gotoPage(requestedPageIndex);
+    }
+  }, [requestedPageIndex]);
+
   // Tracks the previous selected rows ids to detect when the externally
   // managed selection (e.g. the Redux mirror) transitions from non-empty to
   // empty. That happens right after a successful bulk operation, and since
@@ -210,7 +218,7 @@ export function DataTable(props) {
   });
 
   return (
-    <TableContext.Provider value={{ table, props }}>
+    <TableContext.Provider value={{ table, props: { ...props, recordList } }}>
       <TableWrapperRenderer>
         <TableHeaderRenderer />
 

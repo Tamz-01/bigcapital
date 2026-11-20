@@ -41,16 +41,28 @@
 
 // fonts
 @import 'pages/fonts';
-@import "section";
+@import 'section';
 
 body {
   background-color: var(--color-app-body);
   overflow: hidden;
 }
+
+html[lang='lo'] {
+  body,
+  input,
+  textarea,
+  button,
+  select,
+  .bp4-menu {
+    font-family: 'Phetsarath OT', 'Lao Saysettha OT', 'Lao Saysettha',
+      'Noto Sans Lao', $pt-font-family;
+  }
+}
 // App
 .App {
   min-width: 1100px;
-  min-height: 100vh;
+  min-height: var(--workspace-height);
 }
 // =======
 
@@ -59,7 +71,6 @@ body.hide-scrollbar .Pane2 {
 }
 
 .bp4-fill {
-
   .bp4-popover-wrapper,
   .bp4-popover-target {
     display: block;
@@ -111,21 +122,27 @@ body.hide-scrollbar .Pane2 {
   background-color: #0066ff;
 }
 
-.ReactVirtualized__Collection {}
+.ReactVirtualized__Collection {
+}
 
-.ReactVirtualized__Collection__innerScrollContainer {}
+.ReactVirtualized__Collection__innerScrollContainer {
+}
 
 /* Grid default theme */
 
-.ReactVirtualized__Grid {}
+.ReactVirtualized__Grid {
+}
 
-.ReactVirtualized__Grid__innerScrollContainer {}
+.ReactVirtualized__Grid__innerScrollContainer {
+}
 
 /* Table default theme */
 
-.ReactVirtualized__Table {}
+.ReactVirtualized__Table {
+}
 
-.ReactVirtualized__Table__Grid {}
+.ReactVirtualized__Table__Grid {
+}
 
 .ReactVirtualized__Table__headerRow {
   font-weight: 700;
@@ -188,7 +205,8 @@ body.hide-scrollbar .Pane2 {
 
 /* List default theme */
 
-.ReactVirtualized__List {}
+.ReactVirtualized__List {
+}
 
 .bp4-drawer {
   box-shadow: 0 0 0;
@@ -213,7 +231,9 @@ html[lang^='ar'] {
 }
 
 .bp4-popover2 {
-  box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.02), 0 2px 4px rgba(16, 22, 26, 0.1),
+  box-shadow:
+    0 0 0 1px rgba(16, 22, 26, 0.02),
+    0 2px 4px rgba(16, 22, 26, 0.1),
     0 8px 24px rgba(16, 22, 26, 0.1);
 }
 
@@ -246,7 +266,7 @@ html[lang^='ar'] {
         margin: 0;
       }
 
-      >.bp4-spinner {
+      > .bp4-spinner {
         margin: 20px 0;
       }
     }
@@ -286,14 +306,13 @@ html[lang^='ar'] {
 a.text-link {
   text-decoration: none;
   &,
-  .bp4-dark &{
+  .bp4-dark & {
     color: inherit;
   }
   &:hover {
     text-decoration: underline;
   }
 }
-
 
 span.table-tooltip-overview-target {
   display: inline;
@@ -308,3 +327,7 @@ span.table-tooltip-overview-target {
 :root {
   --top-offset: 60px;
 }
+
+@import './ResponsiveShell';
+@import './MasterRecords';
+@import './MobileSales';

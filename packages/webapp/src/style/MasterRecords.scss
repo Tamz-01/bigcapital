@@ -1,0 +1,369 @@
+.master-record-form {
+  padding-bottom: 0 !important;
+}
+
+.master-record-form__navigation {
+  position: sticky;
+  inset-block-start: 20px;
+  flex: 0 0 auto;
+}
+
+.master-record-form__fields {
+  min-inline-size: 0;
+}
+
+.item-inventory-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+  column-gap: 16px;
+}
+
+.bigcapital-datatable .table .thead .record-table-sort {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  min-inline-size: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 1100px) {
+  .master-record-drawer--standard {
+    min-width: 700px;
+    max-width: 900px;
+  }
+
+  .master-record-drawer--item-create {
+    min-width: 800px;
+    max-width: 1000px;
+  }
+
+  .master-record-drawer--tax-rate {
+    min-width: 650px;
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .dashboard__insider:is(
+      .dashboard__insider--customers-list,
+      .dashboard__insider--vendors-list,
+      .dashboard__insider--items-list,
+      .dashboard__insider--accounts-chart,
+      .dashboard__insider--items-categories-list,
+      .dashboard__insider--tax-rate-form,
+      .dashboard__insider--sales-invoices-list,
+      .dashboard__insider--sale_estimate,
+      .dashboard__insider--sales_receipts,
+      .dashboard__insider--payment-receives-list,
+      .dashboard__insider--credit-notes-list
+    ) {
+    .dashboard__page-content,
+    .dashboard__datatable,
+    .bigcapital-datatable {
+      min-inline-size: 0;
+      max-inline-size: 100%;
+    }
+
+    .navbar--dashboard-actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 4px 8px;
+      gap: 4px 8px;
+
+      .bp4-navbar-group {
+        display: contents;
+      }
+
+      .bp4-navbar-divider {
+        display: none;
+      }
+
+      .bp4-button {
+        min-block-size: 40px;
+      }
+
+      .bp4-switch {
+        margin-block: 0;
+      }
+    }
+
+    .bigcapital-datatable .tbody {
+      overscroll-behavior-inline: contain;
+
+      .td.display_name .cell-inner {
+        min-inline-size: 0;
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+    }
+
+    .record-pagination {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      padding: 8px 10px;
+
+      > div {
+        min-inline-size: 0;
+        margin-inline: 0;
+      }
+
+      .bp4-button-group {
+        max-inline-size: 100%;
+        flex-wrap: wrap;
+      }
+
+      .bp4-button,
+      .bp4-html-select select {
+        min-block-size: 38px;
+      }
+
+      .bp4-html-select select {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .master-record-form-page {
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .master-record-form-page .page-form--item {
+    padding: 0;
+  }
+
+  form .master-record-form {
+    margin: 10px;
+    padding: 14px;
+    min-inline-size: 0;
+  }
+
+  .master-record-form .master-record-form__layout {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .master-record-form .master-record-form__navigation {
+    inset-block-start: 0;
+    z-index: 2;
+    background: var(--color-card-background);
+  }
+
+  .master-record-form__navigation,
+  .master-record-drawer {
+    .bp4-tab-list {
+      max-inline-size: 100%;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+    }
+
+    .bp4-tab {
+      flex: 0 0 auto;
+      min-block-size: 40px;
+      white-space: nowrap;
+    }
+  }
+
+  .master-record-form__fields [data-section-id] {
+    scroll-margin-block-start: 52px;
+  }
+
+  form .master-record-form .master-record-form__actions {
+    padding-inline: 0;
+  }
+
+  .master-record-form,
+  .master-record-dialog,
+  .dialog--account-form,
+  .dialog--category-form,
+  .dialog--contact-duplicate,
+  .dialog--customer-opening-balance,
+  .dialog--vendor-opening-balance {
+    .bp4-form-group,
+    .bp4-form-content,
+    .bp6-form-content {
+      min-inline-size: 0;
+      max-inline-size: 100%;
+    }
+
+    .bp4-form-group.bp4-inline {
+      flex-direction: column;
+      align-items: stretch;
+
+      > .bp4-label {
+        min-inline-size: 0;
+        margin: 0 0 6px;
+        overflow-wrap: anywhere;
+        line-height: 1.35;
+      }
+
+      > .bp4-form-content {
+        width: 100%;
+      }
+    }
+
+    .bp4-input,
+    textarea {
+      font-size: 16px;
+      max-inline-size: 100%;
+    }
+
+    .bp4-button {
+      min-inline-size: 0;
+      max-inline-size: 100%;
+      min-block-size: 38px;
+    }
+
+    .bp4-button-text {
+      min-inline-size: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .bp4-dialog-body,
+    .bp4-dialog-footer {
+      margin-inline: 14px;
+    }
+
+    .bp4-dialog-footer-actions {
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+  }
+
+  .master-record-form .master-record-contact-name {
+    gap: 6px;
+    flex-wrap: wrap;
+
+    > * {
+      min-inline-size: 0;
+      flex: 1 1 125px;
+    }
+
+    > :first-child {
+      flex-basis: 100%;
+    }
+
+    .bp4-input,
+    .bp4-button {
+      border-radius: 3px;
+    }
+  }
+
+  .bp4-drawer.master-record-drawer {
+    .bp4-drawer-header {
+      padding-inline: 12px 6px;
+
+      .bp4-heading {
+        min-inline-size: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .bp4-dialog-close-button {
+        flex: 0 0 auto;
+        min-inline-size: 42px;
+        min-block-size: 42px;
+      }
+    }
+
+    .bp4-drawer-body,
+    .card,
+    .details-menu,
+    .detail-item {
+      min-inline-size: 0;
+    }
+
+    .detail-item__content,
+    .detail-item__label {
+      overflow-wrap: anywhere;
+      min-inline-size: 0;
+    }
+
+    .details-menu--horizantal .detail-item {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .bp4-navbar,
+    .bp4-navbar-group {
+      height: auto;
+      min-block-size: 40px;
+    }
+
+    .bp4-navbar-group {
+      float: none;
+      flex-wrap: wrap;
+    }
+  }
+
+  .master-record-drawer--quick-create .master-record-quick-create-card {
+    margin: 8px;
+    padding: 6px;
+  }
+
+  .filter-dropdown {
+    width: min(600px, calc(100vw - 24px));
+
+    .filter-dropdown__condition {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 6px;
+
+      .bp4-form-group {
+        width: auto;
+        min-inline-size: 0;
+        padding: 0;
+      }
+
+      .form-group--condition {
+        grid-column: 1 / 3;
+      }
+
+      .form-group--value {
+        grid-column: 1 / -1;
+      }
+
+      .button--remove {
+        grid-area: 1 / 3;
+        margin: 0;
+      }
+
+      .bp4-button,
+      .bp4-input {
+        min-block-size: 38px;
+        max-inline-size: 100%;
+      }
+
+      .bp4-input {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .bp4-select-popover,
+  .bp4-multi-select-popover {
+    max-inline-size: calc(100vw - 16px);
+
+    .bp4-menu {
+      max-inline-size: 100%;
+    }
+
+    .bp4-menu-item .bp4-text-overflow-ellipsis {
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .bp4-input {
+      font-size: 16px;
+    }
+  }
+}

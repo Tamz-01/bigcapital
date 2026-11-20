@@ -27,7 +27,7 @@ function QuickCreateItemDrawer({
     <Drawer
       isOpen={isOpen}
       name={name}
-      style={{ minWidth: '800px', maxWidth: '1000px' }}
+      className="master-record-drawer master-record-drawer--item-create master-record-drawer--quick-create"
       size={'72%'}
       payload={payload}
     >

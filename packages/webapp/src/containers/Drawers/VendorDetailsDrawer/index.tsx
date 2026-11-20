@@ -26,7 +26,12 @@ function VendorDetailsDrawer({
   payload: { vendorId },
 }: VendorDetailsDrawerProps) {
   return (
-    <Drawer isOpen={isOpen} name={name} size={'750px'}>
+    <Drawer
+      isOpen={isOpen}
+      name={name}
+      size={'750px'}
+      className="master-record-drawer"
+    >
       <DrawerSuspense>
         <VendorDetailsDrawerContent vendorId={vendorId} />
       </DrawerSuspense>

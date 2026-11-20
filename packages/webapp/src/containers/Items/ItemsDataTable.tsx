@@ -186,6 +186,7 @@ function ItemsDataTableInner({
   return (
     <DashboardContentTable>
       <DataTable
+        recordList
         columns={columns}
         data={items || []}
         loading={isItemsLoading}
@@ -201,12 +202,14 @@ function ItemsDataTableInner({
         sticky={true}
         rowClassNames={rowClassNames}
         pagination={true}
+        initialPageIndex={itemsTableState?.pageIndex ?? 0}
+        requestedPageIndex={itemsTableState?.pageIndex ?? 0}
         initialPageSize={itemsTableState?.pageSize || 10}
         manualSortBy={true}
         manualPagination={true}
         rowsCount={pagination?.total || 0}
         autoResetSortBy={false}
-        autoResetPage={true}
+        autoResetPage={false}
         TableLoadingRenderer={TableSkeletonRows}
         TableHeaderSkeletonRenderer={TableSkeletonHeader}
         ContextMenu={ItemsActionMenuList}

@@ -1,34 +1,35 @@
 import { ReactNode } from 'react';
-import styled from 'styled-components';
+import BodyClassName from 'react-body-classname';
 import { Icon } from '@/components';
+import { BigcapitalAlt } from '@/components/Icons/BigcapitalAlt';
+import { useIsDarkMode } from '@/hooks/useDarkMode';
+import '@/style/pages/Authentication/Auth.scss';
 
 interface AuthContainerProps {
   children: ReactNode;
 }
 
 export function AuthContainer({ children }: AuthContainerProps) {
-  return (
-    <AuthPage>
-      <AuthInsider>
-        <AuthLogo>
-          <Icon icon="bigcapital" height={37} width={214} />
-        </AuthLogo>
+  const isDarkMode = useIsDarkMode();
 
-        {children}
-      </AuthInsider>
-    </AuthPage>
+  return (
+    <BodyClassName className="authentication">
+      <main className="auth-page">
+        <div className="auth-page__inner">
+          <div className="auth-page__logo">
+            {isDarkMode ? (
+              <BigcapitalAlt
+                color="rgba(255, 255, 255, 0.6)"
+                height={37}
+                width={214}
+              />
+            ) : (
+              <Icon icon="bigcapital" height={37} width={214} />
+            )}
+          </div>
+          {children}
+        </div>
+      </main>
+    </BodyClassName>
   );
 }
-
-const AuthPage = styled.div``;
-const AuthInsider = styled.div`
-  width: 384px;
-  margin: 0 auto;
-  margin-bottom: 40px;
-  padding-top: 80px;
-`;
-
-const AuthLogo = styled.div`
-  text-align: center;
-  margin-bottom: 40px;
-`;

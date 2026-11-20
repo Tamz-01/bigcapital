@@ -1,9 +1,14 @@
 // @ts-nocheck
 import classNames from 'classnames';
+import { Button } from '@blueprintjs/core';
 import * as FF from 'fp-ts/function';
 import React from 'react';
+import intl from 'react-intl-universal';
 import { Route, Switch } from 'react-router-dom';
 import DashboardTopbarUser from '@/components/Dashboard/TopbarUser';
+import { DashboardHamburgerButton } from '@/components/Dashboard/DashboardTopbar/_components';
+import { useResponsiveNavigation } from '@/components/Dashboard/ResponsiveNavigation';
+import { LanguageSelector } from '@/components/Dashboard/LanguageSelector';
 import { CLASSES } from '@/constants/classes';
 import { Features } from '@/constants/features';
 import { withDashboard } from '@/containers/Dashboard/withDashboard';
@@ -21,6 +26,7 @@ import '@/style/pages/Preferences/Topbar.scss';
  */
 function PreferencesTopbar({ preferencesPageTitle }) {
   const { featureCan } = useFeatureCan();
+  const { compact, panel, openPanel } = useResponsiveNavigation();
 
   return (
     <div
@@ -29,10 +35,30 @@ function PreferencesTopbar({ preferencesPageTitle }) {
         CLASSES.PREFERENCES_TOPBAR,
       )}
     >
-      <div class="preferences-topbar__title">
+      <div className="preferences-topbar__title">
+        {compact && (
+          <DashboardHamburgerButton
+            aria-label={intl.get('menu')}
+            aria-haspopup="dialog"
+            aria-expanded={panel === 'main'}
+            onClick={() => openPanel('main')}
+          />
+        )}
         <h2>{preferencesPageTitle}</h2>
+        {compact && (
+          <Button
+            className="preferences-topbar__navigation"
+            aria-label={intl.get('preferences')}
+            aria-haspopup="dialog"
+            aria-expanded={panel === 'preferences'}
+            icon="cog"
+            minimal
+            text={intl.get('preferences')}
+            onClick={() => openPanel('preferences')}
+          />
+        )}
       </div>
-      <div class="preferences-topbar__actions">
+      <div className="preferences-topbar__actions">
         <Route pathname="/preferences">
           <Switch>
             <Route exact path={'/preferences/users'} component={UsersActions} />
@@ -67,7 +93,8 @@ function PreferencesTopbar({ preferencesPageTitle }) {
         </Route>
       </div>
 
-      <div class="preferences-topbar__user">
+      <div className="preferences-topbar__user">
+        <LanguageSelector />
         <DashboardTopbarUser />
       </div>
     </div>

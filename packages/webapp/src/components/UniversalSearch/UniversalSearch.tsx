@@ -80,9 +80,10 @@ const containerStyles = css`
     0 0 0 1px rgba(16, 22, 26, 0.1),
     0 4px 8px rgba(16, 22, 26, 0.2),
     0 18px 46px 6px rgba(16, 22, 26, 0.2);
-  left: calc(50% - 250px);
+  inset-inline: 0;
+  margin-inline: auto;
   top: 20vh;
-  width: 500px;
+  width: min(500px, calc(100vw - 24px));
   z-index: 20;
 
   .bp4-input-group {
@@ -152,6 +153,16 @@ const containerStyles = css`
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+
+  @media (max-width: 600px), (max-height: 560px) {
+    top: calc(var(--test-notice-height) + 12px);
+    max-height: calc(var(--workspace-height) - 24px);
+    overflow: auto;
+
+    .bp4-input-group .bp4-input {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -339,7 +350,7 @@ function UniversalSearchQueryList({
  */
 function UniversalQuerySearchActions() {
   return (
-    <x.div display="flex">
+    <x.div display="flex" flexWrap="wrap">
       <x.div className={actionBaseStyles}>
         <Tag>ENTER</Tag>
         <x.span ml="6px">{intl.get('universal_search.enter_text')}</x.span>
@@ -490,7 +501,17 @@ export function UniversalSearch({
             {...queryListProps}
             items={filteredItems}
           />
-          <x.div className={footerStyles}>
+          <x.div
+            className={footerStyles}
+            display="flex"
+            flexWrap="wrap"
+            gap="8px"
+          >
+            <Button
+              minimal
+              onClick={overlayProps?.onClose}
+              text={intl.get('close')}
+            />
             <UniversalQuerySearchActions />
           </x.div>
         </x.div>

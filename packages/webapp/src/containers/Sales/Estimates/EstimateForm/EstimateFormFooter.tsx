@@ -10,7 +10,13 @@ import { UploadAttachmentButton } from '@/containers/Attachments/UploadAttachmen
  */
 export function EstiamteFormFooter() {
   return (
-    <x.div mt={'20px'} px={'32px'} pb={'20px'} flex={1}>
+    <x.div
+      className="sales-form-section"
+      mt={'20px'}
+      px={'32px'}
+      pb={'20px'}
+      flex={1}
+    >
       <Paper p={'20px'}>
         <Row>
           <Col md={8}>

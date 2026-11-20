@@ -47,7 +47,7 @@ function CustomerFormPageContent() {
 
   return (
     <DashboardInsider loading={isFormLoading}>
-      <Box mx={'auto'} maxWidth={800}>
+      <Box mx={'auto'} maxWidth={800} className="master-record-form-page">
         <CustomerFormFormik
           onSubmitSuccess={handleSubmitSuccess}
           onCancel={handleFormCancel}

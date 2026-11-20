@@ -1,5 +1,6 @@
 import * as FF from 'fp-ts/function';
 import { useEffect } from 'react';
+import styled from 'styled-components';
 import { PreferencesBrandingBoot } from './PreferencesBrandingBoot';
 import { PreferencesBrandingForm } from './PreferencesBrandingForm';
 import {
@@ -23,16 +24,14 @@ function PreferencesBrandingPageRoot({
   }, [changePreferencesPageTitle]);
 
   return (
-    <Stack
-      style={{ padding: '20px 40px 0', maxWidth: 900, width: '100%', flex: 1 }}
-    >
+    <BrandingStack>
       <PreferencesBrandingBoot>
         <PreferencesBrandingForm>
           <PreferencesBrandingFormContent />
           <PreferencesBrandingFormFooter />
         </PreferencesBrandingForm>
       </PreferencesBrandingBoot>
-    </Stack>
+    </BrandingStack>
   );
 }
 
@@ -40,3 +39,14 @@ export const PreferencesBrandingPage = FF.pipe(
   PreferencesBrandingPageRoot,
   withDashboardActions,
 );
+
+const BrandingStack = styled(Stack)`
+  width: 100%;
+  max-width: 900px;
+  flex: 1;
+  padding: 20px 40px 0;
+
+  @media (max-width: 767.98px) {
+    padding: 14px;
+  }
+`;

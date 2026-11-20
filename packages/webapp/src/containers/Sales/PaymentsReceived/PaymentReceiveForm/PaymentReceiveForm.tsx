@@ -196,7 +196,7 @@ function PaymentReceiveFormRoot({ openDialog }: PaymentReceiveFormRootProps) {
       >
         <PageForm flex={1}>
           <PaymentReceiveInnerProvider>
-            <PageForm.Body>
+            <PageForm.Body className="sales-form-body">
               <PaymentReceiveFormTopBar />
               <PaymentReceiveHeader />
               <PaymentReceiveFormBody />

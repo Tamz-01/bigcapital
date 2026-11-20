@@ -105,7 +105,11 @@ export function CreditNoteFloatingActions() {
   const brandingTemplatesOptions = useCreditNoteFormBrandingTemplatesOptions();
 
   return (
-    <PageForm.FooterActions position={'apart'} spacing={20}>
+    <PageForm.FooterActions
+      className="sales-form-actions"
+      position={'apart'}
+      spacing={20}
+    >
       <Group spacing={10}>
         {/* ----------- Save And Open  ----------- */}
         <If condition={!creditNote || !creditNote?.isOpen}>

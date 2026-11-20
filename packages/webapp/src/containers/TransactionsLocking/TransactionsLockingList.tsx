@@ -32,6 +32,12 @@ const TransactionsLocking = styled.div`
   min-width: 800px;
   max-width: 900px;
   width: 75%;
+
+  @media (max-width: 1099.98px) {
+    min-width: 0;
+    width: 100%;
+    padding: 16px;
+  }
 `;
 
 const TransactionsLockingParagraph = styled(Paragraph)`

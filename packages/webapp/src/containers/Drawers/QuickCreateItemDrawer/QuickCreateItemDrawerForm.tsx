@@ -36,7 +36,7 @@ function QuickCreateItemDrawerFormInner({
   return (
     <ItemFormProvider itemId={itemId}>
       <DrawerItemFormLoading>
-        <ItemFormCard>
+        <ItemFormCard className="master-record-quick-create-card">
           <ItemFormFormik
             initialValues={{ name: itemName }}
             onSubmitSuccess={handleSubmitSuccess}

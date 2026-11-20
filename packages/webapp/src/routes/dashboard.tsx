@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { lazy } from 'react';
+import { stableRouteComponents } from './stableRouteComponents';
 import intl from 'react-intl-universal';
 import { Features } from '@/constants/features';
 import { RESOURCES_TYPES } from '@/constants/resourcesTypes';
@@ -7,7 +8,7 @@ import { RESOURCES_TYPES } from '@/constants/resourcesTypes';
 const SUBSCRIPTION_TYPE = {
   MAIN: 'main',
 };
-export const getDashboardRoutes = () => [
+export const getDashboardRoutes = stableRouteComponents(() => [
   // Accounts.
   {
     path: '/accounts/import',
@@ -1327,4 +1328,4 @@ export const getDashboardRoutes = () => [
     breadcrumb: intl.get('homepage'),
     subscriptionActive: [SUBSCRIPTION_TYPE.MAIN],
   },
-];
+]);

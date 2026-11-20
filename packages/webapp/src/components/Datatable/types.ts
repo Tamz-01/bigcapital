@@ -153,9 +153,11 @@ export interface DataTableProps<D extends object = any> {
   cellsLoadingCoords?: Array<[number, string]>;
 
   initialPageIndex?: number;
+  requestedPageIndex?: number;
   initialPageSize?: number;
   initialSortBy?: Array<{ id: string; desc: boolean }>;
   initialHiddenColumns?: string[];
+  recordList?: boolean;
   updateDebounceTime?: number;
   selectionColumnWidth?: number;
 

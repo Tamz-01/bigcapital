@@ -185,11 +185,11 @@ function InvoiceFormRoot({}: InvoiceFormRootProps) {
         })}
       >
         <PageForm flex={1}>
-          <PageForm.Body>
+          <PageForm.Body className="sales-form-body">
             <InvoiceFormTopBar />
             <InvoiceFormHeader />
 
-            <Box p="18px 32px 0">
+            <Box className="sales-form-section" p="18px 32px 0">
               <InvoiceFormActions />
               <InvoiceItemsEntriesEditorField />
             </Box>

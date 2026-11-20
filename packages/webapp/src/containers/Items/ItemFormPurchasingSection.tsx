@@ -84,6 +84,7 @@ export function ItemFormPurchasingSection() {
       >
         <AccountsSelect
           name={'costAccountId'}
+          buttonProps={{ 'data-testId': 'item-purchasing-account' }}
           items={accounts}
           placeholder={intl.get('select_account')}
           filterByParentTypes={[ACCOUNT_PARENT_TYPE.EXPENSE]}

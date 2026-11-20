@@ -47,10 +47,10 @@ export const SelectButton = styled(Button)`
   box-shadow: 0 0 0 transparent;
   border: 1px solid var(--x-color-select-border);
   position: relative;
-  padding-right: 30px;
+  padding-inline-end: 30px;
 
   &.bp4-small {
-    padding-right: 24px;
+    padding-inline-end: 24px;
   }
   &:not(.is-selected):not([class*='bp4-intent-']):not(.bp4-minimal) {
     color: #8f99a8;
@@ -65,10 +65,10 @@ export const SelectButton = styled(Button)`
     border-top: 5px solid var(--x-color-select-caret);
 
     position: absolute;
-    right: 0;
+    inset-inline-end: 0;
     top: 50%;
     margin-top: -2px;
-    margin-right: 12px;
+    margin-inline-end: 12px;
     border-radius: 1px;
   }
   &:not([class*='bp4-intent-']):not(.bp4-disabled) {

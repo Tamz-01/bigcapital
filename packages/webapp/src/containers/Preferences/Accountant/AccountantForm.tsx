@@ -186,5 +186,6 @@ export function AccountantForm() {
 }
 
 const AccountantFormGroup = styled(FFormGroup)`
-  width: 450px;
+  width: 100%;
+  max-width: 450px;
 `;

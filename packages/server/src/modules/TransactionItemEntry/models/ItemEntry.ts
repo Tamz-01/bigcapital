@@ -23,6 +23,7 @@ export class ItemEntry extends BaseModel {
 
   public taxRate: number;
   public isInclusiveTax: number;
+  public taxOnDiscountedAmount: boolean;
 
   public landedCost: boolean;
   public allocatedCostAmount: number;
@@ -155,9 +156,12 @@ export class ItemEntry extends BaseModel {
    * @returns {number}
    */
   get taxAmount() {
+    const taxableAmount = this.taxOnDiscountedAmount
+      ? ItemEntry.calcAmount(this)
+      : this.amount;
     return this.isInclusiveTax
-      ? getInclusiveTaxAmount(this.amount, this.taxRate)
-      : getExlusiveTaxAmount(this.amount, this.taxRate);
+      ? getInclusiveTaxAmount(taxableAmount, this.taxRate)
+      : getExlusiveTaxAmount(taxableAmount, this.taxRate);
   }
 
   /**
