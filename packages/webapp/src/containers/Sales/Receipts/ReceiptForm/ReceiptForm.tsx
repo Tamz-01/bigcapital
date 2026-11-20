@@ -170,7 +170,7 @@ function ReceiptFormRoot({}: ReceiptFormRootProps) {
         })}
       >
         <PageForm flex={1}>
-          <PageForm.Body>
+          <PageForm.Body className="sales-form-body">
             <ReceiptFormTopBar />
             <ReceiptFromHeader />
             <ReceiptItemsEntriesEditor />

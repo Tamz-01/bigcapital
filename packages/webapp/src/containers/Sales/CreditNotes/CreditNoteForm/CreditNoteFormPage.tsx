@@ -30,6 +30,7 @@ function CreditNoteFormPageContent() {
 
   return (
     <DashboardInsider
+      name="sales-form"
       loading={isBootLoading}
       className={css`
         min-height: calc(100vh - var(--top-offset));

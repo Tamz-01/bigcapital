@@ -147,6 +147,7 @@ export function transformToEditForm(
   const initialEntries = [
     ...invoice.entries.map((entry) => ({
       ...transformToForm(entry, defaultInvoiceEntry),
+      taxAmount: toSafeNumber((entry as Partial<InvoiceEntry>).taxAmount),
     })),
     ...repeatValue(
       defaultInvoiceEntry,
@@ -587,8 +588,16 @@ export const useInvoicePaidAmountFormatted = () => {
 export const useInvoiceDueAmount = () => {
   const total = useInvoiceTotal();
   const paidAmount = useInvoicePaidAmount();
+  const { invoice } = useInvoiceFormContext();
+  const settledAmount =
+    invoice?.total != null && invoice.dueAmount != null
+      ? Math.max(
+          toSafeNumber(invoice.total) - toSafeNumber(invoice.dueAmount),
+          0,
+        )
+      : paidAmount + toSafeNumber(invoice?.creditedAmount);
 
-  return Math.max(total - paidAmount, 0);
+  return Math.max(total - settledAmount, 0);
 };
 
 /**

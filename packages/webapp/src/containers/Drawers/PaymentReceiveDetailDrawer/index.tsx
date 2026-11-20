@@ -26,6 +26,7 @@ function PaymentReceiveDetailDrawer({
 
   return (
     <Drawer
+      className="sales-record-drawer"
       isOpen={isOpen}
       name={name}
       size={'65%'}

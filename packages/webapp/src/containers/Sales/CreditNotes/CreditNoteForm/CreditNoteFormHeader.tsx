@@ -13,6 +13,7 @@ export function CreditNoteFormHeader() {
 
   return (
     <Group
+      className="sales-form-header"
       position="apart"
       align={'flex-start'}
       display="flex"

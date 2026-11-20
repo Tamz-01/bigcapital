@@ -330,7 +330,7 @@ export async function createItemViaApi(
 export async function createTaxRateViaApi(
   apiBase: string,
   auth: ApiAuth,
-  input: { name: string; code: string; rate: number },
+  input: { name: string; code: string; rate: number; active?: boolean },
 ): Promise<any> {
   return send(apiBase, auth, `${API_PREFIX}/tax-rates`, {
     method: 'POST',
@@ -338,6 +338,7 @@ export async function createTaxRateViaApi(
       name: input.name,
       code: input.code,
       rate: input.rate,
+      active: input.active,
     }),
   });
 }

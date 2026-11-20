@@ -81,6 +81,9 @@ export default function TableCell({ cell, row, index }: TableCellProps) {
         ...(cellTestId ? { 'data-testId': cellTestId(row, cell) } : {}),
       })}
       tabIndex={0}
+      data-column-label={
+        typeof cell.column.Header === 'string' ? cell.column.Header : undefined
+      }
       onClick={handleCellClick}
       onKeyDown={
         recordList && onCellClick && cell.column.clickable

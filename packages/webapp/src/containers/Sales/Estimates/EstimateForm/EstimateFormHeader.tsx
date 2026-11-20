@@ -11,6 +11,7 @@ export function EstimateFormHeader() {
 
   return (
     <Group
+      className="sales-form-header"
       position="apart"
       align={'flex-start'}
       p="25px 32px"

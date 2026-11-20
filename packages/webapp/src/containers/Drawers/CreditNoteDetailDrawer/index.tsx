@@ -26,6 +26,7 @@ function CreditNoteDetailDrawer({
 
   return (
     <Drawer
+      className="sales-record-drawer"
       isOpen={isOpen}
       name={name}
       style={{ minWidth: '700px', maxWidth: '900px' }}

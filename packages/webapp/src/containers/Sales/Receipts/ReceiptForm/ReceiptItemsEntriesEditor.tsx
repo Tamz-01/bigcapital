@@ -11,7 +11,7 @@ export function ReceiptItemsEntriesEditor() {
   const { items } = useReceiptFormContext();
 
   return (
-    <x.div p="18px 32px 0">
+    <x.div className="sales-form-section" p="18px 32px 0">
       <FastField
         name={'entries'}
         items={items}

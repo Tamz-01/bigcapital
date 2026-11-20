@@ -81,3 +81,18 @@ The isolated test frontend serves the minified modern-browser asset `index-CrZy5
 
 - [Stage 4 Drive evidence and report](https://drive.google.com/drive/folders/1uYn7e-cr3CicMnubCLSFYGF57LSaOj8g)
 - [Draft PR #1](https://github.com/Tamz-01/bigcapital/pull/1) · [Private test app](https://studious-space-disco-gxp75xwv9rrvhw94x-8080.app.github.dev/)
+
+## 20 November 2026 — Stage 5 mobile sales
+
+The private test app has phone layouts for estimates, invoices, receipts, payment allocations, and credit notes. Sales forms stack their fields and show editable line cards on phones. Lists keep wide columns inside their table scrollers. Detail drawers, credit allocation, attachments, the PDF preview, and the mail composer fit narrow screens. The sales lists reuse the app-level mail drawers.
+
+All 50 layout checks passed across ten routes at 360, 390, 430, 768, and 1280 CSS pixels. A 390px touch test converted an estimate, posted a discounted inventory invoice, recorded a partial payment, applied a credit note, and posted a sales receipt. The invoice totaled AED 198 after AED 180 net sales and AED 18 VAT. AED 120 paid plus AED 78 credited cleared it. The invoice posted AED 50 cost of goods sold against inventory. The stock movement was 10 starting units, two sold, one returned, and one sold on the receipt, leaving eight.
+
+New and edited invoices store the discounted line subtotal and use the same taxable basis for the document and its journal. The migration preserves the tax basis of previously posted lines. Seven item-entry unit tests passed, and the migration applied to 24 synthetic test tenants. Frontend type-checking passed and the private preview serves a minified modern-browser bundle.
+
+Five focused browser checks passed on the final preview, including both desktop edit regressions and three mobile sales workflows. The reopened invoice displayed AED 198 total and zero due. An earlier suite passed 21 of 22 checks before the first PDF render timed out. The final pass rendered the PDF and opened a single one-column mail composer.
+
+Physical-device, legacy-browser, and live email delivery checks remain pending. The automatic exchange-rate provider is unconfigured in the test environment. Stage 6 covers purchases.
+
+- [Stage 5 report and evidence](https://drive.google.com/drive/folders/1c42RYh1cVAsdH7_MliKlpzTpuJdKuVoh)
+- [Draft PR #1](https://github.com/Tamz-01/bigcapital/pull/1) · [Private test app](https://studious-space-disco-gxp75xwv9rrvhw94x-8080.app.github.dev/)

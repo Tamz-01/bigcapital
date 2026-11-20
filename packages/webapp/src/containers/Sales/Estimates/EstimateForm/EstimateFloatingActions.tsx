@@ -88,7 +88,11 @@ export function EstimateFloatingActions() {
   const brandingTemplatesOptions = useEstimateFormBrandingTemplatesOptions();
 
   return (
-    <PageForm.FooterActions position={'apart'} spacing={10}>
+    <PageForm.FooterActions
+      className="sales-form-actions"
+      position={'apart'}
+      spacing={10}
+    >
       <Group spacing={10}>
         {/* ----------- Save And Deliver ----------- */}
         <If condition={!estimate || !estimate?.deliveredAt}>

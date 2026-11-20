@@ -68,7 +68,11 @@ export function PaymentReceiveFormFloatingActions() {
     usePaymentReceivedFormBrandingTemplatesOptions();
 
   return (
-    <PageForm.FooterActions position={'apart'} spacing={20}>
+    <PageForm.FooterActions
+      className="sales-form-actions"
+      position={'apart'}
+      spacing={20}
+    >
       <Group spacing={10}>
         {/* ----------- Save and New ----------- */}
         <ButtonGroup>

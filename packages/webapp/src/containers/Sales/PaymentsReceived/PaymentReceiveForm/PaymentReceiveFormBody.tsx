@@ -17,7 +17,7 @@ type FastFieldRenderProps = {
  */
 export function PaymentReceiveFormBody() {
   return (
-    <Box p="18px 32px 0">
+    <Box className="sales-form-section" p="18px 32px 0">
       <FastField name={'entries'}>
         {({
           form: { values, setFieldValue },

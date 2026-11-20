@@ -9,7 +9,13 @@ import { UploadAttachmentButton } from '@/containers/Attachments/UploadAttachmen
  */
 export function PaymentReceiveFormFooter() {
   return (
-    <Box mt={'20px'} px={'32px'} pb={'20px'} flex={1}>
+    <Box
+      className="sales-form-section"
+      mt={'20px'}
+      px={'32px'}
+      pb={'20px'}
+      flex={1}
+    >
       <Paper p={'20px'}>
         <Row>
           <Col md={8}>
