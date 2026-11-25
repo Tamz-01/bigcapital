@@ -31,7 +31,14 @@ function AccountTransactionsListRoot({
     <AccountTransactionsProvider>
       <CashFlowDrawers />
 
-      <AppContentShell hideAside={!openMatchingTransactionAside}>
+      <AppContentShell
+        className={
+          openMatchingTransactionAside
+            ? 'bank-transactions--matching'
+            : undefined
+        }
+        hideAside={!openMatchingTransactionAside}
+      >
         <AccountTransactionsMain />
         <AccountTransactionsAside />
       </AppContentShell>

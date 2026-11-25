@@ -114,7 +114,7 @@ ActionsCellRenderer.cellType = CellType.Button;
 /**
  * Retrieve columns of make journal entries table.
  */
-export const useJournalTableEntriesColumns = () => {
+export const useJournalTableEntriesColumns = (currencyCode = '') => {
   const { featureCan } = useFeatureCan();
   const { trackingCategories, manualJournal } = useMakeJournalFormContext();
 
@@ -160,6 +160,7 @@ export const useJournalTableEntriesColumns = () => {
       },
       {
         Header: DebitHeaderCell,
+        mobileLabel: intl.get('debit_currency', { currency: currencyCode }),
         accessor: 'debit',
         Cell: MoneyFieldCell,
         disableSortBy: true,
@@ -168,6 +169,7 @@ export const useJournalTableEntriesColumns = () => {
       },
       {
         Header: CreditHeaderCell,
+        mobileLabel: intl.get('credit_currency', { currency: currencyCode }),
         accessor: 'credit',
         Cell: MoneyFieldCell,
         disableSortBy: true,
@@ -176,6 +178,7 @@ export const useJournalTableEntriesColumns = () => {
       },
       {
         Header: ContactHeaderCell,
+        mobileLabel: intl.get('contact'),
         id: 'contactId',
         accessor: 'contactId',
         Cell: ContactsListFieldCell,
@@ -235,7 +238,7 @@ export const useJournalTableEntriesColumns = () => {
         align: Align.Center,
       },
     ],
-    [featureCan, visibleCategories],
+    [currencyCode, featureCan, visibleCategories],
   );
 };
 

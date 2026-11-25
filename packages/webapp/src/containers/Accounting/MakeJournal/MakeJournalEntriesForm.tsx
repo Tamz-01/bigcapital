@@ -188,8 +188,8 @@ function MakeJournalEntriesFormInner() {
             flex: 1,
           })}
         >
-          <PageForm flex={1}>
-            <PageForm.Body>
+          <PageForm className="accounting-form" flex={1}>
+            <PageForm.Body className="accounting-form-body">
               <MakeJournalFormTopBar />
               <MakeJournalEntriesHeader />
               <MakeJournalEntriesField />

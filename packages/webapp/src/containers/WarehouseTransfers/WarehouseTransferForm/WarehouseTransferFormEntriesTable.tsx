@@ -99,6 +99,7 @@ export function WarehouseTransferFormEntriesTable({
 
   return (
     <DataTableEditable
+      className="accounting-entry-table"
       columns={columns}
       data={entries}
       cellsLoading={!!cellsLoading}

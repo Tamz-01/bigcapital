@@ -1,4 +1,4 @@
-import { Classes, FormGroup, Position } from '@blueprintjs/core';
+import { Classes, FormGroup, HTMLSelect, Position } from '@blueprintjs/core';
 import { useFormikContext } from 'formik';
 import React from 'react';
 import intl from 'react-intl-universal';
@@ -12,13 +12,7 @@ import {
   useGetAdjustmentTypeOptions,
 } from './utils';
 import type { InventoryAdjustmentFormValues } from './types';
-import {
-  FFormGroup,
-  FDateInput,
-  FInputGroup,
-  FTextArea,
-  FSelect,
-} from '@/components';
+import { FFormGroup, FDateInput, FInputGroup, FTextArea } from '@/components';
 import {
   FieldRequiredHint,
   Col,
@@ -42,22 +36,24 @@ export function InventoryAdjustmentFormDialogFields(): React.ReactElement {
   const dateInputFormatter = useDateInputFormatter();
 
   const { accounts, branches, warehouses } = useInventoryAdjContext();
-  const { values, setFieldValue } =
+  const { values, setValues } =
     useFormikContext<InventoryAdjustmentFormValues>();
 
   useSetPrimaryWarehouseToForm();
   useSetPrimaryBranchToForm();
 
-  const handleAdjustmentTypeChange = (type: {
-    value: 'increment' | 'decrement';
-  }) => {
-    const result = diffQuantity(
-      toSafeNumber(values.quantity),
-      toSafeNumber(values.quantityOnHand),
-      type.value,
-    );
-    setFieldValue('type', type.value);
-    setFieldValue('newQuantity', result);
+  const handleAdjustmentTypeChange = (
+    type: InventoryAdjustmentFormValues['type'],
+  ) => {
+    setValues((current) => ({
+      ...current,
+      type,
+      newQuantity: diffQuantity(
+        toSafeNumber(current.quantity),
+        toSafeNumber(current.quantityOnHand),
+        type,
+      ),
+    }));
   };
 
   return (
@@ -119,15 +115,19 @@ export function InventoryAdjustmentFormDialogFields(): React.ReactElement {
             labelInfo={<FieldRequiredHint />}
             fastField
           >
-            <FSelect
-              name={'type'}
-              items={adjustmentTypes}
-              onItemChange={handleAdjustmentTypeChange}
-              filterable={false}
-              valueAccessor={'value'}
-              textAccessor={'name'}
-              popoverProps={{ minimal: true }}
-              fastField
+            <HTMLSelect
+              id="type"
+              value={values.type}
+              options={adjustmentTypes.map(({ name: label, value }) => ({
+                label,
+                value,
+              }))}
+              onChange={({ currentTarget }) =>
+                handleAdjustmentTypeChange(
+                  currentTarget.value as InventoryAdjustmentFormValues['type'],
+                )
+              }
+              fill
             />
           </FFormGroup>
         </Col>

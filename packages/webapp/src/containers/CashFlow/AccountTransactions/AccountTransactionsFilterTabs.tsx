@@ -25,7 +25,11 @@ export function AccountTransactionsFilterTabs() {
   );
 
   return (
-    <AccountContentTabs value={filterTab} onChange={handleChange}>
+    <AccountContentTabs
+      className="bank-transactions-views"
+      value={filterTab}
+      onChange={handleChange}
+    >
       <ContentTabs.Tab
         id={'dashboard'}
         title={'Dashboard'}

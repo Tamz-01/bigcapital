@@ -55,7 +55,11 @@ function CategorizeTransactionAsideRoot({
     return null;
   }
   return (
-    <Aside title={'Categorize Bank Transaction'} onClose={handleClose}>
+    <Aside
+      className="bank-matching-panel"
+      title={'Categorize Bank Transaction'}
+      onClose={handleClose}
+    >
       <Aside.Body>
         <CategorizeTransactionTabsBoot
           uncategorizedTransactionIds={transactionsToCategorizeIdsSelected.filter(

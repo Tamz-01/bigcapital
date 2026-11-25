@@ -153,6 +153,7 @@ function WarehouseTransferFormInner({}: WarehouseTransferFormInnerProps) {
         CLASSES.PAGE_FORM,
         CLASSES.PAGE_FORM_STRIP_STYLE,
         CLASSES.PAGE_FORM_WAREHOUSE_TRANSFER,
+        'accounting-form',
       )}
     >
       <Formik

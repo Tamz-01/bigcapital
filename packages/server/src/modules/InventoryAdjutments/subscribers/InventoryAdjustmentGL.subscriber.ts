@@ -7,6 +7,7 @@ import {
 } from '../types/InventoryAdjustments.types';
 import { IInventoryAdjustmentEventCreatedPayload } from '../types/InventoryAdjustments.types';
 import { events } from '@/common/events/events';
+import { IInventoryCostLotsGLEntriesWriteEvent } from '@/modules/InventoryCost/types/InventoryCost.types';
 
 @Injectable()
 export class InventoryAdjustmentsGLSubscriber {
@@ -35,6 +36,17 @@ export class InventoryAdjustmentsGLSubscriber {
     }
     await this.inventoryAdjustmentGL.writeAdjustmentGLEntries(
       inventoryAdjustmentId,
+      trx,
+    );
+  }
+
+  @OnEvent(events.inventory.onCostLotsGLEntriesWrite)
+  async writeDecrementCostEntries({
+    startingDate,
+    trx,
+  }: IInventoryCostLotsGLEntriesWriteEvent) {
+    await this.inventoryAdjustmentGL.writeDecrementCostEntries(
+      startingDate,
       trx,
     );
   }

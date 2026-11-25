@@ -109,3 +109,16 @@ This branch has no purchase-order workflow. Physical phones, legacy browsers, su
 
 - [Stage 6 report and evidence](https://drive.google.com/drive/folders/1b25FbjLxJPDprkW2KwI_f6K5fx-_HLVs)
 - [Draft PR #1](https://github.com/Tamz-01/bigcapital/pull/1)
+
+## 25 November 2026 — Stage 7 inventory, banking, and journals
+
+Manual journals and warehouse transfers use editable line cards on phones. Inventory adjustment and banking controls fit narrow screens, and the bank matching panel moves above the transaction list while preserving its state. The match amount uses the bank account currency.
+
+The 390px tests reduced six synthetic units to five and matched the change from AED 150 to AED 125 with a debit and credit of AED 25. A second costing run kept the same posting. An unbalanced journal was rejected, then the corrected journal posted AED 50 to each side. An AED 35 transfer matched a synthetic bank statement row with zero pending difference and no duplicate ledger entry.
+
+Five Chromium checks passed, including the Stage 6 layout regression. The six Stage 7 form/list routes were checked at 320, 390, 430, and 1280 pixels. The bank rule condition was checked at 320 pixels. The verified private frontend asset is `index-CCqA-5Vq.js`.
+
+The warehouse transfer form was checked for layout. The warehouse feature is disabled in the review workspace, so posting a transfer remains unverified. Real devices, legacy browsers, live bank feeds, and nonzero-difference reconciliation need separate checks. Stage 8 covers reports and supporting tools.
+
+- [Stage 7 report and evidence](https://drive.google.com/drive/folders/1kKORSKvmJC9Jp83Yhru7kGJQNrGFFr8x)
+- [Draft PR #1](https://github.com/Tamz-01/bigcapital/pull/1)

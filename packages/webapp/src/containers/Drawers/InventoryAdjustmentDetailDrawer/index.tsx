@@ -25,6 +25,7 @@ function InventoryAdjustmentDetailDrawer({
 
   return (
     <Drawer
+      className="accounting-record-drawer"
       isOpen={isOpen}
       name={name}
       style={{ minWidth: '700px', maxWidth: '900px' }}
