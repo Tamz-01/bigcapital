@@ -82,7 +82,10 @@ export default function TableCell({ cell, row, index }: TableCellProps) {
       })}
       tabIndex={0}
       data-column-label={
-        typeof cell.column.Header === 'string' ? cell.column.Header : undefined
+        cell.column.mobileLabel ??
+        (typeof cell.column.Header === 'string'
+          ? cell.column.Header
+          : undefined)
       }
       onClick={handleCellClick}
       onKeyDown={

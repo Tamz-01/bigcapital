@@ -123,7 +123,7 @@ export function usePaymentMadeEntriesTableColumns(
       {
         Header: 'Bill date',
         id: 'billDate',
-        accessor: 'billDate',
+        accessor: 'date',
         Cell: createBillDateCell(onViewBillDetail),
         disableSortBy: true,
         width: 120,

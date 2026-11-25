@@ -145,12 +145,12 @@ function ExpenseFormInner() {
           flex: 1,
         })}
       >
-        <PageForm flex={1}>
-          <PageForm.Body>
+        <PageForm className="purchase-form" flex={1}>
+          <PageForm.Body className="purchase-form-body">
             <ExpenseFormTopBar />
             <ExpenseFormHeader />
 
-            <Box p="18px 32px 0">
+            <Box className="purchase-form-section" p="18px 32px 0">
               <ExpenseFormBody />
             </Box>
             <ExpenseFormFooter />

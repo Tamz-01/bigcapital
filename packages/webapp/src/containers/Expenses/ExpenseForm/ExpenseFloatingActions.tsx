@@ -70,7 +70,11 @@ export function ExpenseFloatingFooter() {
   };
 
   return (
-    <PageForm.FooterActions spacing={10} position="apart">
+    <PageForm.FooterActions
+      className="purchase-form-actions"
+      spacing={10}
+      position="apart"
+    >
       <Group spacing={10}>
         {/* ----------- Save And Publish ----------- */}
         <If condition={isNewMode}>

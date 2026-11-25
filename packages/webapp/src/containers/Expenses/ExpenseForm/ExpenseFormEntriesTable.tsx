@@ -36,7 +36,7 @@ export function ExpenseFormEntriesTable({
 }: ExpenseFormEntriesTableProps) {
   const { accounts } = useExpenseFormContext();
 
-  const columns = useExpenseFormTableColumns({ landedCost });
+  const columns = useExpenseFormTableColumns({ landedCost, currencyCode });
 
   const handleUpdateData = useCallback(
     (rowIndex: number, columnId: string, value: unknown) => {
@@ -66,6 +66,7 @@ export function ExpenseFormEntriesTable({
 
   return (
     <DataTableEditable
+      className="purchase-allocation-entries"
       name={'expense-form'}
       columns={columns}
       data={entries}

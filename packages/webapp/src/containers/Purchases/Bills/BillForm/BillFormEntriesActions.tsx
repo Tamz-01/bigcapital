@@ -1,11 +1,14 @@
+import { HTMLSelect } from '@blueprintjs/core';
 import { useFormikContext } from 'formik';
+import { useId } from 'react';
 import styled from 'styled-components';
 import { composeEntriesOnEditInclusiveTax, type BillFormValues } from './utils';
-import { FFormGroup, FSelect } from '@/components';
+import { FFormGroup } from '@/components';
 import { Features } from '@/constants';
 import { InclusiveTaxOptions } from '@/constants/InclusiveTaxOptions';
 import { EntriesActionsBar } from '@/containers/Entries/EntriesActionBar';
 import { useFeatureCan } from '@/hooks/state';
+import { TaxType } from '@/interfaces/TaxRates';
 
 export function BillFormEntriesActions() {
   const { featureCan } = useFeatureCan();
@@ -20,41 +23,34 @@ export function BillFormEntriesActions() {
   );
 }
 
-type InclusiveTaxOption = { key: string; label: string };
+const taxOptions = InclusiveTaxOptions.map(({ key, label }) => ({
+  value: key,
+  label,
+}));
 
-/**
- * Bill exclusive/inclusive select.
- * @returns {React.ReactNode}
- */
-export function BillExclusiveInclusiveSelect(props: Record<string, unknown>) {
-  const { values, setFieldValue } = useFormikContext<BillFormValues>();
-
-  const handleItemSelect = (item: InclusiveTaxOption) => {
-    const newEntries = composeEntriesOnEditInclusiveTax(
-      item.key,
-      values.entries,
-    );
-    setFieldValue('inclusiveExclusiveTax', item.key);
-    setFieldValue('entries', newEntries);
-  };
+function BillExclusiveInclusiveSelect() {
+  const { values, setValues } = useFormikContext<BillFormValues>();
+  const fieldId = useId();
 
   return (
     <InclusiveFormGroup
-      name={'inclusiveExclusiveTax'}
-      label={'Amounts are'}
-      inline={true}
+      name="inclusiveExclusiveTax"
+      label="Amounts are"
+      labelFor={fieldId}
+      inline
     >
-      <FSelect
-        name={'inclusiveExclusiveTax'}
-        items={InclusiveTaxOptions}
-        textAccessor={'label'}
-        labelAccessor={() => ''}
-        valueAccessor={'key'}
-        popoverProps={{ minimal: true, usePortal: true, inline: false }}
-        buttonProps={{ small: true }}
-        onItemSelect={handleItemSelect}
-        filterable={false}
-        {...props}
+      <HTMLSelect
+        id={fieldId}
+        value={values.inclusiveExclusiveTax}
+        options={taxOptions}
+        onChange={({ currentTarget }) => {
+          const taxType = currentTarget.value as TaxType;
+          setValues((current) => ({
+            ...current,
+            inclusiveExclusiveTax: taxType,
+            entries: composeEntriesOnEditInclusiveTax(taxType, current.entries),
+          }));
+        }}
       />
     </InclusiveFormGroup>
   );

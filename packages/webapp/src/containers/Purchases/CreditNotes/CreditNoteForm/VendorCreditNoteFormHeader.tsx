@@ -12,7 +12,7 @@ export function VendorCreditNoteFormHeader() {
   const totalFormatted = useVendorCreditTotalFormatted();
 
   return (
-    <PageForm.Header>
+    <PageForm.Header className="purchase-form-header">
       <VendorCreditNoteFormHeaderFields />
       <PageFormBigNumber
         label={intl.get('vendor_credits.label.amount_to_credit')}

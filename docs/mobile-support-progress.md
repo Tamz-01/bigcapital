@@ -96,3 +96,16 @@ Physical-device, legacy-browser, and live email delivery checks remain pending. 
 
 - [Stage 5 report and evidence](https://drive.google.com/drive/folders/1c42RYh1cVAsdH7_MliKlpzTpuJdKuVoh)
 - [Draft PR #1](https://github.com/Tamz-01/bigcapital/pull/1) · [Private test app](https://studious-space-disco-gxp75xwv9rrvhw94x-8080.app.github.dev/)
+
+## 25 November 2026 — Stage 6 purchases and expenses
+
+Bills, payments made, supplier credits, and expenses use stacked fields and editable line cards on phones. Their lists and detail drawers fit the viewport. The bill tax basis uses a native select, and allocation rows preserve bill numbers, dates, and totals.
+
+The 390px touch test settled an AED 220 bill with an AED 120 payment and AED 100 supplier credit. The bill stayed eligible for allocation with AED 20 left, and the reopened bill showed zero due. The bill posted AED 200 of inventory and AED 20 of input VAT. Stock increased to two units and dropped to one after the return. The AED 35 expense debited Rent and credited Petty Cash. A USD draft retained its exchange rate and supporting attachment when reopened.
+
+The four forms passed checks at 320, 390, 430, and 1280 pixels. All three focused Stage 6 Chromium tests and the Stage 5 layout regression passed. The private preview served the verified modern-browser asset `index-XyIjtzp5.js`.
+
+This branch has no purchase-order workflow. Physical phones, legacy browsers, supplier refund posting, and landed-cost posting need separate verification. Stage 7 covers inventory, banking, and journals.
+
+- [Stage 6 report and evidence](https://drive.google.com/drive/folders/1b25FbjLxJPDprkW2KwI_f6K5fx-_HLVs)
+- [Draft PR #1](https://github.com/Tamz-01/bigcapital/pull/1)

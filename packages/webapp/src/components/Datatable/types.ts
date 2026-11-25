@@ -25,6 +25,7 @@ import type {
  * react-table's built-in column properties.
  */
 export interface DataTableColumnMeta {
+  mobileLabel?: string;
   className?: string;
   clickable?: boolean;
   money?: boolean;

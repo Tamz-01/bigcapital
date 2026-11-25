@@ -26,6 +26,7 @@ function PaymentMadeDetailDrawer({
 
   return (
     <Drawer
+      className="purchase-record-drawer"
       isOpen={isOpen}
       name={name}
       size={'65%'}

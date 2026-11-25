@@ -176,13 +176,13 @@ function PaymentMadeFormInner({ openDialog }: PaymentMadeFormRootProps) {
           flex: 1,
         })}
       >
-        <PageForm flex={1}>
-          <PageForm.Body>
+        <PageForm className="purchase-form" flex={1}>
+          <PageForm.Body className="purchase-form-body">
             <PaymentMadeInnerProvider>
               <PaymentMadeFormTopBar />
               <PaymentMadeHeader />
 
-              <Box p="18px 32px 0">
+              <Box className="purchase-form-section" p="18px 32px 0">
                 <PaymentMadeFormBody />
               </Box>
               <PaymentMadeFooter />

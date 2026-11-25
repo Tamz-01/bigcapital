@@ -62,7 +62,10 @@ export function PaymentMadeFloatingActions() {
   return (
     <PageForm.FooterActions
       spacing={10}
-      className={classNames(CLASSES.PAGE_FORM_FLOATING_ACTIONS)}
+      className={classNames(
+        CLASSES.PAGE_FORM_FLOATING_ACTIONS,
+        'purchase-form-actions',
+      )}
     >
       {/* ----------- Save and New ----------- */}
       <ButtonGroup>

@@ -62,6 +62,7 @@ export function ReconcileVendorCreditEntriesTable({
 
   return (
     <ReconcileVendorCreditEditableTable
+      className="purchase-allocation-entries"
       columns={columns}
       data={entries}
       payload={{

@@ -84,7 +84,10 @@ export function BillFloatingActions() {
   return (
     <PageForm.FooterActions
       spacing={10}
-      className={classNames(CLASSES.PAGE_FORM_FLOATING_ACTIONS)}
+      className={classNames(
+        CLASSES.PAGE_FORM_FLOATING_ACTIONS,
+        'purchase-form-actions',
+      )}
     >
       {/* ----------- Save And Open ----------- */}
       <If condition={!bill || !bill?.isOpen}>

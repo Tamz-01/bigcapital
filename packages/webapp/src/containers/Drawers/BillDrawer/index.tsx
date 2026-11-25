@@ -24,6 +24,7 @@ function BillDrawer({
 
   return (
     <Drawer
+      className="purchase-record-drawer"
       isOpen={isOpen}
       name={name}
       style={{ minWidth: '700px', maxWidth: '900px' }}
