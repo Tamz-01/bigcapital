@@ -52,7 +52,7 @@ export class InventoryAdjustmentsGLEntries {
     await this.ledgerStorage.commit(ledger, trx);
   };
 
-  /** Write FIFO cost entries for stock reductions after cost lots are recomputed. */
+  /** Write stock-reduction ledger entries after costs are recomputed. */
   public async writeDecrementCostEntries(
     startingDate: Date,
     trx: Knex.Transaction,
