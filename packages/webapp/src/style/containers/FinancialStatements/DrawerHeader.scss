@@ -8,16 +8,16 @@
 // Financial sheet - Drawer header.
 // --------------------
 .financial-header-drawer {
-    --x-color-background: #fff;
-    --x-color-backdrop-background: rgba(2, 9, 19, 0.65);
+  --x-color-background: #fff;
+  --x-color-backdrop-background: rgba(2, 9, 19, 0.65);
 
-    --x-color-tabs-border: #c3cdd5;
-    --x-color-tabs-tab-item-background: var(--color-dark-gray3);
-    --x-color-tabs-indicator-background: #edf5ff;
-    --x-color-tabs-indicator-border: #0350f8;
-    
-    --x-color-footer-background: #ecf0f3;
-    --x-color-footer-border: #c3cdd5;
+  --x-color-tabs-border: #c3cdd5;
+  --x-color-tabs-tab-item-background: var(--color-dark-gray3);
+  --x-color-tabs-indicator-background: #edf5ff;
+  --x-color-tabs-indicator-border: #0350f8;
+
+  --x-color-footer-background: #ecf0f3;
+  --x-color-footer-border: #c3cdd5;
 
   @include dark-mode {
     --x-color-background: var(--color-dark-gray1);
@@ -27,7 +27,7 @@
     --x-color-tabs-tab-item-background: var(--color-dark-gray3);
     --x-color-tabs-indicator-background: var(--color-dark-gray2);
     --x-color-tabs-indicator-border: var(--color-primary);
-    
+
     --x-color-footer-background: var(--color-dark-gray3);
     --x-color-footer-border: var(--color-dark-gray1);
   }
@@ -141,6 +141,87 @@
   .bp4-popover-target {
     .bp4-tag-input {
       height: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .financial-header-drawer {
+    position: fixed;
+    inset: var(--test-notice-height, 0px) 0 0;
+    z-index: 20;
+    padding: 0;
+
+    .bp4-drawer.bp4-position-top {
+      height: auto;
+      max-height: min(620px, calc(100% - 24px));
+      padding-bottom: 0;
+
+      > form {
+        flex: 1 1 auto;
+        min-height: 0;
+        height: auto;
+      }
+    }
+
+    .bp4-tabs.bp4-vertical {
+      flex: 1 1 auto;
+      min-height: 0;
+      height: auto;
+      flex-direction: column;
+
+      > .bp4-tab-list {
+        flex: 0 0 auto;
+        flex-direction: row;
+        width: 100%;
+        padding: 0 8px;
+        overflow-x: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--x-color-tabs-border);
+
+        .bp4-tab-indicator-wrapper {
+          display: none;
+        }
+
+        .bp4-tab {
+          flex: 0 0 auto;
+          padding-inline: 10px;
+          line-height: 42px;
+        }
+
+        .bp4-tab[aria-selected='true'] {
+          box-shadow: inset 0 -2px 0 var(--x-color-tabs-indicator-border);
+          background-color: var(--x-color-tabs-indicator-background);
+        }
+      }
+
+      > .bp4-tab-panel {
+        flex: 1 1 auto;
+        min-height: 0;
+        min-width: 0;
+        padding: 14px 16px;
+        border-top: 0;
+        overflow-y: auto;
+      }
+    }
+
+    .row > .col {
+      flex: 0 0 100%;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    &__footer {
+      position: static;
+      flex: 0 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 8px 16px;
+
+      .bp4-button {
+        min-height: 40px;
+      }
     }
   }
 }

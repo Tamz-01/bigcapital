@@ -63,7 +63,7 @@ export function FinancialSheet({
       className={className}
     >
       {hasHead && (
-        <div>
+        <div className="financial-sheet__heading">
           {companyName && (
             <FinancialSheetTitle data-testId="financial-sheet-title">
               {companyName}
@@ -82,7 +82,14 @@ export function FinancialSheet({
         </div>
       )}
 
-      <FinancialSheetTable>{children}</FinancialSheetTable>
+      <FinancialSheetTable
+        role="region"
+        aria-label={sheetType || intl.get('permissions.financial_reports')}
+        tabIndex={0}
+        data-testId="financial-sheet-table"
+      >
+        {children}
+      </FinancialSheetTable>
       <FinancialSheetAccountingBasis>
         {accountingBasis}
       </FinancialSheetAccountingBasis>

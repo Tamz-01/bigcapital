@@ -26,7 +26,7 @@ export function ImportDropzone() {
       </Field>
 
       <Group className={styles.dropzoneHint}>
-        <Box>Supperted Formats: CSV, XLSX</Box>
+        <Box>Supported formats: CSV, XLSX</Box>
         <Box>Maximum size: 25MB</Box>
       </Group>
     </Stack>

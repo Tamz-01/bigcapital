@@ -69,4 +69,8 @@ export const FinancialReportBody = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 767.98px) {
+    padding-inline: 8px;
+  }
 `;

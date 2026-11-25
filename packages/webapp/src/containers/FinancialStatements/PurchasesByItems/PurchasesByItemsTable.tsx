@@ -52,7 +52,7 @@ export function PurchasesByItemsTable({
 }
 
 const PurchasesByItemsSheet = styled(FinancialSheet)`
-  min-width: 850px;
+  --financial-sheet-min-width: 850px;
 `;
 
 const PurchasesByItemsDataTable = styled(ReportDataTable)`

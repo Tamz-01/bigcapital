@@ -30,3 +30,15 @@
   flex: 25% 0;
   text-align: right;
 }
+
+@media (max-width: 599.98px) {
+  .root {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .buttonWrap {
+    flex: 0 1 auto;
+    text-align: start;
+  }
+}

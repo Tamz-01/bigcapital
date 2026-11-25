@@ -9,18 +9,11 @@ import { AppToaster } from '@/components';
 import { DialogsName } from '@/constants/dialogs';
 import { withDialogActions } from '@/containers/Dialog/withDialogActions';
 import { useResourceExport } from '@/hooks/query/FinancialReports/use-export';
-import { transformToForm } from '@/utils';
 
 interface ExportDialogFormValues {
   resource: string;
   format: string;
 }
-
-// Default initial form values.
-const defaultInitialValues: ExportDialogFormValues = {
-  resource: '',
-  format: 'csv',
-};
 
 interface ExportDialogFormProps extends WithDialogActionsProps {
   initialValues?: ExportFormInitialValues;
@@ -60,13 +53,8 @@ function ExportDialogFormRoot({
 
   // Form initial values in create and edit mode.
   const initialFormValues: ExportDialogFormValues = {
-    ...defaultInitialValues,
-    /**
-     * We only care about the fields in the form. Previously unfilled optional
-     * values such as `notes` come back from the API as null, so remove those
-     * as well.
-     */
-    ...transformToForm(initialValues, defaultInitialValues),
+    resource: initialValues?.resource ?? '',
+    format: initialValues?.format ?? 'csv',
   };
   return (
     <Formik

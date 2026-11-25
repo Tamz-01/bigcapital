@@ -122,3 +122,12 @@ The warehouse transfer form was checked for layout. The warehouse feature is dis
 
 - [Stage 7 report and evidence](https://drive.google.com/drive/folders/1kKORSKvmJC9Jp83Yhru7kGJQNrGFFr8x)
 - [Draft PR #1](https://github.com/Tamz-01/bigcapital/pull/1)
+
+## 25 November 2026 — Stage 8 reports and supporting tools
+
+- Wide reports keep their data columns inside a horizontal scrolling region at phone and tablet widths. On phones, report filters fill the available space and keep Calculate report and Cancel reachable.
+- The shared import wizard fits file selection, mapping, and results. Attachment filenames wrap alongside their controls. The shared export dialog defaults to CSV when opened without a format.
+- The private preview serves `index-CWrwEWYt.js`. The Stage 8 Playwright cases cover report figures and touch scrolling, filters, the General Ledger drilldown and downloads, customer import and export, and attachment layout. The desktop balance sheet and financial report checks cover existing report behavior.
+- The synthetic bill, invoice, and inventory checks confirmed AED 200 payable, AED 220 receivable, and AED 120 remaining inventory value. The report PDF path uses the existing server-generated document.
+- Physical device browsing, native PDF rendering and printing, and the full-app validation remain Stage 9 work. The existing realized and unrealized FX routes received navigation checks.
+- [Stage 8 closeout and evidence](https://drive.google.com/drive/folders/13NkaIqsSKiGycuJI_ZNlbT2snbJQYEPx) · [Private test app](https://studious-space-disco-gxp75xwv9rrvhw94x-8080.app.github.dev/) · [Draft PR #1](https://github.com/Tamz-01/bigcapital/pull/1)

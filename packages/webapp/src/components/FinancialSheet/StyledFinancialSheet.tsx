@@ -8,7 +8,7 @@ interface FinancialSheetRootProps {
 export const FinancialSheetRoot = styled.div<FinancialSheetRootProps>`
   border: 2px solid var(--color-financial-sheet-card-border);
   border-radius: 10px;
-  min-width: 640px;
+  min-width: var(--financial-sheet-min-width, 640px);
   width: auto;
   padding: 30px 18px;
   max-width: 100%;
@@ -42,6 +42,22 @@ export const FinancialSheetRoot = styled.div<FinancialSheetRootProps>`
     margin-top: 20px;
   }
 `}
+
+  @media screen and (max-width: 1099.98px) {
+    width: 100%;
+    min-width: 0;
+  }
+
+  @media screen and (max-width: 767.98px) {
+    min-height: 0;
+    margin-block: 12px;
+    padding: 16px 10px;
+    gap: 14px;
+
+    > .financial-sheet__heading {
+      overflow-wrap: anywhere;
+    }
+  }
 `;
 
 export const FinancialSheetTitle = styled.h1`
@@ -78,7 +94,17 @@ export const FinancialSheetFooter = styled.div`
     padding-left: 10px;
   }
 `;
-export const FinancialSheetTable = styled.div``;
+export const FinancialSheetTable = styled.div`
+  @media screen and (max-width: 1099.98px) {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+
+    .bigcapital-datatable > .table {
+      width: max-content;
+      min-width: 100%;
+    }
+  }
+`;
 export const FinancialSheetFooterBasis = styled.span``;
 export const FinancialSheetFooterCurrentTime = styled.span``;
 
