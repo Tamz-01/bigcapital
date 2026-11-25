@@ -36,6 +36,7 @@ export function AllocateLandedCostEntriesTable({
 
   return (
     <AllocateLandeedCostEntriesEditableTable
+      className="purchase-allocation-entries"
       columns={columns}
       data={entries}
       payload={{

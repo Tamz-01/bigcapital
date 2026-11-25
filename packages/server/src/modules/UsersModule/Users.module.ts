@@ -24,7 +24,6 @@ import { UsersInviteController } from './UsersInvite.controller';
 import { UsersInvitePublicController } from './UsersInvitePublic.controller';
 import { InjectSystemModel } from '../System/SystemModels/SystemModels.module';
 import { SendInviteUserMailQueue } from './Users.constants';
-import InviteSendMainNotificationSubscribe from './subscribers/InviteSendMailNotification.subscriber';
 import { SendInviteUserMailProcessor } from './processors/SendInviteUserMail.processor';
 import { SendInviteUsersMailMessage } from './commands/SendInviteUsersMailMessage.service';
 import { SendBulkInvitesService } from './commands/SendBulkInvites.service';
@@ -59,7 +58,6 @@ const models = [InjectSystemModel(UserInvite), InjectSystemModel(UserTenant)];
     SyncTenantUserMutateSubscriber,
     SyncSystemSendInviteSubscriber,
     SyncTenantAcceptInviteSubscriber,
-    InviteSendMainNotificationSubscribe,
     SendInviteUserMailProcessor,
     SendInviteUsersMailMessage,
     UsersApplication,

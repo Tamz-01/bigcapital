@@ -37,7 +37,7 @@ function BranchFormDialog({
       isOpen={isOpen}
       canEscapeJeyClose={true}
       autoFocus={true}
-      className={'dialog--branch-form'}
+      className={'dialog--branch-form settings-form-dialog'}
     >
       <DialogSuspense testId="branch-form-dialog">
         <BranchFormDialogContent dialogName={dialogName} branchId={branchId} />

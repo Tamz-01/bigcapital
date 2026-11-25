@@ -1,3 +1,4 @@
+import clsx from 'classnames';
 import React, { forwardRef } from 'react';
 import { Box, BoxProps } from '../../Layout';
 import styles from './AppContentShell.module.scss';
@@ -8,6 +9,7 @@ import {
 
 interface AppContentShellProps {
   topbarOffset?: number;
+  className?: string;
   mainProps?: BoxProps;
   asideProps?: BoxProps;
   children: React.ReactNode;
@@ -26,6 +28,7 @@ const AppContentShellComponent = forwardRef<
       topbarOffset = 0,
       hideAside = false,
       hideMain = false,
+      className,
       ...restProps
     },
     ref,
@@ -38,7 +41,11 @@ const AppContentShellComponent = forwardRef<
         hideAside={hideAside}
         hideMain={hideMain}
       >
-        <Box {...restProps} className={styles.root} ref={ref} />
+        <Box
+          {...restProps}
+          className={clsx(styles.root, className)}
+          ref={ref}
+        />
       </AppShellProvider>
     );
   },
@@ -80,7 +87,9 @@ const AppContentShellAside = forwardRef<
   if (hideAside === true) {
     return null;
   }
-  return <Box {...props} className={styles.aside} ref={ref} />;
+  return (
+    <Box {...props} className={clsx(styles.aside, props.className)} ref={ref} />
+  );
 });
 AppContentShellAside.displayName = 'AppContentShellAside';
 

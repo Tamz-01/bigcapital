@@ -58,6 +58,7 @@ export function ReconcileCreditNoteEntriesTable({
 
   return (
     <ReconcileCreditNoteEditableTable
+      className="items-entries-table"
       columns={columns}
       data={entries}
       payload={{

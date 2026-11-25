@@ -371,11 +371,17 @@ export class Bill extends TenantBaseModel {
        * Filters the due bills.
        */
       dueBills(query) {
-        query.where(
-          raw(`COALESCE(AMOUNT, 0) -
-            COALESCE(PAYMENT_AMOUNT, 0) -
-            COALESCE(CREDITED_AMOUNT, 0) > 0
-          `),
+        // Match total and balance so tax, discounts, and adjustments affect eligibility.
+        query.whereRaw(
+          `COALESCE(amount, 0)
+            - CASE WHEN discount_type = ? THEN COALESCE(discount, 0)
+                ELSE COALESCE(amount, 0) * COALESCE(discount, 0) / 100 END
+            + COALESCE(adjustment, 0)
+            + CASE WHEN COALESCE(is_inclusive_tax, 0) = 0 THEN COALESCE(tax_amount_withheld, 0)
+                ELSE 0 END
+            - COALESCE(payment_amount, 0)
+            - COALESCE(credited_amount, 0) > 0`,
+          [DiscountType.Amount],
         );
       },
       /**

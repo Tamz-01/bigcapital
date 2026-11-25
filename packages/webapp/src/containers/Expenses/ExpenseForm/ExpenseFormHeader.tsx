@@ -9,7 +9,7 @@ export function ExpenseFormHeader() {
   const totalFormatted = useExpenseTotalFormatted();
 
   return (
-    <PageForm.Header>
+    <PageForm.Header className="purchase-form-header">
       <ExpenseFormHeaderFields />
       <PageFormBigNumber
         label={intl.get('expense_amount')}

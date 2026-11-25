@@ -1,0 +1,297 @@
+@media (max-width: 1099.98px) {
+  .bp4-drawer .sales-mail-layout {
+    flex-flow: column nowrap;
+    min-block-size: 0;
+
+    > * {
+      flex: none;
+      min-inline-size: 0;
+      max-inline-size: 100%;
+      max-block-size: none;
+    }
+
+    > :last-child {
+      overflow: auto;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  :is(.dashboard__insider--sales-form, .purchase-form, .accounting-form) {
+    min-inline-size: 0;
+
+    :is(.sales-form-body, .purchase-form-body, .accounting-form-body) {
+      min-block-size: 0;
+      min-inline-size: 0;
+    }
+
+    :is(.sales-form-header, .purchase-form-header, .accounting-form-header),
+    :is(.sales-form-section, .purchase-form-section) {
+      min-inline-size: 0;
+      padding-inline: 12px;
+    }
+
+    :is(.sales-form-header, .purchase-form-header, .accounting-form-header) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 18px;
+      padding-block: 16px;
+
+      > * {
+        flex: none;
+        min-inline-size: 0;
+        max-inline-size: 100%;
+      }
+
+      .bp4-form-group.bp4-inline {
+        display: block;
+
+        > .bp4-label {
+          display: block;
+          min-inline-size: 0;
+          margin: 0 0 5px;
+        }
+
+        > .bp4-form-content {
+          min-inline-size: 0;
+          max-inline-size: 100%;
+        }
+      }
+
+      .bp4-input-group,
+      .bp4-popover2-target {
+        max-inline-size: 100%;
+      }
+
+      .bp4-form-content .bp4-button-text {
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+    }
+
+    :is(.sales-form-section, .purchase-form-section) .bp4-form-group {
+      min-inline-size: 0;
+      max-inline-size: 100%;
+    }
+
+    .bp4-input,
+    .bp4-html-select select {
+      font-size: 16px;
+    }
+
+    :is(.sales-form-actions, .purchase-form-actions, .accounting-form-actions) {
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      padding: 8px 12px;
+
+      > *,
+      .bp4-button-group {
+        min-inline-size: 0;
+        max-inline-size: 100%;
+      }
+
+      > * {
+        flex-wrap: wrap;
+      }
+
+      .bp4-button {
+        min-block-size: 40px;
+        white-space: normal;
+      }
+    }
+  }
+
+  :is(
+      .dashboard__insider--sales-form,
+      .purchase-form,
+      .dialog--reconcile-credit-form
+    )
+    .items-entries-table,
+  .purchase-allocation-entries,
+  .accounting-entry-table {
+    min-inline-size: 0;
+
+    .table {
+      width: 100% !important;
+      min-width: 0 !important;
+      border: 0;
+      background: transparent;
+    }
+
+    .thead {
+      display: none;
+    }
+
+    .tbody {
+      overflow: visible;
+    }
+
+    .tbody .tr {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 12px;
+      width: 100% !important;
+      min-width: 0 !important;
+      padding: 10px;
+      border: 1px solid var(--x-table-border);
+      border-radius: 6px;
+      background: var(--x-table-background);
+
+      + .tr {
+        margin-block-start: 10px;
+      }
+
+      .td {
+        display: block;
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: 100%;
+        min-block-size: 0;
+        border: 0;
+        padding: 0;
+        text-align: start;
+
+        &[data-column-label]:not([data-column-label=''])::before {
+          display: block;
+          margin-block-end: 4px;
+          color: var(--x-table-head-text);
+          content: attr(data-column-label);
+          font-size: 12px;
+          font-weight: 500;
+          overflow-wrap: anywhere;
+        }
+
+        .cell-inner,
+        .bp4-form-content {
+          min-inline-size: 0;
+          max-inline-size: 100%;
+          overflow-wrap: anywhere;
+        }
+
+        .bp4-input,
+        .bp4-form-group:not(.bp4-intent-danger) .bp4-input {
+          min-block-size: 40px;
+          padding-inline: 8px;
+          box-shadow: 0 0 0 1px var(--x-table-border);
+        }
+
+        .bp4-input:focus {
+          box-shadow: 0 0 0 2px #116cd0;
+        }
+      }
+
+      .td-itemId,
+      .td-description,
+      .td-expenseAccountId,
+      .td-accountId,
+      .td-note,
+      &.no-results .td {
+        grid-column: 1 / -1;
+      }
+
+      .td-action {
+        justify-self: end;
+
+        .bp4-button {
+          min-width: 40px;
+          min-height: 40px;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .purchase-form .bp4-navbar,
+  .purchase-form .bp4-navbar-group {
+    block-size: auto;
+    min-block-size: 40px;
+    flex-wrap: wrap;
+  }
+
+  .bp4-drawer:is(
+      .sales-record-drawer,
+      .purchase-record-drawer,
+      .accounting-record-drawer
+    ) {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+
+    .bp4-drawer-header .bp4-heading {
+      min-inline-size: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .bp4-drawer-body,
+    .bp4-tab-panel {
+      min-inline-size: 0;
+      max-inline-size: 100%;
+    }
+
+    .bp4-navbar,
+    .bp4-navbar-group {
+      block-size: auto;
+      min-block-size: 40px;
+      flex-wrap: wrap;
+    }
+
+    .bp4-tab-list {
+      max-inline-size: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .bp4-tab {
+      flex: 0 0 auto;
+    }
+
+    .bigcapital-datatable {
+      min-inline-size: 0;
+      max-inline-size: 100%;
+    }
+
+    .bigcapital-datatable .tbody {
+      overscroll-behavior-inline: contain;
+    }
+  }
+
+  :is(
+      .dialog--quick-payment-receive,
+      .dialog--reconcile-credit-form,
+      .dialog--reconcile-vendor-credit-form,
+      .dialog--refund-vendor-credit,
+      .dialog--allocate-landed-cost-form
+    ) {
+    .bp4-dialog-body,
+    .bp4-dialog-footer {
+      margin-inline: 12px;
+    }
+
+    .bp4-dialog-footer-actions {
+      flex-wrap: wrap;
+    }
+
+    .bp4-input {
+      font-size: 16px;
+    }
+  }
+
+  .dialog--pdf-preview-dialog {
+    overflow: auto;
+
+    .dialog__header-actions {
+      position: static;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      padding: 8px 12px;
+    }
+
+    .bp4-dialog-body embed {
+      display: block;
+      width: 100%;
+      height: min(60vh, 760px);
+    }
+  }
+}

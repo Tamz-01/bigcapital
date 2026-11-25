@@ -33,6 +33,7 @@ function RuleFormDialogRoot({
       isOpen={isOpen}
       canEscapeJeyClose={true}
       autoFocus={true}
+      className="dialog--bank-rule"
       style={{ width: 600 }}
     >
       <DialogSuspense testId={'rule-form-dialog'}>

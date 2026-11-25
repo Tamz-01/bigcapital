@@ -50,7 +50,7 @@ export function SalesByItemsTable({ companyName }: SalesByItemsTableProps) {
 }
 
 const SalesByItemsSheet = styled(FinancialSheet)`
-  min-width: 850px;
+  --financial-sheet-min-width: 850px;
 `;
 
 const SalesByItemsDataTable = styled(ReportDataTable)`

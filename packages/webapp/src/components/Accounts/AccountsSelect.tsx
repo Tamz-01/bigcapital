@@ -78,6 +78,7 @@ export function AccountsSelect({
   filterByParentTypes,
   filterByTypes,
   filterByNormal,
+  buttonProps,
 
   ...rest
 }: AccountsSelectProps): React.ReactElement {
@@ -110,6 +111,24 @@ export function AccountsSelect({
       textAccessor={'name'}
       labelAccessor={'code'}
       valueAccessor={'id'}
+      buttonProps={{
+        ...buttonProps,
+        onPointerDown: (event: React.PointerEvent<HTMLButtonElement>) => {
+          buttonProps?.onPointerDown?.(event);
+          const focused = event.currentTarget.ownerDocument.activeElement;
+          if (
+            !event.defaultPrevented &&
+            event.isPrimary &&
+            event.button === 0 &&
+            (focused instanceof HTMLInputElement ||
+              focused instanceof HTMLTextAreaElement) &&
+            event.currentTarget.form?.contains(focused)
+          ) {
+            // Commit the current input before the click opens the account picker.
+            focused.blur();
+          }
+        },
+      }}
       popoverProps={{ minimal: true, usePortal: true, inline: false }}
       itemPredicate={accountPredicate}
       itemRenderer={accountRenderer}

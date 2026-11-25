@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { omit, sumBy } from 'lodash';
+import { omit } from 'lodash';
 import * as R from 'ramda';
 import * as moment from 'moment';
 import '../../../utils/moment-mysql';
@@ -8,7 +8,6 @@ import { Customer } from '@/modules/Customers/models/Customer';
 import { BranchTransactionDTOTransformer } from '@/modules/Branches/integrations/BranchTransactionDTOTransform';
 import { WarehouseTransactionDTOTransform } from '@/modules/Warehouses/Integrations/WarehouseTransactionDTOTransform';
 import { ItemsEntriesService } from '@/modules/Items/ItemsEntries.service';
-import { ItemEntry } from '@/modules/TransactionItemEntry/models/ItemEntry';
 import { CommandSaleInvoiceValidators } from './CommandSaleInvoiceValidators.service';
 import { SaleInvoiceIncrement } from './SaleInvoiceIncrement.service';
 import { BrandingTemplateDTOTransformer } from '@/modules/PdfTemplate/BrandingTemplateDTOTransformer';
@@ -57,8 +56,9 @@ export class CommandSaleInvoiceDTOTransformer {
     saleInvoiceDTO: CreateSaleInvoiceDto | EditSaleInvoiceDto,
     oldSaleInvoice?: SaleInvoice,
   ): Promise<SaleInvoice> {
-    const entriesModels = this.transformDTOEntriesToModels(saleInvoiceDTO);
-    const amount = this.getDueBalanceItemEntries(entriesModels);
+    const amount = this.itemsEntriesService.getTotalItemsEntries(
+      saleInvoiceDTO.entries,
+    );
 
     // Retreive the next invoice number.
     const autoNextNumber = await this.invoiceIncrement.getNextInvoiceNumber();
@@ -77,6 +77,7 @@ export class CommandSaleInvoiceDTOTransformer {
       referenceType: 'SaleInvoice',
       isInclusiveTax: saleInvoiceDTO.isInclusiveTax,
       ...entry,
+      taxOnDiscountedAmount: true,
     }));
     const asyncEntries = await composeAsync(
       // Associate tax rate from tax id to entries.
@@ -107,6 +108,7 @@ export class CommandSaleInvoiceDTOTransformer {
       ),
       // Avoid rewrite the deliver date in edit mode when already published.
       balance: amount,
+      taxAmountWithheld: 0,
       currencyCode: customer.currencyCode,
       exchangeRate: saleInvoiceDTO.exchangeRate || 1,
       ...(saleInvoiceDTO.delivered &&
@@ -134,29 +136,4 @@ export class CommandSaleInvoiceDTOTransformer {
       initialAsyncDTO,
     );
   }
-
-  /**
-   * Transforms the DTO entries to invoice entries models.
-   * @param {ISaleInvoiceCreateDTO | ISaleInvoiceEditDTO} entries
-   * @returns {IItemEntry[]}
-   */
-  private transformDTOEntriesToModels = (
-    saleInvoiceDTO: CreateSaleInvoiceDto | EditSaleInvoiceDto,
-  ): ItemEntry[] => {
-    return saleInvoiceDTO.entries.map((entry) => {
-      return ItemEntry.fromJson({
-        ...entry,
-        isInclusiveTax: saleInvoiceDTO.isInclusiveTax,
-      });
-    });
-  };
-
-  /**
-   * Gets the due balance from the invoice entries.
-   * @param {IItemEntry[]} entries
-   * @returns {number}
-   */
-  private getDueBalanceItemEntries = (entries: ItemEntry[]) => {
-    return sumBy(entries, (e) => e.amount);
-  };
 }

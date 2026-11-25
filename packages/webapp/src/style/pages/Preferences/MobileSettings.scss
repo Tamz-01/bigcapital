@@ -1,0 +1,172 @@
+.role-permission-caption {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .preferences-page .preferences-page__content {
+    min-inline-size: 0;
+
+    .preferences-topbar__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      border: 0;
+      padding: 0;
+
+      .bp4-button + .bp4-button {
+        margin: 0;
+      }
+    }
+
+    .preferences-page__inside-content,
+    .preferences-page__inside-content--tabable {
+      min-inline-size: 0;
+      margin-inline: 0;
+    }
+
+    .preferences-page__inside-content .card {
+      margin: 10px;
+      min-inline-size: 0;
+    }
+
+    .settings-form-card,
+    .preferences-page__inside-content--accountant .card,
+    .preferences-page__inside-content--roles-form .card {
+      padding: 14px;
+    }
+
+    .bp4-tab-list {
+      max-inline-size: 100%;
+      overflow-x: auto;
+    }
+
+    .bigcapital-datatable {
+      min-inline-size: 0;
+      max-inline-size: 100%;
+    }
+
+    .form-group--select-list button {
+      min-inline-size: 0;
+      max-inline-size: 100%;
+    }
+  }
+
+  .preferences-page__content,
+  .settings-form-dialog {
+    .bp4-form-group {
+      min-inline-size: 0;
+      max-inline-size: 100%;
+      overflow-wrap: anywhere;
+
+      &.bp4-inline {
+        flex-direction: column;
+        align-items: stretch;
+
+        > .bp4-label {
+          min-inline-size: 0;
+          margin: 0 0 6px;
+          line-height: 1.35;
+        }
+      }
+
+      > .bp4-form-content {
+        min-inline-size: 0;
+        max-inline-size: 100%;
+      }
+    }
+
+    .bp4-input,
+    textarea {
+      max-inline-size: 100%;
+      font-size: 16px;
+    }
+
+    .bp4-button .bp4-button-text {
+      min-inline-size: 0;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  .settings-form-dialog {
+    .bp4-dialog-body,
+    .bp4-dialog-footer {
+      margin-inline: 14px;
+    }
+
+    .bp4-dialog-footer-actions {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .bp4-button {
+      min-height: 40px;
+    }
+  }
+
+  .preferences-page__content {
+    .role-permission-matrix,
+    .role-permission-options {
+      display: block;
+      width: 100%;
+
+      tbody {
+        display: block;
+      }
+
+      tbody tr {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      tbody tr td {
+        width: auto;
+        min-inline-size: 0;
+        text-align: start;
+        border-inline: 0;
+      }
+
+      tbody tr .service-label {
+        grid-column: 1 / -1;
+        min-inline-size: 0;
+        font-weight: 600;
+      }
+
+      td .bp4-checkbox {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        white-space: normal;
+      }
+    }
+
+    .role-permission-matrix {
+      thead {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+      }
+
+      tbody tr .role-permission-extra {
+        grid-column: 1 / -1;
+      }
+
+      td:empty {
+        display: none;
+      }
+
+      .role-permission-caption {
+        display: inline;
+      }
+    }
+
+    .role-permission-options tbody tr .permissions {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .menu--logged-user-dropdown {
+    overflow-wrap: anywhere;
+  }
+}

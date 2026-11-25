@@ -1,0 +1,39 @@
+{
+  "source_commit": "aee2e09d5f9a59573df69759d182e2c090cb101a",
+  "screen_rows": 365,
+  "by_surface": {
+    "Route": 122,
+    "Outer route": 4,
+    "Dialog": 93,
+    "Drawer": 42,
+    "Alert": 56,
+    "Inline overlay candidate": 33,
+    "Supporting state": 15
+  },
+  "by_stage": {
+    "2": 15,
+    "3": 59,
+    "8": 87,
+    "4": 52,
+    "7": 34,
+    "6": 38,
+    "5": 80
+  },
+  "tab_step_rows": 129,
+  "layout_findings": 374,
+  "source_files_in_app_import_graph": 2784,
+  "unmounted": [
+    "ExchangeRateForm",
+    "PaymentViaVoucherForm",
+    "ReceiptPdfForm",
+    "InvoiceMail",
+    "EstimateMail",
+    "ReceiptMail",
+    "PaymentMail",
+    "ConnectBankCreditCard",
+    "InvoiceFormMailDeliver",
+    "EstimateFormMailDeliver",
+    "ReceiptFormMailDeliver",
+    "PAYMENT_RECEIPT_CUSTOMIZE"
+  ]
+}

@@ -26,8 +26,9 @@ function OrganizationsListDrawerRoot({
     <OrganizationsDrawer
       isOpen={isOpen}
       name={name}
-      size={'100%'}
+      size="var(--workspace-height)"
       position={Position.TOP}
+      style={{ top: 'var(--test-notice-height)' }}
       payload={payload}
     >
       <DrawerSuspense>

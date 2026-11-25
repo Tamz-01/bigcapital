@@ -3,19 +3,15 @@ import { UnrealizedGainOrLossLoadingBar } from './components';
 import { UnrealizedGainOrLossActionsBar } from './UnrealizedGainOrLossActionsBar';
 import { UnrealizedGainOrLossHeader } from './UnrealizedGainOrLossHeader';
 import { UnrealizedGainOrLossProvider } from './UnrealizedGainOrLossProvider';
-import { WithUnrealizedGainOrLossActionsProps } from './withUnrealizedGainOrLossActions';
+import {
+  withUnrealizedGainOrLossActions,
+  type WithUnrealizedGainOrLossActionsProps,
+} from './withUnrealizedGainOrLossActions';
 import { FinancialStatement, DashboardPageContent } from '@/components';
 
-type UnrealizedGainOrLossProps = {
-  organizationName: string;
-} & Pick<
-  WithUnrealizedGainOrLossActionsProps,
-  'toggleUnrealizedGainOrLossFilterDrawer'
->;
-
-export function UnrealizedGainOrLoss({
+function UnrealizedGainOrLossContent({
   toggleUnrealizedGainOrLossFilterDrawer,
-}: UnrealizedGainOrLossProps) {
+}: WithUnrealizedGainOrLossActionsProps) {
   const handleFilterSubmit = (_filter: Record<string, unknown>) => {};
 
   React.useEffect(
@@ -41,3 +37,7 @@ export function UnrealizedGainOrLoss({
     </UnrealizedGainOrLossProvider>
   );
 }
+
+export const UnrealizedGainOrLoss = withUnrealizedGainOrLossActions(
+  UnrealizedGainOrLossContent,
+);

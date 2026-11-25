@@ -80,7 +80,10 @@ export function MakeJournalFloatingAction() {
   return (
     <PageForm.FooterActions
       spacing={10}
-      className={classNames(CLASSES.PAGE_FORM_FLOATING_ACTIONS)}
+      className={classNames(
+        CLASSES.PAGE_FORM_FLOATING_ACTIONS,
+        'accounting-form-actions',
+      )}
     >
       {/* ----------- Save And Publish ----------- */}
       <If condition={!manualJournal || !manualJournal?.isPublished}>

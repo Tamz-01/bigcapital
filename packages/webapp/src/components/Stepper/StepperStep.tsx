@@ -11,18 +11,24 @@ interface StepperStepProps {
   active?: boolean;
   state?: StepperStepState;
   allowStepClick?: boolean;
+  onClick?: () => void;
 }
 
 export function StepperStep({
   label,
   description,
   step,
-  active,
   state,
-  children,
+  allowStepClick,
+  onClick,
 }: StepperStepProps) {
   return (
-    <StepButton>
+    <StepButton
+      as={allowStepClick ? 'button' : 'div'}
+      type={allowStepClick ? 'button' : undefined}
+      onClick={allowStepClick ? onClick : undefined}
+      aria-current={state === StepperStepState.Progress ? 'step' : undefined}
+    >
       <StepIconWrap>
         <StepIcon
           isCompleted={state === StepperStepState.Completed}
@@ -63,7 +69,20 @@ const StepButton = styled.button`
   align-items: center;
   display: flex;
   gap: 10px;
-  text-align: left;
+  min-width: 0;
+  padding: 2px 6px;
+  text-align: start;
+
+  @media (max-width: 599.98px) {
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+
+    > :last-child {
+      text-align: center;
+    }
+  }
 `;
 
 const StepIcon = styled.span`
@@ -103,7 +122,9 @@ const StepIconWrap = styled.div`
 `;
 
 const StepTextWrap = styled.div`
-  text-align: left;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: start;
 `;
 
 const StepIconText = styled.div``;

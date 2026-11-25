@@ -38,7 +38,7 @@ export function MakeJournalEntriesTable({
     useMakeJournalFormContext();
 
   // Memorized data table columns.
-  const columns = useJournalTableEntriesColumns();
+  const columns = useJournalTableEntriesColumns(currencyCode);
 
   // Handles update datatable data.
   const handleUpdateData = (
@@ -69,6 +69,7 @@ export function MakeJournalEntriesTable({
 
   return (
     <DataTableEditable
+      className="accounting-entry-table"
       columns={columns}
       data={entries}
       sticky={true}

@@ -125,7 +125,12 @@ export const VendorCreditMenuItem = ({
         </Menu>
       }
     >
-      <Button icon={<Icon icon="more-vert" iconSize={16} />} minimal={true} />
+      <Button
+        aria-label={intl.get('vendor_credits.action.reconcile_with_bills')}
+        aria-haspopup="menu"
+        icon={<Icon icon="more-vert" iconSize={16} />}
+        minimal={true}
+      />
     </Popover>
   );
 };

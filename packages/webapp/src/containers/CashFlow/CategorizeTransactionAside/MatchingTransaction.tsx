@@ -7,7 +7,7 @@ import {
   useFormikContext,
 } from 'formik';
 import * as FF from 'fp-ts/function';
-import { isEmpty } from 'lodash';
+import { isEmpty, snakeCase, startCase } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { withBanking } from '../withBanking';
 import { withBankingActions } from '../withBankingActions';
@@ -19,6 +19,7 @@ import {
   useMatchingTransactionBoot,
 } from './MatchingTransactionBoot';
 import { MatchTransactionCheckbox } from './MatchTransactionCheckbox';
+import { useAccountTransactionsContext } from '../AccountTransactions/AccountTransactionsProvider';
 import {
   transformToReq,
   useGetPendingAmountMatched,
@@ -29,6 +30,10 @@ import type { MatchingTransactionFormValues } from './types';
 import type { WithBankingProps } from '../withBanking';
 import type { WithBankingActionsProps } from '../withBankingActions';
 import { AppToaster, Box, FormatNumber, Group, Stack } from '@/components';
+import {
+  getAddMoneyInOptions,
+  getAddMoneyOutOptions,
+} from '@/constants/cashflowOptions';
 import { useMatchUncategorizedTransaction } from '@/hooks/query/banking';
 import { useIsDarkMode } from '@/hooks/useDarkMode';
 
@@ -206,11 +211,23 @@ function MatchingBankTransactionContent() {
 }
 
 interface MatchItem {
-  transsactionTypeFormatted: string;
+  transsactionTypeFormatted?: string;
+  transactionType?: string;
   amountFormatted: string;
   dateFormatted: string;
   referenceType: string;
   referenceId: number;
+}
+
+function getMatchTransactionLabel(match: MatchItem) {
+  const type = match.transactionType || match.referenceType;
+  const cashflowType = [
+    ...getAddMoneyInOptions(),
+    ...getAddMoneyOutOptions(),
+  ].find((option) => option.value === snakeCase(type));
+  return (
+    match.transsactionTypeFormatted || cashflowType?.name || startCase(type)
+  );
 }
 
 /**
@@ -227,7 +244,7 @@ function PerfectMatchingTransactions() {
     <>
       <Box className={styles.matchBar}>
         <Group spacing={6}>
-          <h2 className={styles.matchBarTitle}>Perfect Matchines</h2>
+          <h2 className={styles.matchBarTitle}>Perfect Matches</h2>
           <Tag minimal round intent={Intent.SUCCESS}>
             {perfectMatchesCount}
           </Tag>
@@ -238,7 +255,7 @@ function PerfectMatchingTransactions() {
         {perfectMatches.map((match: MatchItem, index: number) => (
           <MatchTransactionField
             key={index}
-            label={`${match.transsactionTypeFormatted} for ${match.amountFormatted}`}
+            label={`${getMatchTransactionLabel(match)} for ${match.amountFormatted}`}
             date={match.dateFormatted}
             transactionId={match.referenceId}
             transactionType={match.referenceType}
@@ -273,7 +290,7 @@ function PossibleMatchingTransactions() {
             key={index}
             label={
               <>
-                {`${match.transsactionTypeFormatted} for `}
+                {`${getMatchTransactionLabel(match)} for `}
                 <strong>{match.amountFormatted}</strong>
               </>
             }
@@ -336,6 +353,7 @@ const MatchTransactionFooter = FF.pipe(
       useFormikContext<MatchingTransactionFormValues>();
     const totalPending = useGetPendingAmountMatched();
     const showReconcileLink = useIsShowReconcileTransactionLink();
+    const { currentAccount } = useAccountTransactionsContext();
     const submitDisabled = totalPending !== 0;
     const isDarkMode = useIsDarkMode();
 
@@ -374,7 +392,7 @@ const MatchTransactionFooter = FF.pipe(
               Pending{' '}
               <FormatNumber
                 value={totalPending}
-                currency={'USD'}
+                currency={currentAccount?.currencyCode}
                 noZero={false}
               />
             </Text>

@@ -8,6 +8,7 @@ import {
 } from '@blueprintjs/core';
 import * as FF from 'fp-ts/function';
 import React from 'react';
+import intl from 'react-intl-universal';
 import { useItemDetailDrawerContext } from './ItemDetailDrawerProvider';
 import type { WithDialogActionsProps } from '@/containers/Dialog/withDialogActions';
 import { Can, Icon, T } from '@/components';
@@ -56,7 +57,12 @@ const ItemDetailActionsMoreBtnInner = ({
         </Menu>
       }
     >
-      <Button icon={<Icon icon="more-vert" iconSize={16} />} minimal={true} />
+      <Button
+        aria-label={intl.get('item.view_drawer.make_adjustment')}
+        aria-haspopup="menu"
+        icon={<Icon icon="more-vert" iconSize={16} />}
+        minimal={true}
+      />
     </Popover>
   );
 };

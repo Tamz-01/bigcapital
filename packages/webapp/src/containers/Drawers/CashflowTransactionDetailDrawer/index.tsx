@@ -26,6 +26,7 @@ function CashflowTransactionDetailDrawer({
 
   return (
     <Drawer
+      className="accounting-record-drawer"
       isOpen={isOpen}
       name={name}
       size={'65%'}

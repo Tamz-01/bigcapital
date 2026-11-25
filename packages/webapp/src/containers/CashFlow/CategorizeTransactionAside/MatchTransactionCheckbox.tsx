@@ -1,8 +1,6 @@
-import { Checkbox, Text } from '@blueprintjs/core';
 import clsx from 'classnames';
 import React from 'react';
 import styles from './MatchTransactionCheckbox.module.scss';
-import { Group, Stack } from '@/components';
 import { useUncontrolled } from '@/hooks/useUncontrolled';
 
 export interface MatchTransactionCheckboxProps {
@@ -20,39 +18,25 @@ export function MatchTransactionCheckbox({
   label,
   date,
 }: MatchTransactionCheckboxProps) {
-  const [_active, handleChange] = useUncontrolled<boolean>({
+  const [checked, setChecked] = useUncontrolled<boolean>({
     value: active,
     initialValue: initialActive,
     finalValue: false,
     onChange,
   });
 
-  const handleClick = () => {
-    handleChange(!_active);
-  };
-
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    handleChange(!event.target.checked);
-  };
-
   return (
-    <Group
-      className={clsx(styles.root, {
-        [styles.active]: _active,
-      })}
-      position="apart"
-      onClick={handleClick}
-    >
-      <Stack spacing={2}>
+    <label className={clsx(styles.root, { [styles.active]: checked })}>
+      <span className={styles.text}>
         <span className={styles.label}>{label}</span>
-        <Text className={styles.date}>Date: {date}</Text>
-      </Stack>
-
-      <Checkbox
-        checked={_active}
+        <span className={styles.date}>Date: {date}</span>
+      </span>
+      <input
+        type="checkbox"
         className={styles.checkbox}
-        onChange={handleCheckboxChange}
+        checked={checked}
+        onChange={(event) => setChecked(event.currentTarget.checked)}
       />
-    </Group>
+    </label>
   );
 }

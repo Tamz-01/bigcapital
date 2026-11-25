@@ -499,9 +499,9 @@ export const useBillTotalFormatted = (): string => {
  * @returns {number}
  */
 export const useBillPaidAmount = (): number => {
-  const { values } = useFormikContext<BillFormValues>();
+  const { bill } = useBillFormContext();
 
-  return toSafeNumber(0);
+  return toSafeNumber(bill?.paymentAmount);
 };
 
 /**
@@ -515,6 +515,16 @@ export const useBillPaidAmountFormatted = (): string => {
   return formattedAmount(paidAmount, values.currencyCode);
 };
 
+export const useBillCreditedAmountFormatted = (): string => {
+  const { bill } = useBillFormContext();
+  const { values } = useFormikContext<BillFormValues>();
+
+  return formattedAmount(
+    toSafeNumber(bill?.creditedAmount),
+    values.currencyCode,
+  );
+};
+
 /**
  * Retrieves the bill due amount.
  * @returns {number}
@@ -523,7 +533,9 @@ export const useBillDueAmount = (): number => {
   const total = useBillTotal();
   const paidAmount = useBillPaidAmount();
 
-  return total - paidAmount;
+  const { bill } = useBillFormContext();
+
+  return Math.max(total - paidAmount - toSafeNumber(bill?.creditedAmount), 0);
 };
 
 /**

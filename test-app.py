@@ -46,6 +46,9 @@ def garage(*args, check=True):
     return run('exec', '-T', 'garage', '/garage', *args, check=check)
 
 def start():
+    for built in ('packages/server/dist/main.js', 'packages/webapp/dist/index.html'):
+        if not (ROOT / built).is_file():
+            raise RuntimeError('Build source first: pnpm install --frozen-lockfile && pnpm run build:server && pnpm run build:webapp. See TESTING.md.')
     values = prepare()
     print('Starting isolated database, queue, PDF and document services...', flush=True)
     run('up', '-d', 'mysql', 'redis', 'garage', 'gotenberg')
@@ -85,9 +88,11 @@ def start():
     garage('bucket', 'allow', '--read', '--write', '--owner', '--key', values['S3_ACCESS_KEY_ID'], 'bigcapital')
     print('Running system database migrations...', flush=True)
     run('run', '--rm', '--no-deps', 'server', 'node', '/app/packages/server/dist/cli.js', 'system:migrate:latest')
+    print('Running tenant database migrations...', flush=True)
+    run('run', '--rm', '--no-deps', 'server', 'node', '/app/packages/server/dist/cli.js', 'tenants:migrate:latest')
     print('Building the test banner and starting BigCapital...', flush=True)
     run('build', 'webapp')
-    run('up', '-d', 'server', 'webapp', 'proxy')
+    run('up', '-d', '--force-recreate', 'server', 'webapp', 'proxy')
     for _ in range(60):
         try:
             with urlopen('http://127.0.0.1:8080/api/system_db', timeout=3) as response:

@@ -22,6 +22,7 @@ import {
 import { CLASSES } from '@/constants';
 import { AccountAction, AbilitySubject } from '@/constants/abilityOption';
 import { DialogsName } from '@/constants/dialogs';
+import { DRAWERS } from '@/constants/drawers';
 import {
   withAlertActions,
   WithAlertActionsProps,
@@ -30,12 +31,17 @@ import {
   withDialogActions,
   WithDialogActionsProps,
 } from '@/containers/Dialog/withDialogActions';
+import {
+  withDrawerActions,
+  type WithDrawerActionsProps,
+} from '@/containers/Drawer/withDrawerActions';
 import { AccountDialogAction } from '@/containers/Dialogs/AccountDialog/utils';
 import { safeCallback } from '@/utils';
 
 interface AccountDrawerActionBarInnerProps
   extends WithDialogActionsProps,
-    WithAlertActionsProps {}
+    WithAlertActionsProps,
+    Pick<WithDrawerActionsProps, 'closeDrawer'> {}
 
 /**
  * Account drawer action bar.
@@ -46,6 +52,7 @@ function AccountDrawerActionBarInner({
 
   // #withAlertsDialog
   openAlert,
+  closeDrawer,
 }: AccountDrawerActionBarInnerProps) {
   // Account drawer context.
   const { account } = useAccountDrawerContext();
@@ -56,6 +63,7 @@ function AccountDrawerActionBarInner({
 
   // Handle new child button click.
   const onNewChildAccount = () => {
+    closeDrawer(DRAWERS.ACCOUNT_DETAILS);
     openDialog(DialogsName.AccountForm, {
       action: AccountDialogAction.NewChild,
       parentAccountId: account.id,
@@ -64,6 +72,7 @@ function AccountDrawerActionBarInner({
   };
   // Handle edit account action.
   const onEditAccount = () => {
+    closeDrawer(DRAWERS.ACCOUNT_DETAILS);
     openDialog(DialogsName.AccountForm, {
       action: AccountDialogAction.Edit,
       accountId: account.id,
@@ -155,4 +164,5 @@ export const AccountDrawerActionBar = FF.pipe(
   AccountDrawerActionBarInner,
   withAlertActions,
   withDialogActions,
+  withDrawerActions,
 );

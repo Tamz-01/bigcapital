@@ -17,7 +17,7 @@ export function PaymentMadeFormHeader() {
   const totalAmount = usePaymentmadeTotalAmount();
 
   return (
-    <PageForm.Header>
+    <PageForm.Header className="purchase-form-header">
       <PaymentMadeFormHeaderFields />
       <PageFormBigNumber
         label={intl.get('amount_received')}

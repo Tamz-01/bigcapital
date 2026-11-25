@@ -1,4 +1,3 @@
-import { x } from '@xstyled/emotion';
 import React from 'react';
 import { SetupWizardContent } from './SetupWizardContent';
 import { useCurrentOrganization } from '@/hooks/query';
@@ -22,12 +21,11 @@ export function SetupRightSection() {
     { condition: isOrganizationSetupCompleted, step: 'congrats' },
   ];
   const setupStep = scenarios.find((scenario) => scenario.condition);
-  const setupStepId = setupStep?.step ?? '';
   const setupStepIndex = setupStep ? scenarios.indexOf(setupStep) : -1;
 
   return (
-    <x.section w="100%" overflow="auto">
-      <SetupWizardContent stepId={setupStepId} stepIndex={setupStepIndex} />
-    </x.section>
+    <section className="setup-page__right-section">
+      <SetupWizardContent stepIndex={setupStepIndex} />
+    </section>
   );
 }

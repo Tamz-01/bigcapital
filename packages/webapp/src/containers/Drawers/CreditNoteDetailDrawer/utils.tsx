@@ -129,7 +129,11 @@ export function CreditNoteMenuItem({
         </Menu>
       }
     >
-      <Button icon={<Icon icon="more-vert" iconSize={16} />} minimal={true} />
+      <Button
+        aria-label={intl.get('credit_note.action.reconcile_with_invoices')}
+        icon={<Icon icon="more-vert" iconSize={16} />}
+        minimal={true}
+      />
     </Popover>
   );
 }

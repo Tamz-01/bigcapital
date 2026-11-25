@@ -54,7 +54,7 @@ export function InventoryValuationTable({
 }
 
 const InventoryValuationSheet = styled(FinancialSheet)`
-  min-width: 850px;
+  --financial-sheet-min-width: 850px;
 `;
 
 const InventoryValuationDataTable = styled(ReportDataTable)`

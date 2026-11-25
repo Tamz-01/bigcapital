@@ -2,8 +2,14 @@
 import classNames from 'classnames';
 import * as FF from 'fp-ts/function';
 import React from 'react';
+import { useAppIntlContext } from '../AppIntlProvider';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useLocation } from 'react-router-dom';
 import DashboardErrorBoundary from '@/components/Dashboard/DashboardErrorBoundary';
+import {
+  ResponsiveNavigationDrawer,
+  useResponsiveNavigation,
+} from '@/components/Dashboard/ResponsiveNavigation';
 import PreferencesContentRoute from '@/components/Preferences/PreferencesContentRoute';
 import PreferencesSidebar from '@/components/Preferences/PreferencesSidebar';
 import PreferencesTopbar from '@/components/Preferences/PreferencesTopbar';
@@ -11,18 +17,25 @@ import { CLASSES } from '@/constants/classes';
 import { withDashboardActions } from '@/containers/Dashboard/withDashboardActions';
 
 import '@/style/pages/Preferences/Page.scss';
+import '@/style/pages/Preferences/MobileSettings.scss';
 
 /**
  * Preferences page.
  */
 function PreferencesPage({ toggleSidebarExpand }) {
+  const { pathname } = useLocation();
+  useAppIntlContext();
+  const { compact } = useResponsiveNavigation();
   // Shrink the dashboard sidebar once open application preferences page.
   React.useEffect(() => {
     toggleSidebarExpand(false);
   }, [toggleSidebarExpand]);
 
   return (
-    <ErrorBoundary FallbackComponent={DashboardErrorBoundary}>
+    <ErrorBoundary
+      FallbackComponent={DashboardErrorBoundary}
+      resetKeys={[pathname]}
+    >
       <div
         id={'dashboard'}
         className={classNames(
@@ -31,7 +44,13 @@ function PreferencesPage({ toggleSidebarExpand }) {
         )}
       >
         <div className={classNames(CLASSES.PREFERENCES_PAGE)}>
-          <PreferencesSidebar />
+          {compact ? (
+            <ResponsiveNavigationDrawer name="preferences">
+              <PreferencesSidebar compact />
+            </ResponsiveNavigationDrawer>
+          ) : (
+            <PreferencesSidebar />
+          )}
 
           <div className={CLASSES.PREFERENCES_PAGE_CONTENT}>
             <PreferencesTopbar pageTitle={'asdad'} />

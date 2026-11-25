@@ -1,8 +1,7 @@
-
 .content {
 }
 
-.hintText{
+.hintText {
   display: flex;
   font-size: 11px;
   margin-top: 6px;
@@ -10,54 +9,74 @@
   justify-content: space-between;
 }
 
-.attachments{
+.attachments {
   margin-top: 12px;
 }
 
-.attachmentItem{
-  border-top: 1px solid #D3D8DE;
-  border-left: 1px solid #D3D8DE;
-  border-right: 1px solid #D3D8DE;
+.attachmentItem {
+  border-top: 1px solid #d3d8de;
+  border-left: 1px solid #d3d8de;
+  border-right: 1px solid #d3d8de;
   padding: 10px 14px;
   justify-content: space-between;
 
   &:first-child {
     border-radius: 3px 3px 0 0;
   }
-  &:last-child{
+  &:last-child {
     border-radius: 0 0 3px 3px;
-    border-bottom: 1px solid #D3D8DE;
+    border-bottom: 1px solid #d3d8de;
   }
 }
 
-.attachmentFilenameText{
-  
+.attachmentFilenameText {
 }
 
 .attachmentSizeText,
-.attachmentLoadingText{
+.attachmentLoadingText {
   font-size: 13px;
   color: #738091;
 }
 
-.attachmentContent{
+.attachmentContent {
 }
 
-.attachmentIcon{
+.attachmentIcon {
   color: #626b7c;
 }
 
-.label{
+.label {
   font-size: 12px;
   margin-bottom: 4px;
 }
 
-.dropzoneRoot{
+.dropzoneRoot {
   min-height: 140px;
   padding: 10px;
 }
 
-.attachmentIconWrap{
-  width: 20PX;
+.attachmentIconWrap {
+  width: 20px;
   text-align: right;
+}
+
+@media (max-width: 767.98px) {
+  .attachmentContent {
+    min-width: 0;
+    flex: 1 1 12rem;
+    flex-wrap: nowrap;
+
+    > * {
+      min-width: 0;
+    }
+  }
+
+  .attachmentFilenameText {
+    overflow-wrap: anywhere;
+  }
+
+  .attachmentItem :global(.bp4-button) {
+    min-height: 36px;
+    min-width: 36px;
+  }
 }

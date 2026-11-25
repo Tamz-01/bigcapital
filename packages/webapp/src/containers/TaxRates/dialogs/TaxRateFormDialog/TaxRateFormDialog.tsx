@@ -24,6 +24,7 @@ function TaxRateFormDialogInner({
 }: TaxRateFormDialogProps) {
   return (
     <TaxRateDialog
+      className="master-record-dialog"
       name={dialogName}
       title={payload.id ? 'Edit Tax Rate' : 'Create Tax Rate'}
       autoFocus={true}

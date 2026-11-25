@@ -124,7 +124,7 @@ export function AccountTransactionsDetailsBar() {
   const { isCurrentAccountLoading } = useAccountTransactionsContext();
 
   return (
-    <AccountTransactionDetailsWrap>
+    <AccountTransactionDetailsWrap className="bank-transactions-summary">
       {isCurrentAccountLoading ? (
         <AccountTransactionsDetailsBarSkeleton />
       ) : (

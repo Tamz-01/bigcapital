@@ -57,4 +57,18 @@ const RoleFormFloatingActionsRoot = styled.div`
   .bp4-button {
     margin-right: 10px;
   }
+
+  @media (max-width: 767.98px) {
+    position: sticky;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 14px;
+
+    .bp4-button {
+      margin: 0;
+      min-height: 40px;
+    }
+  }
 `;

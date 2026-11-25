@@ -155,6 +155,7 @@ function VendorsTableInner({
   return (
     <DashboardContentTable>
       <DataTable
+        recordList
         noInitialFetch={true}
         columns={columns}
         data={vendors ?? []}
@@ -167,6 +168,8 @@ function VendorsTableInner({
         sticky={true}
         pagination={true}
         rowTestId={'vendor-row'}
+        initialPageIndex={vendorsTableState?.pageIndex ?? 0}
+        requestedPageIndex={vendorsTableState?.pageIndex ?? 0}
         initialPageSize={vendorsTableState?.pageSize ?? 10}
         manualSortBy={true}
         rowsCount={pagination?.total ?? 0}

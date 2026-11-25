@@ -31,7 +31,7 @@ function BranchActivateDialog({
       // behavior change in a TS-only slice.
       canEscapeJeyClose={true}
       autoFocus={true}
-      className={'dialog--branch-activate'}
+      className={'dialog--branch-activate settings-form-dialog'}
     >
       <DialogSuspense>
         <BranchActivateDialogContent dialogName={dialogName} />

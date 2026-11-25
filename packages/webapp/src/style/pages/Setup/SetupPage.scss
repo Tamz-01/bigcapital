@@ -4,7 +4,38 @@
   display: grid;
   grid-template-columns: 40% 60%;
   max-width: 1600px;
-  min-height: 100vh;
+  height: var(--workspace-height);
+  overflow: auto;
+  overflow-wrap: anywhere;
+
+  &__right-section {
+    min-width: 0;
+  }
+
+  &__steps {
+    padding: 40px 40px 20px;
+  }
+
+  &__form {
+    max-width: 600px;
+    margin-inline: auto;
+    padding: 45px 25px 20px;
+
+    > form > .bp4-callout {
+      margin-block-end: 16px;
+    }
+  }
+
+  &__congrats {
+    max-width: 500px;
+    margin-inline: auto;
+    padding: 80px 16px 24px;
+
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
 
   @media only screen and (max-width: 1500px) {
     grid-template-columns: 35% 65%;
@@ -98,6 +129,71 @@
             }
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .setup-page {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+
+    &__left-section .content {
+      height: auto;
+      padding: 16px;
+
+      &__logo {
+        padding: 0;
+        margin: 0;
+      }
+
+      &__header,
+      &__footer {
+        position: static;
+      }
+
+      &__title {
+        font-size: 24px;
+        margin-block: 8px;
+      }
+
+      &__text {
+        font-size: 14px;
+      }
+
+      &__organization {
+        margin-block: 0 8px;
+      }
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+      }
+    }
+
+    &__steps {
+      padding: 16px 12px 6px;
+    }
+
+    &__form {
+      padding: 8px 16px 24px;
+
+      .bp4-input {
+        font-size: 16px;
+      }
+    }
+
+    &__congrats {
+      padding-block-start: 16px;
+
+      svg {
+        max-height: 200px;
+      }
+
+      .bp4-button {
+        min-height: 44px;
       }
     }
   }

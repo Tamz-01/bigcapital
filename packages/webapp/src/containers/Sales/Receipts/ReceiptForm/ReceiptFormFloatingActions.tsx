@@ -96,7 +96,11 @@ export function ReceiptFormFloatingActions() {
   const brandingTemplatesOptions = useReceiptFormBrandingTemplatesOptions();
 
   return (
-    <PageForm.FooterActions spacing={10} position="apart">
+    <PageForm.FooterActions
+      className="sales-form-actions"
+      spacing={10}
+      position="apart"
+    >
       <Group spacing={10}>
         {/* ----------- Save And Close ----------- */}
         <If condition={!receipt || !receipt?.isClosed}>

@@ -31,7 +31,7 @@ function UserFormDialog({
           <T id={'invite_user'} />
         )
       }
-      className={'dialog--invite-form'}
+      className={'dialog--invite-form settings-form-dialog'}
       autoFocus={true}
       canEscapeKeyClose={true}
       isOpen={isOpen}

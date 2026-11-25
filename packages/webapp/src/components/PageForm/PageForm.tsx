@@ -6,6 +6,7 @@ import { Group, GroupProps } from '@/components';
 
 interface PageFormProps extends SystemProps {
   children: React.ReactNode;
+  className?: string;
 }
 
 /**
@@ -25,10 +26,7 @@ PageForm.displayName = 'PageFormBody';
  * Page form body layout, by default the content body is scrollable.
  * @returns {React.ReactNode}
  */
-const PageFormBody: FC<{ children: React.ReactNode } & SystemProps> = ({
-  children,
-  ...props
-}) => {
+const PageFormBody: FC<PageFormProps> = ({ children, ...props }) => {
   return (
     <x.div flex="1" overflow="auto" {...props}>
       {children}

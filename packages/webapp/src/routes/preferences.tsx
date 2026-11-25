@@ -1,10 +1,11 @@
 // @ts-nocheck
 import { lazy } from 'react';
+import { stableRouteComponents } from './stableRouteComponents';
 import { Features } from '@/constants/features';
 
 const BASE_URL = '/preferences';
 
-export const getPreferenceRoutes = () => [
+export const getPreferenceRoutes = stableRouteComponents(() => [
   {
     path: `${BASE_URL}/general`,
     component: lazy(() =>
@@ -195,4 +196,4 @@ export const getPreferenceRoutes = () => [
     ),
     exact: true,
   },
-];
+]);

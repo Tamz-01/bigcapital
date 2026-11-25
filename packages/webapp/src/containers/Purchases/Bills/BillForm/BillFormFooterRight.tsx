@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {
   useBillAdjustmentAmountFormatted,
   useBillAggregatedTaxRates,
+  useBillCreditedAmountFormatted,
   useBillDiscountAmountFormatted,
   useBillDueAmountFormatted,
   useBillPaidAmountFormatted,
@@ -32,6 +33,7 @@ export function BillFormFooterRight() {
 
   const dueAmountFormatted = useBillDueAmountFormatted();
   const paidAmountFormatted = useBillPaidAmountFormatted();
+  const creditedAmountFormatted = useBillCreditedAmountFormatted();
   const subtotalFormatted = useBillSubtotalFormatted();
   const totalFormatted = useBillTotalFormatted();
   const taxEntries = useBillAggregatedTaxRates();
@@ -78,6 +80,11 @@ export function BillFormFooterRight() {
       <TotalLine
         title={'Paid Amount'}
         value={paidAmountFormatted}
+        borderStyle={TotalLineBorderStyle.None}
+      />
+      <TotalLine
+        title="Applied Credit"
+        value={creditedAmountFormatted}
         borderStyle={TotalLineBorderStyle.None}
       />
       <TotalLine

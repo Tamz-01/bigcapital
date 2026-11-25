@@ -25,7 +25,7 @@ function UserFormDialog({
     <Dialog
       name={dialogName}
       title={<T id={'edit_user'} />}
-      className={'dialog--user-form'}
+      className={'dialog--user-form settings-form-dialog'}
       autoFocus={true}
       canEscapeKeyClose={true}
       isOpen={isOpen}

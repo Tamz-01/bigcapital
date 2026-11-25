@@ -1,9 +1,15 @@
-
-.popover :global .bp4-popover-content{
+.popover :global .bp4-popover-content {
   min-width: 600px;
 }
 
-.attachmentButton:not([class*=bp4-intent-]) {
+@media (max-width: 767.98px) {
+  .popover :global .bp4-popover-content {
+    min-width: 0;
+    width: min(600px, calc(100vw - 24px));
+  }
+}
+
+.attachmentButton:not([class*='bp4-intent-']) {
   --x-background-color: #fff;
   --x-border-color: rgb(206, 212, 218);
 
@@ -12,13 +18,13 @@
   }
 
   &,
-  &:hover{
+  &:hover {
     background-color: #fff;
   }
   border: 1px solid var(--x-border-color);
 }
 
-.attachmentField :global .bp4-label{
+.attachmentField :global .bp4-label {
   font-weight: 500;
   font-size: 12px;
 }

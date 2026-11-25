@@ -80,6 +80,7 @@ function VendorDetailsActionsBarInner({
   };
 
   const handleEditOpeningBalance = () => {
+    closeDrawer(DRAWERS.VENDOR_DETAILS);
     openDialog('vendor-opening-balance', { vendorId });
   };
 

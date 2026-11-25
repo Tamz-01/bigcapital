@@ -19,7 +19,13 @@ export function SendMailViewLayout({
     <Stack spacing={0} flex={1} overflow="hidden">
       {header}
 
-      <Group flex={1} overflow="auto" spacing={0} alignItems={'stretch'}>
+      <Group
+        className="sales-mail-layout"
+        flex={1}
+        overflow="auto"
+        spacing={0}
+        alignItems={'stretch'}
+      >
         <Stack
           bg={isDarkMode ? 'var(--color-dark-gray2)' : 'white'}
           flex={'1'}

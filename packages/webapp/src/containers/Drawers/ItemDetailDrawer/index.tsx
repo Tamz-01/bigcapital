@@ -26,7 +26,7 @@ function ItemDetailDrawer({ name, isOpen, payload }: ItemDetailDrawerProps) {
     <Drawer
       isOpen={isOpen}
       name={name}
-      style={{ minWidth: '700px', maxWidth: '900px' }}
+      className="master-record-drawer master-record-drawer--standard"
       size={'65%'}
     >
       <DrawerSuspense>

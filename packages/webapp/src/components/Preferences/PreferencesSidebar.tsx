@@ -12,7 +12,7 @@ import '@/style/pages/Preferences/Sidebar.scss';
 /**
  * Preferences sidebar.
  */
-export default function PreferencesSidebar() {
+export default function PreferencesSidebar({ compact = false }) {
   const history = useHistory();
   const location = useLocation();
   const { featureCan } = useFeatureCan();
@@ -24,9 +24,11 @@ export default function PreferencesSidebar() {
     return true;
   }).map((item) =>
     item.divider ? (
-      <MenuDivider title={item.title} />
+      <MenuDivider key={item.title} title={item.title} />
     ) : (
       <MenuItem
+        key={item.href}
+        tagName={compact ? 'button' : 'a'}
         active={item.href && item.href === location.pathname}
         text={item.text}
         label={item.label}
@@ -40,9 +42,13 @@ export default function PreferencesSidebar() {
 
   return (
     <PreferencesSidebarContainer>
-      <div class="preferences-sidebar__head">
-        <h2>{<T id={'preferences'} />}</h2>
-      </div>
+      {!compact && (
+        <div className="preferences-sidebar__head">
+          <h2>
+            <T id={'preferences'} />
+          </h2>
+        </div>
+      )}
 
       <Menu className="preferences-sidebar__menu">{items}</Menu>
     </PreferencesSidebarContainer>

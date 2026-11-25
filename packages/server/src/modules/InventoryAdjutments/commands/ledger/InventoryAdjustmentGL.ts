@@ -1,6 +1,7 @@
 import * as R from 'ramda';
 import { InventoryAdjustment } from '../../models/InventoryAdjustment';
 import { InventoryAdjustmentEntry } from '../../models/InventoryAdjustmentEntry';
+import { InventoryCostLotTracker } from '@/modules/InventoryCost/models/InventoryCostLotTracker';
 import { ILedgerEntry } from '../../../Ledger/types/Ledger.types';
 import { AccountNormal } from '@/interfaces/Account';
 import { Ledger } from '../../../Ledger/Ledger';
@@ -118,6 +119,30 @@ export class InventoryAdjustmentsGL {
     return this.inventoryAdjustment.entries
       .map((entry, index) => this.getAdjustmentGLItemEntry(entry, index))
       .flat();
+  }
+
+  public getDecrementAdjustmentGL(lots: InventoryCostLotTracker[]): Ledger {
+    const common = { ...this.adjustmentGLCommonEntry, costable: true };
+    return new Ledger(
+      lots.flatMap((lot, index) => [
+        {
+          ...common,
+          accountId: this.inventoryAdjustment.adjustmentAccountId,
+          accountNormal: AccountNormal.DEBIT,
+          debit: lot.cost,
+          itemId: lot.itemId,
+          index: index * 2,
+        },
+        {
+          ...common,
+          accountId: lot.item.inventoryAccountId,
+          accountNormal: AccountNormal.DEBIT,
+          credit: lot.cost,
+          itemId: lot.itemId,
+          index: index * 2 + 1,
+        },
+      ]),
+    );
   }
 
   public getAdjustmentGL(): Ledger {

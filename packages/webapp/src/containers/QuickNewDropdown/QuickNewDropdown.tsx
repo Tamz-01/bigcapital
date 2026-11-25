@@ -2,6 +2,7 @@ import { Button, MenuItem } from '@blueprintjs/core';
 import { Position } from '@blueprintjs/core';
 import { Select } from '@blueprintjs/select';
 import React from 'react';
+import intl from 'react-intl-universal';
 import { useHistory } from 'react-router-dom';
 import type { QuickNewActionOption } from '@/constants/types';
 import type { ItemRendererProps } from '@blueprintjs/select';
@@ -51,6 +52,7 @@ export function QuickNewDropdown() {
     >
       <Button
         text={<T id={'quick_new'} />}
+        aria-label={intl.get('quick_new')}
         icon={<Icon icon={'plus-24'} iconSize={20} />}
         minimal={true}
       />

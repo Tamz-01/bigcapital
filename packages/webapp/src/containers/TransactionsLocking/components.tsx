@@ -374,6 +374,13 @@ const TransactionLockingWrapp = styled.div<{ isEnabled: boolean }>`
   background: var(--color-transaction-locking-item-background);
   box-shadow: 0 4px 20px -5px rgb(0 8 36 / 5%);
 
+  @media (max-width: 767.98px) {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
   ${(props) =>
     props.isEnabled &&
     `
@@ -411,6 +418,7 @@ const TransLockingIcon = styled.div`
   border: 1px solid var(--color-transaction-locking-item-icon-border);
   height: 45px;
   width: 45px;
+  flex-shrink: 0;
   text-align: center;
   line-height: 45px;
   border-radius: 8px;
@@ -424,6 +432,7 @@ const TransLockingIcon = styled.div`
 
 export const TransLockingActions = styled.div`
   display: flex;
+  flex-wrap: wrap;
 
   .bp4-divider {
     margin: 2px;
@@ -432,9 +441,11 @@ export const TransLockingActions = styled.div`
 
 export const TransLockingContent = styled.div`
   flex: 1 1 0;
-  margin-left: 20px;
+  margin-inline-start: 20px;
   width: 100%;
-  padding-right: 10px;
+  min-width: 0;
+  padding-inline-end: 10px;
+  overflow-wrap: anywhere;
 `;
 
 export const TransLockingReason = styled.div`

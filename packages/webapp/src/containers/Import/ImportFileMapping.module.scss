@@ -8,7 +8,7 @@
   font-weight: 700;
   padding: 0 11px;
 
-  :global(.bp4-dark) &{
+  :global(.bp4-dark) & {
     color: var(--color-light-gray1);
   }
 }
@@ -17,39 +17,60 @@
   width: 100%;
 
   th.label,
-  td.label{
+  td.label {
     width: 32% !important;
   }
 
-  thead{
-    th{
+  thead {
+    th {
       border-top: 1px solid #d9d9da;
       padding-top: 8px;
       padding-bottom: 8px;
       color: #738091;
       font-weight: 500;
 
-      :global(.bp4-dark) &{
+      :global(.bp4-dark) & {
         color: var(--color-light-gray1);
         border-top: 1px solid rgba(255, 255, 255, 0.2);
       }
     }
   }
-  
-  tbody{
+
+  tbody {
     tr td {
       vertical-align: middle;
     }
 
-    tr td{
+    tr td {
       :global(.bp4-popover-target .bp4-button),
-      :global(.bp4-popover-wrapper){
+      :global(.bp4-popover-wrapper) {
         max-width: 250px;
       }
     }
   }
 }
 
-.requiredSign{
+.requiredSign {
   color: rgb(250, 82, 82);
+}
+
+@media (max-width: 767.98px) {
+  .table {
+    table-layout: fixed;
+
+    th,
+    td {
+      overflow-wrap: anywhere;
+    }
+
+    .field :global(.bp4-popover-wrapper),
+    .field :global(.bp4-popover-target) {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .field :global(.bp4-button) {
+      width: 100%;
+    }
+  }
 }

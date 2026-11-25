@@ -96,7 +96,7 @@ export class BillPaymentsPages {
       entryType: 'invoice',
       billId: bill.id,
       billNo: bill.billNumber,
-      amount: bill.amount,
+      amount: bill.total,
       dueAmount: bill.dueAmount,
       totalPaymentAmount: bill.paymentAmount,
       paymentAmount: bill.paymentAmount,

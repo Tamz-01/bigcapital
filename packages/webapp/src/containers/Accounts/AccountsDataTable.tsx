@@ -138,6 +138,7 @@ function AccountsDataTableInner({
 
   return (
     <DataTable
+      recordList
       noInitialFetch={true}
       columns={columns}
       data={accounts ?? []}

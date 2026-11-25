@@ -26,7 +26,7 @@ function SetupCongratsPageInner({
   };
 
   return (
-    <x.div w={'500px'} mx="auto" textAlign="center" pt={'80px'}>
+    <x.div className="setup-page__congrats" textAlign="center">
       <x.div>
         <WorkflowIcon width="280" height="330" />
       </x.div>
@@ -61,7 +61,7 @@ function SetupCongratsPageInner({
         >
           <Button
             intent={Intent.PRIMARY}
-            type="submit"
+            type="button"
             loading={isReloading}
             onClick={handleBtnClick}
           >

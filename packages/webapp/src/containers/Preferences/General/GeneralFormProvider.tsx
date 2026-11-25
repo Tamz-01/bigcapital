@@ -66,7 +66,7 @@ function GeneralFormProvider({ children }: GeneralFormProviderProps) {
         CLASSES.PREFERENCES_PAGE_INSIDE_CONTENT_GENERAL,
       )}
     >
-      <GeneralFormCard>
+      <GeneralFormCard className="settings-form-card">
         {isOrganizationLoading || isDateFormatsLoading ? (
           <PreferencesPageLoader />
         ) : (

@@ -1,3 +1,46 @@
+body.authentication {
+  overflow-y: auto;
+}
+
+.auth-page {
+  padding: 80px 16px 40px;
+  overflow-wrap: anywhere;
+
+  &__inner {
+    width: 100%;
+    max-width: 384px;
+    margin-inline: auto;
+  }
+
+  &__logo {
+    margin-block-end: 40px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px), (max-height: 560px) {
+  .auth-page {
+    padding-block: 24px 32px;
+
+    &__logo {
+      margin-block-end: 20px;
+    }
+
+    .bp4-input {
+      font-size: 16px;
+    }
+
+    .bp4-button.auth-password-toggle {
+      min-width: 38px;
+      min-height: 32px;
+    }
+
+    .bp4-control.bp4-checkbox {
+      min-height: 32px;
+    }
+  }
+}
+
 .authTransition {
   &-enter {
     opacity: 0;

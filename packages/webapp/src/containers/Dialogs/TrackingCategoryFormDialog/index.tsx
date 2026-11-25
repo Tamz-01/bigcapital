@@ -37,7 +37,7 @@ function TrackingCategoryFormDialog({
       isOpen={isOpen}
       canEscapeJeyClose={true}
       autoFocus={true}
-      className={'dialog--tracking-category-form'}
+      className={'dialog--tracking-category-form settings-form-dialog'}
     >
       <DialogSuspense testId="tracking-category-form-dialog">
         <TrackingCategoryFormDialogContent

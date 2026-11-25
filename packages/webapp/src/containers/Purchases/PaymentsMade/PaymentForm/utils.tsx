@@ -111,6 +111,8 @@ export const defaultPaymentMadeEntry: PaymentMadeEntry = {
   id: null,
   dueAmount: null,
   amount: '',
+  billNo: '',
+  date: '',
 };
 
 // Default initial values of payment made.

@@ -153,6 +153,7 @@ function CustomersTableInner({
   return (
     <DashboardContentTable>
       <DataTable
+        recordList
         noInitialFetch={true}
         columns={columns}
         data={customers ?? []}
@@ -166,6 +167,8 @@ function CustomersTableInner({
         spinnerProps={{ size: 30 }}
         pagination={true}
         rowTestId={'customer-row'}
+        initialPageIndex={customersTableState?.pageIndex ?? 0}
+        requestedPageIndex={customersTableState?.pageIndex ?? 0}
         initialPageSize={customersTableState?.pageSize ?? 10}
         manualSortBy={true}
         manualPagination={true}

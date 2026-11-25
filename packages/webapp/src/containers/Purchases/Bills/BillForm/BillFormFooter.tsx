@@ -8,7 +8,13 @@ import { UploadAttachmentButton } from '@/containers/Attachments/UploadAttachmen
 // Bill form floating actions.
 export function BillFormFooter() {
   return (
-    <x.div mt={'20px'} px={'32px'} pb={'20px'} flex={1}>
+    <x.div
+      className="purchase-form-section"
+      mt={'20px'}
+      px={'32px'}
+      pb={'20px'}
+      flex={1}
+    >
       <Paper p={'20px'}>
         <Row>
           <Col md={8}>

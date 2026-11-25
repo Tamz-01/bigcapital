@@ -6,7 +6,7 @@ import { PageForm, PageFormBigNumber } from '@/components';
 
 export function MakeJournalEntriesHeader() {
   return (
-    <PageForm.Header>
+    <PageForm.Header className="accounting-form-header">
       <MakeJournalEntriesHeaderFields />
       <MakeJournalHeaderBigNumber />
     </PageForm.Header>

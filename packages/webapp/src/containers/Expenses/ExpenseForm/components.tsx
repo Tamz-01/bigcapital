@@ -102,13 +102,16 @@ export function ExpenseAmountHeaderCell({
  */
 export function useExpenseFormTableColumns({
   landedCost,
+  currencyCode,
 }: {
   landedCost: boolean;
+  currencyCode: string;
 }) {
   return React.useMemo(
     () => [
       {
         Header: ExpenseCategoryHeaderCell,
+        mobileLabel: intl.get('expense_category'),
         id: 'expenseAccountId',
         accessor: 'expenseAccountId',
         Cell: AccountsListFieldCell,
@@ -120,6 +123,7 @@ export function useExpenseFormTableColumns({
       },
       {
         Header: ExpenseAmountHeaderCell,
+        mobileLabel: intl.get('amount_currency', { currency: currencyCode }),
         accessor: 'amount',
         Cell: MoneyFieldCell,
         disableSortBy: true,
@@ -138,6 +142,7 @@ export function useExpenseFormTableColumns({
         ? [
             {
               Header: LandedCostHeaderCell,
+              mobileLabel: intl.get('landed'),
               accessor: 'landedCost',
               Cell: CheckBoxFieldCell,
               disableSortBy: true,
@@ -157,7 +162,7 @@ export function useExpenseFormTableColumns({
         align: Align.Center,
       },
     ],
-    [],
+    [currencyCode, landedCost],
   );
 }
 /**

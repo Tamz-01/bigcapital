@@ -1,9 +1,12 @@
 import { Knex } from 'knex';
+import { groupBy } from 'lodash';
 import { Inject, Injectable } from '@nestjs/common';
 import { LedgerStorageService } from '../../../Ledger/LedgerStorage.service';
 import { InventoryAdjustment } from '../../models/InventoryAdjustment';
 import { TenancyContext } from '../../../Tenancy/TenancyContext.service';
 import { InventoryAdjustmentsGL } from './InventoryAdjustmentGL';
+import { InventoryCostLotTracker } from '@/modules/InventoryCost/models/InventoryCostLotTracker';
+import { Ledger } from '@/modules/Ledger/Ledger';
 import { TenantModelProxy } from '@/modules/System/models/TenantBaseModel';
 
 @Injectable()
@@ -15,6 +18,11 @@ export class InventoryAdjustmentsGLEntries {
     @Inject(InventoryAdjustment.name)
     private readonly inventoryAdjustment: TenantModelProxy<
       typeof InventoryAdjustment
+    >,
+
+    @Inject(InventoryCostLotTracker.name)
+    private readonly inventoryCostLotTracker: TenantModelProxy<
+      typeof InventoryCostLotTracker
     >,
   ) {}
 
@@ -43,6 +51,42 @@ export class InventoryAdjustmentsGLEntries {
     // Commits the ledger entries to the storage.
     await this.ledgerStorage.commit(ledger, trx);
   };
+
+  /** Write stock-reduction ledger entries after costs are recomputed. */
+  public async writeDecrementCostEntries(
+    startingDate: Date,
+    trx: Knex.Transaction,
+  ): Promise<void> {
+    const lots = await this.inventoryCostLotTracker()
+      .query(trx)
+      .where('direction', 'OUT')
+      .where('transactionType', 'InventoryAdjustment')
+      .where('cost', '>', 0)
+      .modify('filterDateRange', startingDate)
+      .orderBy('id', 'asc')
+      .withGraphFetched('item');
+
+    if (!lots.length) return;
+
+    const lotsByAdjustment = groupBy(lots, 'transactionId');
+    const adjustments = await this.inventoryAdjustment()
+      .query(trx)
+      .whereIn(
+        'id',
+        lots.map((lot) => lot.transactionId),
+      )
+      .where('type', 'decrement')
+      .whereNotNull('publishedAt');
+    const { baseCurrency } = await this.tenancyContext.getTenantMetadata();
+    const entries = adjustments.flatMap((adjustment) =>
+      new InventoryAdjustmentsGL(adjustment)
+        .setBaseCurrency(baseCurrency)
+        .getDecrementAdjustmentGL(lotsByAdjustment[adjustment.id])
+        .getEntries(),
+    );
+
+    await this.ledgerStorage.commit(new Ledger(entries), trx);
+  }
 
   /**
    * Reverts the adjustment transactions GL entries.

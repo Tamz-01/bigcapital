@@ -45,6 +45,7 @@ import { AuthApiKeysController } from './AuthApiKeys.controllers';
 import { AuthApiKeyAuthorizeService } from './commands/AuthApiKeyAuthorization.service';
 import { GenerateApiKey } from './commands/GenerateApiKey.service';
 import { GetApiKeysService } from './queries/GetApiKeys.service';
+import { UpdateAccountLanguageService } from './commands/UpdateAccountLanguage.service';
 
 const models = [
   InjectSystemModel(PasswordReset),
@@ -112,6 +113,7 @@ const models = [
     SendSignupVerificationMailProcessor,
     GetAuthMetaService,
     GetAuthenticatedAccount,
+    UpdateAccountLanguageService,
     ApiKeyAuthGuard,
     ApiKeyStrategy,
     AuthApiKeyAuthorizeService,

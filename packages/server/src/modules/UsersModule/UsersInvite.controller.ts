@@ -1,5 +1,6 @@
-import { Body, Controller, Param, Patch, Post } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Header, Param, Patch, Post } from '@nestjs/common';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { InviteUserResponseDto } from './dtos/InviteUserResponse.dto';
 import { UsersApplication } from './Users.application';
 import {
   SendInviteUserDto,
@@ -15,13 +16,16 @@ export class UsersInviteController {
    * Send an invitation to a new user.
    */
   @Patch()
+  @Header('Cache-Control', 'no-store')
   @ApiOperation({ summary: 'Send an invitation to a new user.' })
+  @ApiResponse({ status: 200, type: InviteUserResponseDto })
   async sendInvite(@Body() sendInviteDTO: SendInviteUserDto) {
     const result = await this.usersApplication.sendInvite(sendInviteDTO);
 
     return {
       invitedUser: result.invitedUser,
-      message: 'The invitation has been sent successfully.',
+      invitation: result.invitation,
+      message: 'Invitation created. ' + result.invitation.emailDelivery.message,
     };
   }
 
@@ -29,13 +33,17 @@ export class UsersInviteController {
    * Resend an invitation to an existing user.
    */
   @Post('users/:id/resend')
+  @Header('Cache-Control', 'no-store')
   @ApiOperation({ summary: 'Resend an invitation to an existing user.' })
+  @ApiResponse({ status: 201, type: InviteUserResponseDto })
   async resendInvite(@Param('id') userId: number) {
     const result = await this.usersApplication.resendInvite(userId);
 
     return {
       user: result.user,
-      message: 'The invitation has been resent successfully.',
+      invitation: result.invitation,
+      message:
+        'Invitation regenerated. ' + result.invitation.emailDelivery.message,
     };
   }
 

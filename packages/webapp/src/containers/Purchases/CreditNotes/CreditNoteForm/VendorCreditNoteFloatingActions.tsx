@@ -82,7 +82,7 @@ export function VendorCreditNoteFloatingActions() {
     resetForm();
   };
   return (
-    <PageForm.FooterActions spacing={10}>
+    <PageForm.FooterActions className="purchase-form-actions" spacing={10}>
       {/* ----------- Save And Open  ----------- */}
       <If condition={!vendorCredit || !vendorCredit?.isOpen}>
         <ButtonGroup>

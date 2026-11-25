@@ -1,6 +1,7 @@
 import { Checkbox, Popover } from '@blueprintjs/core';
 import { Field, FieldProps } from 'formik';
 import React from 'react';
+import intl from 'react-intl-universal';
 import styled from 'styled-components';
 import {
   getSerivceColumnPermission,
@@ -135,6 +136,12 @@ function PermissionBodyColumn({ column }: PermissionBodyColumnProps) {
         {({ field, form }: FieldProps) => (
           <PermissionCheckbox
             inline={true}
+            aria-label={`${service.label ?? service.subject} · ${column.label ?? column.key}`}
+            labelElement={
+              <span className="role-permission-caption">
+                {column.label ?? column.key}
+              </span>
+            }
             {...field}
             onChange={handleCheckboxPermissionChange(
               form as FormState,
@@ -220,7 +227,7 @@ function ModulePermissionExtraPermissions() {
   const extraPermissions = getServiceExtraPermissions(service);
 
   return (
-    <td>
+    <td className="role-permission-extra">
       <If condition={extraPermissions.length > 0}>
         <ModuleExtraPermissionsPopover />
       </If>
@@ -275,6 +282,12 @@ function ModulePermissionsServiceFullAccess() {
           {({ form, field }: FieldProps) => (
             <PermissionCheckbox
               inline={true}
+              aria-label={`${service.label ?? service.subject} · ${intl.get('permissions.column.full_access')}`}
+              labelElement={
+                <span className="role-permission-caption">
+                  <T id={'permissions.column.full_access'} />
+                </span>
+              }
               {...field}
               indeterminate={
                 field.value === FULL_ACCESS_CHECKBOX_STATE.INDETARMINE
@@ -324,7 +337,7 @@ function ModulePermissionsTableBody() {
  */
 function ModulePermissionsTable() {
   return (
-    <ModulePermissionsTableRoot>
+    <ModulePermissionsTableRoot className="role-permission-matrix">
       <ModulePermissionsTableHead />
       <ModulePermissionsTableBody />
     </ModulePermissionsTableRoot>
@@ -374,7 +387,7 @@ function ModulePermissionsVerticalServices() {
 
   return (
     <ModulePermissionsVerticalServicesRoot>
-      <ModulePermissionsVerticalTable>
+      <ModulePermissionsVerticalTable className="role-permission-options">
         <tbody>
           {module.services.map((service) => (
             <ModulePermissionsServiceProvider

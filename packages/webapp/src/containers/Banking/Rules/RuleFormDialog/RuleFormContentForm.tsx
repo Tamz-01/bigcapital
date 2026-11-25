@@ -236,7 +236,11 @@ function RuleFormConditions() {
     <Box style={{ marginBottom: 15 }}>
       <Stack spacing={15}>
         {values?.conditions?.map((condition, index) => (
-          <Group key={index} style={{ width: 500 }}>
+          <Group
+            key={index}
+            className="bank-rule-condition"
+            style={{ width: '100%', maxWidth: 500 }}
+          >
             <FFormGroup
               name={`conditions[${index}].field`}
               label={'Field'}
