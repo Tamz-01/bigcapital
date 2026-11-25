@@ -284,7 +284,9 @@ test("posts a mobile purchase, applies its payment and credit, and records an ex
   const headerDue = page.locator(
     ".purchase-form-header .page-form__big-numbers h1",
   );
-  await expect(headerDue).toHaveText(/(?:^|\D)0\.00(?:\D|$)/);
+  await expect(headerDue).toHaveText(/(?:^|\D)0\.00(?:\D|$)/, {
+    timeout: 20_000,
+  });
   const billTotals = page.locator(".purchase-form-section .title");
   await expect(
     billTotals

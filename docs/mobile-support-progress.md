@@ -131,3 +131,12 @@ The warehouse transfer form was checked for layout. The warehouse feature is dis
 - The synthetic bill, invoice, and inventory checks confirmed AED 200 payable, AED 220 receivable, and AED 120 remaining inventory value. The report PDF path uses the existing server-generated document.
 - Physical device browsing, native PDF rendering and printing, and the full-app validation remain Stage 9 work. The existing realized and unrealized FX routes received navigation checks.
 - [Stage 8 closeout and evidence](https://drive.google.com/drive/folders/13NkaIqsSKiGycuJI_ZNlbT2snbJQYEPx) · [Private test app](https://studious-space-disco-gxp75xwv9rrvhw94x-8080.app.github.dev/) · [Draft PR #1](https://github.com/Tamz-01/bigcapital/pull/1)
+
+## 26 November 2026 — Stage 9 full-app validation
+
+- Connected the exchange gain/loss pages to their filter cleanup actions and made the dashboard and preferences error boundaries reset on route changes. Both exchange report pages now return to Reports in the private preview. The mobile test also verified browser back and forward.
+- Passed 167 desktop Chromium checks. All 30 earlier mobile and language cases passed across the suite and focused retries. The six new Stage 9 cases passed across their acceptance runs. These covered the linked accounting cycle, phone language and draft preservation, navigation and reload, denied access, expired sessions, and a read-only reviewer.
+- The synthetic linked purchase, sale, customer receipt and supplier settlement left both balances at zero. Six of ten units remained at AED 600. Sales of AED 600 less AED 400 cost produced AED 200 gross profit. Each of the four documents had equal debits and credits.
+- The route sweep recorded 117 rendered routes, six redirects, two routes requiring payment test integration and one warehouse transfer edit route requiring a fixture. The 125 additional viewport measurements had no page-level horizontal overflow. The SMS settings route rendered and its API returned 400.
+- The private preview serves the byte-verified modern-browser asset index-CgtkSvT_.js. A PDF converter restart restored General Ledger preview after the Codespace resumed. Physical-device checks, native printing, remaining overlay states and external integrations are still open.
+- [Stage 9 report and evidence](https://drive.google.com/drive/folders/1lUzWK9zBke9_7L3v4jOqos6xD85KHhQ7) · [Private test app](https://studious-space-disco-gxp75xwv9rrvhw94x-8080.app.github.dev/financial-reports) · [Draft PR #1](https://github.com/Tamz-01/bigcapital/pull/1)

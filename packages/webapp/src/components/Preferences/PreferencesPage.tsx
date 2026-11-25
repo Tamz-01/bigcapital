@@ -4,6 +4,7 @@ import * as FF from 'fp-ts/function';
 import React from 'react';
 import { useAppIntlContext } from '../AppIntlProvider';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useLocation } from 'react-router-dom';
 import DashboardErrorBoundary from '@/components/Dashboard/DashboardErrorBoundary';
 import {
   ResponsiveNavigationDrawer,
@@ -22,6 +23,7 @@ import '@/style/pages/Preferences/MobileSettings.scss';
  * Preferences page.
  */
 function PreferencesPage({ toggleSidebarExpand }) {
+  const { pathname } = useLocation();
   useAppIntlContext();
   const { compact } = useResponsiveNavigation();
   // Shrink the dashboard sidebar once open application preferences page.
@@ -30,7 +32,10 @@ function PreferencesPage({ toggleSidebarExpand }) {
   }, [toggleSidebarExpand]);
 
   return (
-    <ErrorBoundary FallbackComponent={DashboardErrorBoundary}>
+    <ErrorBoundary
+      FallbackComponent={DashboardErrorBoundary}
+      resetKeys={[pathname]}
+    >
       <div
         id={'dashboard'}
         className={classNames(
